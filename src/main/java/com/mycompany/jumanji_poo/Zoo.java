@@ -10,8 +10,8 @@ public class Zoo {
 
     public Zoo(int saldo) {
         this.saldo = saldo;
-        recintos= new ArrayList<Recinto>();
-        animaisReserva= new ArrayList<Animal>();
+        this.recintos= new ArrayList<Recinto>();
+        this.animaisReserva= new ArrayList<Animal>();
     }
     
     public int getSaldo() {
