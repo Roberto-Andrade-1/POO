@@ -10,7 +10,7 @@ public class Animal {
     public Animal(String nome) {
         id++;
         this.nome=nome;
-        atratividade=0.30;
+        this.atratividade=0.30;
     }
 
     public static int getId() {
