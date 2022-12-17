@@ -1,16 +1,15 @@
 package com.mycompany.jumanji_poo;
 
 public class Animal {
-    
+
     private static int id;
     private String nome;
-    private  double atratividade;
-    
-    
+    private double atratividade;
+
     public Animal(String nome) {
         id++;
-        this.nome=nome;
-        this.atratividade=0.30;
+        this.nome = nome;
+        this.atratividade = 0.30;
     }
 
     public static int getId() {
@@ -37,5 +36,4 @@ public class Animal {
         this.atratividade = atratividade;
     }
 
-    
 }

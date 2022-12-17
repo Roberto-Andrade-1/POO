@@ -1,19 +1,20 @@
 package com.mycompany.jumanji_poo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
-    
+
     private int saldo;
     private List<Recinto> recintos;
     private List<Animal> animaisReserva;
 
     public Zoo(int saldo) {
         this.saldo = saldo;
-        this.recintos= new ArrayList<Recinto>();
-        this.animaisReserva= new ArrayList<Animal>();
+        this.recintos = new ArrayList<Recinto>();
+        this.animaisReserva = new ArrayList<Animal>();
     }
-    
+
     public int getSaldo() {
         return saldo;
     }
@@ -37,5 +38,5 @@ public class Zoo {
     public void setAnimaisReserva(List<Animal> animaisReserva) {
         this.animaisReserva = animaisReserva;
     }
-    
+
 }

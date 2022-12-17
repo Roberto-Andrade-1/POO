@@ -1,27 +1,28 @@
 package com.mycompany.jumanji_poo;
+
 import java.util.Random;
 
 public class Recinto {
-    
+
     private static int idRecintoAtualizado;
-    private int capacidade, custo,idRecinto;
+    private int capacidade, custo, idRecinto;
     private Animal[] animaisRecinto;
 
     public Recinto() {
-        this.capacidade=capacidadeAleatoria();
-        this.custo=custoAleatorio();
-        idRecinto=0;
-        animaisRecinto= new Animal[this.capacidade];
+        this.capacidade = capacidadeAleatoria();
+        this.custo = custoAleatorio();
+        idRecinto = 0;
+        animaisRecinto = new Animal[this.capacidade];
     }
 
-    public final int capacidadeAleatoria(){
+    public final int capacidadeAleatoria() {
         Random rand = new Random();
-        return rand.nextInt(20)+1;
+        return rand.nextInt(20) + 1;
     }
-    
-    public final int custoAleatorio(){
+
+    public final int custoAleatorio() {
         Random rand = new Random();
-        return rand.nextInt(20001)+5000;
+        return rand.nextInt(20001) + 5000;
     }
 
     public static int getIdRecintoAtualizado() {
@@ -63,6 +64,5 @@ public class Recinto {
     public void setAnimaisRecinto(Animal[] animaisRecinto) {
         this.animaisRecinto = animaisRecinto;
     }
-    
-    
+
 }
