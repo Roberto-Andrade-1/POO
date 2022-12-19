@@ -12,7 +12,6 @@ public class Jumanji {
 
         while (!sair) {
             System.out.println("""
-
                     MENU:
                     1.Adquirir animal aleatório
                     2.Adquirir animal com característica genética
