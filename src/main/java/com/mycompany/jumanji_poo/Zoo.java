@@ -6,14 +6,18 @@ import java.util.HashMap;
 
 public class Zoo {
 
-    private int saldo;
+    private int saldo, staff;
     private HashMap<Recinto, Animal[]> instalacoes;
     private List<Animal> animaisReserva;
+    private List<Animal> animaisPerdidos;
+    private List<Animal> animaisErrantes;
 
     public Zoo(int saldo) {
         this.saldo = saldo;
         this.instalacoes = new HashMap<Recinto, Animal[]>();
         this.animaisReserva = new ArrayList<Animal>();
+        this.animaisPerdidos = new ArrayList<Animal>();
+        this.animaisErrantes = new ArrayList<Animal>();
     }
 
     public int getSaldo() {
@@ -37,7 +41,15 @@ public class Zoo {
     }
 
     public void setInstalacoes(Recinto rec) {
-        instalacoes.put(rec, rec.getAnimaisRecinto());
+        Animal[] animais = new Animal[rec.getCapacidade()];
+        instalacoes.put(rec, animais);
     }
 
+    public int getStaff() {
+        return staff;
+    }
+
+    public void setStaff(int staff) {
+        this.staff = staff;
+    }
 }

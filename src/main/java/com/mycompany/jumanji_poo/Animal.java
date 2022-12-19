@@ -1,23 +1,33 @@
 package com.mycompany.jumanji_poo;
 
-public class Animal {
+public abstract class Animal {
 
-    private static int id;
+    private static int idAnimalAtualizado;
+    private int idAnimal;
     private String nome;
     private double atratividade;
 
     public Animal(String nome) {
-        id++;
+        idAnimal = 0;
         this.nome = nome;
-        this.atratividade = 0.30;
+        atratividade = 3000;
+        mutacaoGenoma(nome);
     }
 
-    public static int getId() {
-        return id;
+    public static int getIdAnimalAtualizado() {
+        return idAnimalAtualizado;
     }
 
-    public static void setId(int id) {
-        Animal.id = id;
+    public static void setIdAnimalAtualizado() {
+        idAnimalAtualizado++;
+    }
+
+    public int getIdAnimal() {
+        return idAnimal;
+    }
+
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
     }
 
     public String getNome() {
@@ -36,4 +46,6 @@ public class Animal {
         this.atratividade = atratividade;
     }
 
+    public void mutacaoGenoma(String nome) {
+    }
 }

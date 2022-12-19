@@ -1,5 +1,5 @@
 package com.mycompany.jumanji_poo;
 
-public class Canideo {
+public interface Canideo {
 
 }

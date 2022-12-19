@@ -6,13 +6,11 @@ public class Recinto {
 
     private static int idRecintoAtualizado;
     private int capacidade, custo, idRecinto;
-    private Animal[] animaisRecinto;
 
     public Recinto() {
         this.capacidade = capacidadeAleatoria();
         this.custo = custoAleatorio();
         idRecinto = 0;
-        animaisRecinto = new Animal[this.capacidade];
     }
 
     public final int capacidadeAleatoria() {
@@ -56,13 +54,4 @@ public class Recinto {
     public void setIdRecinto(int idRecinto) {
         this.idRecinto = idRecinto;
     }
-
-    public Animal[] getAnimaisRecinto() {
-        return animaisRecinto;
-    }
-
-    public void setAnimaisRecinto(Animal[] animaisRecinto) {
-        this.animaisRecinto = animaisRecinto;
-    }
-
 }
