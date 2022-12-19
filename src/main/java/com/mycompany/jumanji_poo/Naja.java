@@ -1,5 +1,5 @@
 package com.mycompany.jumanji_poo;
 
-public interface Ursideo {
+public interface Naja {
 
 }
