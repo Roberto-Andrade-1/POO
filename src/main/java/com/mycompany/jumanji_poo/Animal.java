@@ -3,15 +3,14 @@ package com.mycompany.jumanji_poo;
 public abstract class Animal {
 
     private static int idAnimalAtualizado;
-    private int idAnimal;
+    private int idAnimal, idade;
     private String nome;
     private double atratividade;
 
     public Animal(String nome) {
         idAnimal = 0;
         this.nome = nome;
-        atratividade = 3000;
-        mutacaoGenoma(nome);
+        atratividade = 3000; // €
     }
 
     public static int getIdAnimalAtualizado() {
@@ -46,6 +45,4 @@ public abstract class Animal {
         this.atratividade = atratividade;
     }
 
-    public void mutacaoGenoma(String nome) {
-    }
 }
