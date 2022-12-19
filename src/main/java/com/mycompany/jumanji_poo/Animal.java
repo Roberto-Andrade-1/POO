@@ -45,4 +45,12 @@ public abstract class Animal {
         this.atratividade = atratividade;
     }
 
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
 }
