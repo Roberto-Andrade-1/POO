@@ -94,17 +94,17 @@ public class Jumanji {
                 break;
             case 1:
                 rec1.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.getRecintos().add(rec1);
+                zoo.setInstalacoes(rec1);
                 zoo.setSaldo(zoo.getSaldo() - rec1.getCusto());
                 break;
             case 2:
                 rec2.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.getRecintos().add(rec2);
+                zoo.setInstalacoes(rec2);
                 zoo.setSaldo(zoo.getSaldo() - rec2.getCusto());
                 break;
             case 3:
                 rec3.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.getRecintos().add(rec3);
+                zoo.setInstalacoes(rec3);
                 zoo.setSaldo(zoo.getSaldo() - rec3.getCusto());
                 break;
             default:
@@ -115,10 +115,9 @@ public class Jumanji {
 
     public static void listarInstalacoes(Zoo zoo) {
         System.out.println("\nRECINTOS");
-        for (int i = 0; i < zoo.getRecintos().size(); i++) {
-            Recinto rec = zoo.getRecintos().get(i);
-            System.out.println("ID: " + rec.getIdRecinto() + " | capacidade: " + rec.getCapacidade() + " | custo: "
-                    + rec.getCusto() + "€");
+        for (Recinto i : zoo.getInstalcoes().keySet()) {
+            System.out.println("ID: " + i.getIdRecinto() + " | capacidade: " + i.getCapacidade() + " | custo: "
+                    + i.getCusto() + "€");
         }
     }
 }
