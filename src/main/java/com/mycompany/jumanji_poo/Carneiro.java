@@ -4,7 +4,7 @@ public class Carneiro extends Animal implements Ovis {
 
     public Carneiro(String nome) {
         super(nome);
-        setAtratividade(3100);
+        setAtratividadeBase(3100);
         setEsperancaVida(10);
         setViasExtincao(true);
     }

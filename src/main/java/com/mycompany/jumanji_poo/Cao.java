@@ -4,7 +4,7 @@ public class Cao extends Animal implements Canis {
 
     public Cao(String nome) {
         super(nome);
-        setAtratividade(1500);
+        setAtratividadeBase(1500);
         setEsperancaVida(15);
         setViasExtincao(false);
     }

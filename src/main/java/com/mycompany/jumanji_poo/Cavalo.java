@@ -2,9 +2,15 @@ package com.mycompany.jumanji_poo;
 
 public class Cavalo extends Animal implements Equus {
 
+    public Cavalo() {
+        setAtratividadeBase(3000);
+        setEsperancaVida(28);
+        setViasExtincao(false);
+    }
+
     public Cavalo(String nome) {
         super(nome);
-        setAtratividade(3000);
+        setAtratividadeBase(3000);
         setEsperancaVida(28);
         setViasExtincao(false);
     }

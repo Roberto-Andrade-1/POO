@@ -77,13 +77,6 @@ public class Jumanji {
     public static void animaisAleatorios() {
         Scanner scan = new Scanner(System.in);
 
-        String[] nomesAleatorios = { "Johannah", "Kitty", "Von", "Joanne", "Goddart", "Lottie", "Lorilee",
-                "Esta", "Phaidra", "Nikos", "Elbert", "Sloane", "Shaun", "Benedikta", "Bea", "Arley",
-                "Jori", "Franni", "Isidore", "Dolly", "Hephzibah", "Clarence", "Adelle", "Alasdair", "Adina",
-                "Morganica", "Efren", "Jobie", "Jimmi", "Rosco", "Arline", "Jaye", "Stavros", "Zachery", "Derby",
-                "Teressa", "Chane", "Jeanelle", "Shelagh", "Sianna", "Annmaria", "Willetta", "Daisi", "Tine", "Yul",
-                "Bunni", "Rhianon", "Jen", "Friederike" };
-
     }
 
     public static void recintosAleatorio(Zoo zoo) {

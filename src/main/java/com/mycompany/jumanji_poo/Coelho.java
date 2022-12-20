@@ -4,7 +4,7 @@ public class Coelho extends Animal {
 
     public Coelho(String nome) {
         super(nome);
-        setAtratividade(500);
+        setAtratividadeBase(500);
         setEsperancaVida(8);
         setViasExtincao(false);
     }
