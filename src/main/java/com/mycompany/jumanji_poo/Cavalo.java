@@ -4,11 +4,14 @@ public class Cavalo extends Animal implements Equus {
 
     public Cavalo(String nome) {
         super(nome);
+        setAtratividade(3000);
+        setEsperancaVida(28);
+        setViasExtincao(false);
     }
 
     @Override
     public void galopar() {
-        System.out.println("txtxtxt");
+        System.out.println("pocotó");
     }
 
     @Override

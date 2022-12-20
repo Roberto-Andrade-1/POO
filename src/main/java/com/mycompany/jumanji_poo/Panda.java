@@ -4,6 +4,9 @@ public class Panda extends Animal implements Ursus {
 
     public Panda(String nome) {
         super(nome);
+        setAtratividade(10000);
+        setEsperancaVida(20);
+        setViasExtincao(true);
     }
 
     @Override

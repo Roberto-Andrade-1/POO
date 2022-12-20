@@ -4,6 +4,9 @@ public class Serpente extends Animal implements Naja {
 
     public Serpente(String nome) {
         super(nome);
+        setAtratividade(4000);
+        setEsperancaVida(23);
+        setViasExtincao(true);
     }
 
     @Override

@@ -4,6 +4,9 @@ public class UrsoCastanho extends Animal implements Ursus {
 
     public UrsoCastanho(String nome) {
         super(nome);
+        setAtratividade(3500);
+        setEsperancaVida(25);
+        setViasExtincao(false);
     }
 
     @Override

@@ -4,6 +4,9 @@ public class Lobo extends Animal implements Canis {
 
     public Lobo(String nome) {
         super(nome);
+        setAtratividade(3000);
+        setEsperancaVida(15);
+        setViasExtincao(false);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.mycompany.jumanji_poo;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Jumanji {
@@ -33,6 +34,7 @@ public class Jumanji {
             int escolha = scan.nextInt();
             switch (escolha) {
                 case 1:
+                    animaisAleatorios();
                     break;
                 case 2:
                     break;
@@ -70,6 +72,18 @@ public class Jumanji {
                     break;
             }
         }
+    }
+
+    public static void animaisAleatorios() {
+        Scanner scan = new Scanner(System.in);
+
+        String[] nomesAleatorios = { "Johannah", "Kitty", "Von", "Joanne", "Goddart", "Lottie", "Lorilee",
+                "Esta", "Phaidra", "Nikos", "Elbert", "Sloane", "Shaun", "Benedikta", "Bea", "Arley",
+                "Jori", "Franni", "Isidore", "Dolly", "Hephzibah", "Clarence", "Adelle", "Alasdair", "Adina",
+                "Morganica", "Efren", "Jobie", "Jimmi", "Rosco", "Arline", "Jaye", "Stavros", "Zachery", "Derby",
+                "Teressa", "Chane", "Jeanelle", "Shelagh", "Sianna", "Annmaria", "Willetta", "Daisi", "Tine", "Yul",
+                "Bunni", "Rhianon", "Jen", "Friederike" };
+
     }
 
     public static void recintosAleatorio(Zoo zoo) {
@@ -119,5 +133,20 @@ public class Jumanji {
             System.out.println("ID: " + i.getIdRecinto() + " | capacidade: " + i.getCapacidade() + " | custo: "
                     + i.getCusto() + "€");
         }
+    }
+
+    public static void calendarioChines() {
+        String[] calendario = { "tigre", "coelho", "dragão", "cobra", "cavalo", "cabra", "macaco", "galo", "cachorro",
+                "porco", "rato", "boi" };
+        // for tem de depeder do periodo contabilistico
+        Random rand = new Random();
+        String chinesAnimal = calendario[rand.nextInt(calendario.length)];
+        System.out.println(chinesAnimal);
+        // for(int i=0;i<12;i){
+        // return calendario[i];
+        // if(i == 12){
+        // i = 0;
+        // }
+        // }
     }
 }
