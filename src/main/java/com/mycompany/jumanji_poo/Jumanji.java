@@ -44,6 +44,7 @@ public class Jumanji {
                 case 4:
                     break;
                 case 5:
+                    calendarioChines();
                     break;
                 case 6:
                     break;
