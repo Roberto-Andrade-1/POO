@@ -4,8 +4,16 @@ public class Raposa extends Animal implements Canis {
 
     public Raposa(String nome) {
         super(nome);
-        setAtratividade(3000);
+        setAtratividadeBase(3000);
         setEsperancaVida(15);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
+    public Raposa() {
+        setAtratividadeBase(3000);
+        setEsperancaVida(15);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 

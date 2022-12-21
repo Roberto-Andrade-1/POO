@@ -4,8 +4,16 @@ public class Macaco extends Animal {
 
     public Macaco(String nome) {
         super(nome);
-        setAtratividade(3500);
+        setAtratividadeBase(3500);
         setEsperancaVida(17);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
+    public Macaco() {
+        setAtratividadeBase(3500);
+        setEsperancaVida(17);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 }

@@ -4,8 +4,16 @@ public class Lobo extends Animal implements Canis {
 
     public Lobo(String nome) {
         super(nome);
-        setAtratividade(3000);
+        setAtratividadeBase(3000);
         setEsperancaVida(15);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
+    public Lobo() {
+        setAtratividadeBase(3000);
+        setEsperancaVida(15);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 

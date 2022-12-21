@@ -4,8 +4,16 @@ public class Leao extends Animal implements Panthera {
 
     public Leao(String nome) {
         super(nome);
-        setAtratividade(5000);
+        setAtratividadeBase(5000);
         setEsperancaVida(10);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(true);
+    }
+
+    public Leao() {
+        setAtratividadeBase(5000);
+        setEsperancaVida(10);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 

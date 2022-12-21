@@ -4,8 +4,16 @@ public class LinceIberico extends Animal {
 
     public LinceIberico(String nome) {
         super(nome);
-        setAtratividade(5500);
+        setAtratividadeBase(5500);
         setEsperancaVida(13);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(true);
+    }
+
+    public LinceIberico() {
+        setAtratividadeBase(5500);
+        setEsperancaVida(13);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 }

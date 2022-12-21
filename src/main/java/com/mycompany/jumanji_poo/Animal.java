@@ -153,10 +153,19 @@ public abstract class Animal implements Mutacoes {
         return siames;
     }
 
+    public int numAleatorioObjHash() {
+        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade, atratividadeBase);
+        if (num < 0) {
+            num = num * (-1);
+        }
+        return num;
+    }
+
     @Override
     public boolean detetAlbinismo() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 100) <= 5) {
+        int num = numAleatorioObjHash();
+        System.out.println(num);
+        if ((num % 100) <= 15) {
             return true;
         } else
             return false;
@@ -164,8 +173,8 @@ public abstract class Animal implements Mutacoes {
 
     @Override
     public boolean detetaHeterocromia() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 100) <= 25) {
+        int num = numAleatorioObjHash();
+        if ((num % 100) <= 40) {
             return true;
         } else
             return false;
@@ -174,8 +183,8 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaMelanismo() {
         if (!isAlbinismo()) {
-            int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-            if ((num % 100) <= 25) {
+            int num = numAleatorioObjHash();
+            if ((num % 100) <= 35) {
                 return true;
             } else
                 return false;
@@ -185,8 +194,8 @@ public abstract class Animal implements Mutacoes {
 
     @Override
     public boolean detetaSiames() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 100) <= 3) {
+        int num = numAleatorioObjHash();
+        if ((num % 100) <= 10) {
             return true;
         } else
             return false;
@@ -194,8 +203,8 @@ public abstract class Animal implements Mutacoes {
 
     @Override
     public boolean detetaVitiligo() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 50) <= 35) {
+        int num = numAleatorioObjHash();
+        if ((num % 50) <= 40) {
             return true;
         } else
             return false;

@@ -4,8 +4,16 @@ public class Rato extends Animal {
 
     public Rato(String nome) {
         super(nome);
-        setAtratividade(2000);
+        setAtratividadeBase(2000);
         setEsperancaVida(2);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
+    public Rato() {
+        setAtratividadeBase(2000);
+        setEsperancaVida(2);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 

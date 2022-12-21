@@ -4,8 +4,16 @@ public class UrsoCastanho extends Animal implements Ursus {
 
     public UrsoCastanho(String nome) {
         super(nome);
-        setAtratividade(3500);
+        setAtratividadeBase(3500);
         setEsperancaVida(25);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
+    public UrsoCastanho() {
+        setAtratividadeBase(3500);
+        setEsperancaVida(25);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 

@@ -4,8 +4,16 @@ public class Serpente extends Animal implements Naja {
 
     public Serpente(String nome) {
         super(nome);
-        setAtratividade(4000);
+        setAtratividadeBase(4000);
         setEsperancaVida(23);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(true);
+    }
+
+    public Serpente() {
+        setAtratividadeBase(4000);
+        setEsperancaVida(23);
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 

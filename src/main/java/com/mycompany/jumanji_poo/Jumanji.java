@@ -85,7 +85,7 @@ public class Jumanji {
         Animal[] treAnimaisAleat = new Animal[3];
         // cria 3 animais
         for (int i = 0; i < treAnimaisAleat.length; i++) {
-            int numAleatorio = rand.nextInt(4);
+            int numAleatorio = rand.nextInt(totalAnimais);
             switch (numAleatorio) {
                 case 0:
                     treAnimaisAleat[i] = new Boi();
@@ -101,6 +101,55 @@ public class Jumanji {
                     break;
                 case 4:
                     treAnimaisAleat[i] = new Chita();
+                    break;
+                case 5:
+                    treAnimaisAleat[i] = new Coelho();
+                    break;
+                case 6:
+                    treAnimaisAleat[i] = new Dragao();
+                    break;
+                case 7:
+                    treAnimaisAleat[i] = new Galo();
+                    break;
+                case 8:
+                    treAnimaisAleat[i] = new Leao();
+                    break;
+                case 9:
+                    treAnimaisAleat[i] = new LinceIberico();
+                    break;
+                case 10:
+                    treAnimaisAleat[i] = new Lobo();
+                    break;
+                case 11:
+                    treAnimaisAleat[i] = new Macaco();
+                    break;
+                case 12:
+                    treAnimaisAleat[i] = new Panda();
+                    break;
+                case 13:
+                    treAnimaisAleat[i] = new Porco();
+                    break;
+                case 14:
+                    treAnimaisAleat[i] = new Raposa();
+                    break;
+                case 15:
+                    treAnimaisAleat[i] = new Rato();
+                    break;
+                case 16:
+                    treAnimaisAleat[i] = new Serpente();
+                    break;
+                case 17:
+                    treAnimaisAleat[i] = new Tigre();
+                    break;
+                case 18:
+                    treAnimaisAleat[i] = new UrsoCastanho();
+                    break;
+                case 19:
+                    treAnimaisAleat[i] = new UrsoPolar();
+                    break;
+                case 20:
+                    treAnimaisAleat[i] = new UrsoPreto();
+                    break;
             }
         }
         System.out.println("\nAnimais:");
