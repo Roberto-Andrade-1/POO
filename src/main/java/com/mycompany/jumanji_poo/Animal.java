@@ -26,6 +26,7 @@ public abstract class Animal implements Mutacoes {
         this.idade = 0;
         atratividade = 0; // €
         atratividadeBase = 0;
+        esperancaVida = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
@@ -40,7 +41,8 @@ public abstract class Animal implements Mutacoes {
         this.idade = 0;
         atratividade = 0; // €
         atratividadeBase = 0;
-        this.albinismo = albinismo;
+        esperancaVida = 0;
+        this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
         this.heterocromia = detetaHeterocromia();
@@ -50,8 +52,10 @@ public abstract class Animal implements Mutacoes {
     public Animal() {
         idAnimal = 0;
         this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
+        this.idade = 0;
         atratividade = 0; // €
         atratividadeBase = 0;
+        esperancaVida = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
@@ -152,7 +156,7 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetAlbinismo() {
         int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 100) <= 15) {
+        if ((num % 100) <= 5) {
             return true;
         } else
             return false;
@@ -161,15 +165,6 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaHeterocromia() {
         int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 100) <= 50) {
-            return true;
-        } else
-            return false;
-    }
-
-    @Override
-    public boolean detetaMelanismo() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
         if ((num % 100) <= 25) {
             return true;
         } else
@@ -177,9 +172,21 @@ public abstract class Animal implements Mutacoes {
     }
 
     @Override
+    public boolean detetaMelanismo() {
+        if (!isAlbinismo()) {
+            int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
+            if ((num % 100) <= 25) {
+                return true;
+            } else
+                return false;
+        }
+        return false;
+    }
+
+    @Override
     public boolean detetaSiames() {
         int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 100) <= 10) {
+        if ((num % 100) <= 3) {
             return true;
         } else
             return false;
@@ -188,7 +195,7 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaVitiligo() {
         int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade);
-        if ((num % 50) <= 75) {
+        if ((num % 50) <= 35) {
             return true;
         } else
             return false;

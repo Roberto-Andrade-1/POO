@@ -6,6 +6,15 @@ public class Coelho extends Animal {
         super(nome);
         setAtratividadeBase(500);
         setEsperancaVida(8);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
+    public Coelho() {
+        setAtratividadeBase(500);
+        setEsperancaVida(8);
+        // num aleatorio de 0 a 17
+        setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 }

@@ -103,11 +103,16 @@ public class Jumanji {
                     treAnimaisAleat[i] = new Chita();
             }
         }
-        System.out.println("Animais:");
+        System.out.println("\nAnimais:");
         for (Animal animal : treAnimaisAleat) {
-            System.out.println("Espécie:" + animal.getClass().getSimpleName() +
-                    "| Nome: " + animal.getNome() +
-                    "| Idade: " + animal.getIdade());
+            System.out.println("Espécie: " + animal.getClass().getSimpleName() +
+                    " | Nome: " + animal.getNome() +
+                    " | Idade: " + animal.getIdade() +
+                    " | Albino: " + (animal.isAlbinismo() == true ? "sim" : "não") +
+                    " | Heterocromia: " + (animal.isHeterocromia() == true ? "sim" : "não") +
+                    " | Melanismo: " + (animal.isMelanismo() == true ? "sim" : "não") +
+                    " | Siames: " + (animal.isSiames() == true ? "sim" : "não") +
+                    " | Vitiligo: " + (animal.isVitiligo() == true ? "sim" : "não"));
         }
     }
 
