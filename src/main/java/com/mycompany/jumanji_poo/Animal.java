@@ -109,10 +109,6 @@ public abstract class Animal implements Mutacoes {
         return nomesAleatorios;
     }
 
-    public void setNomesAleatorios(String[] nomesAleatorios) {
-        this.nomesAleatorios = nomesAleatorios;
-    }
-
     public void setViasExtincao(boolean viasExtincao) {
         this.viasExtincao = viasExtincao;
     }

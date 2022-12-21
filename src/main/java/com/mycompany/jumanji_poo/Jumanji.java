@@ -182,6 +182,8 @@ public class Jumanji {
             case 3:
                 zoo.setAnimaisErrantes(treAnimaisAleat[3 - 1]);
                 break;
+            default:
+                System.out.println("Valor inválido");
         }
 
     }
@@ -236,18 +238,15 @@ public class Jumanji {
     }
 
     public static void calendarioChines() {
-        String[] calendario = { "Tigre", "Coelho", "Dragão", "Cobra", "Cavalo", "Cabra", "Macaco", "Galo", "Cao",
+
+        Animal[] calendario = { new Tigre(), new Coelho(), new Dragao(), new Cobra(), "Cavalo", "Cabra", "Macaco",
+                "Galo", "Cao",
                 "Porco", "Rato", "Boi" };
-        // for tem de depeder do periodo contabilistico
+
         Random rand = new Random();
         String chinesAnimal = calendario[rand.nextInt(calendario.length)];
         System.out.println(chinesAnimal);
-        // for(int i=0;i<12;i){
-        // return calendario[i];
-        // if(i == 12){
-        // i = 0;
-        // }
-        // }
+
     }
 
     public static void periodoContabilistico(Zoo zoo) {
