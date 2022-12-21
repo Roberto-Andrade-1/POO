@@ -190,41 +190,6 @@ public abstract class Animal implements Mutacoes {
             return false;
     }
 
-    public double retornaAtratividade(double atratividadeBase) {
-        double total = atratividadeBase;
-
-        if (isViasExtincao()) {
-            total += atratividadeBase * 0.5;
-        }
-
-        // bebe
-        if (idade <= Math.round(getEsperancaVida() / 5)) {
-            total += atratividadeBase * 0.5;
-        }
-
-        // velho
-        else if (idade < Math.round(getEsperancaVida() * (3 / 4))) {
-            total -= atratividadeBase - (atratividadeBase * 0.25);
-        }
-
-        // Mutações
-        if (isAlbinismo()) {
-            total += atratividadeBase * 0.5;
-        }
-        if (isHeterocromia()) {
-            total += atratividadeBase * 0.35;
-        }
-        if (isMelanismo()) {
-            total += atratividadeBase * 0.5;
-        }
-        if (isVitiligo()) {
-            total += atratividadeBase * 0.25;
-        }
-        if (isSiames()) {
-            total += atratividadeBase * 0.1;
-        }
-
-        return total;
-    }
+    public abstract double retornaAtratividade();
 
 }

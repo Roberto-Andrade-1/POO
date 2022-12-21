@@ -89,6 +89,11 @@ public class Zoo {
     }
 
     public void listarAnimais() {
-        animaisErrantes.forEach(t -> System.out.println(t.getClass().getSimpleName() + " " + t.getNome() + ((t.getClass().getSimpleName())t).getAtratividadeBase()));
+        // animaisErrantes.forEach(t -> System.out.print(t.getClass().getSimpleName() +
+        // " " + t.getNome()));
+        for (Animal animal : animaisErrantes) {
+            System.out.print("\nEspécie: " + animal.getClass().getSimpleName() +
+                    " | " + animal.getNome() + " | " + animal.retornaAtratividade());
+        }
     }
 }
