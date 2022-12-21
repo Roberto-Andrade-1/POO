@@ -15,7 +15,7 @@ public class Zoo {
 
     public Zoo(int saldo) {
         this.saldo = saldo;
-        this.staff = 20;
+        this.staff = 0;
         this.recintos = new HashMap<Recinto, Animal[]>();
         this.animaisPerdidos = new ArrayList<Animal>();
         this.animaisErrantes = new ArrayList<Animal>();
@@ -89,6 +89,6 @@ public class Zoo {
     }
 
     public void listarAnimais() {
-        animaisErrantes.forEach(t -> System.out.println(t.getNome()));
+        animaisErrantes.forEach(t -> System.out.println(t.getClass().getSimpleName() + " " + t.getNome() + ((t.getClass().getSimpleName())t).getAtratividadeBase()));   
     }
 }
