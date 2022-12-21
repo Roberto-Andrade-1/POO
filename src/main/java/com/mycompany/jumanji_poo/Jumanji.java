@@ -9,10 +9,11 @@ public class Jumanji {
 
         boolean sair = false;
         Scanner scan = new Scanner(System.in);
-        Zoo zoo = new Zoo(1000000);
+        Zoo zoo = new Zoo(100000);
 
         while (!sair) {
             System.out.println("""
+
                     MENU:
                     1.Adquirir animal aleatório
                     2.Adquirir animal com característica genética
@@ -77,7 +78,37 @@ public class Jumanji {
 
     public static void animaisAleatorios() {
         Scanner scan = new Scanner(System.in);
+        Random rand = new Random();
 
+        int totalAnimais = 21;
+
+        Animal[] treAnimaisAleat = new Animal[3];
+        // cria 3 animais
+        for (int i = 0; i < treAnimaisAleat.length; i++) {
+            int numAleatorio = rand.nextInt(4);
+            switch (numAleatorio) {
+                case 0:
+                    treAnimaisAleat[i] = new Boi();
+                    break;
+                case 1:
+                    treAnimaisAleat[i] = new Cao();
+                    break;
+                case 2:
+                    treAnimaisAleat[i] = new Carneiro();
+                    break;
+                case 3:
+                    treAnimaisAleat[i] = new Cavalo();
+                    break;
+                case 4:
+                    treAnimaisAleat[i] = new Chita();
+            }
+        }
+        System.out.println("Animais:");
+        for (Animal animal : treAnimaisAleat) {
+            System.out.println("Espécie:" + animal.getClass().getSimpleName() +
+                    "| Nome: " + animal.getNome() +
+                    "| Idade: " + animal.getIdade());
+        }
     }
 
     public static void recintosAleatorio(Zoo zoo) {
@@ -130,8 +161,8 @@ public class Jumanji {
     }
 
     public static void calendarioChines() {
-        String[] calendario = { "tigre", "coelho", "dragão", "cobra", "cavalo", "cabra", "macaco", "galo", "cachorro",
-                "porco", "rato", "boi" };
+        String[] calendario = { "Tigre", "Coelho", "Dragão", "Cobra", "Cavalo", "Cabra", "Macaco", "Galo", "Cao",
+                "Porco", "Rato", "Boi" };
         // for tem de depeder do periodo contabilistico
         Random rand = new Random();
         String chinesAnimal = calendario[rand.nextInt(calendario.length)];

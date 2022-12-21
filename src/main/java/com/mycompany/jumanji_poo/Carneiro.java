@@ -7,6 +7,14 @@ public class Carneiro extends Animal implements Ovis {
         setAtratividadeBase(3100);
         setEsperancaVida(10);
         setViasExtincao(true);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
+    public Carneiro() {
+        setAtratividadeBase(3100);
+        setEsperancaVida(10);
+        setViasExtincao(true);
+        setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     @Override

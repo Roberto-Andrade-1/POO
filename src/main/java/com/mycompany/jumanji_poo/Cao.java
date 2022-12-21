@@ -7,6 +7,14 @@ public class Cao extends Animal implements Canis {
         setAtratividadeBase(1500);
         setEsperancaVida(15);
         setViasExtincao(false);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
+    public Cao() {
+        setAtratividadeBase(1500);
+        setEsperancaVida(15);
+        setViasExtincao(false);
+        setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     @Override

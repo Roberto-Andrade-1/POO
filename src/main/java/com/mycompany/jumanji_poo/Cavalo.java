@@ -6,6 +6,7 @@ public class Cavalo extends Animal implements Equus {
         setAtratividadeBase(3000);
         setEsperancaVida(28);
         setViasExtincao(false);
+        setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public Cavalo(String nome) {
@@ -13,6 +14,7 @@ public class Cavalo extends Animal implements Equus {
         setAtratividadeBase(3000);
         setEsperancaVida(28);
         setViasExtincao(false);
+        setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     @Override
