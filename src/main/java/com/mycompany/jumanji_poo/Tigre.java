@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Tigre extends Animal implements Panthera {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Tigre(String nome) {
         super(nome);

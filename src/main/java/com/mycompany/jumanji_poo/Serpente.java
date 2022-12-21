@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Serpente extends Animal implements Naja {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Serpente(String nome) {
         super(nome);

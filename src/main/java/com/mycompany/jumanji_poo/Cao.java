@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Cao extends Animal implements Canis {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Cao(String nome) {
         super(nome);

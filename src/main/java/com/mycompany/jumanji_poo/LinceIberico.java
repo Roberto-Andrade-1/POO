@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class LinceIberico extends Animal {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public LinceIberico(String nome) {
         super(nome);

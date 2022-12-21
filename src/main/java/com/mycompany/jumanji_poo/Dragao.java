@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Dragao extends Animal {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Dragao(String nome) {
         super(nome);

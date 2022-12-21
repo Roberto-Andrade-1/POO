@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Panda extends Animal implements Ursus {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Panda(String nome) {
         super(nome);

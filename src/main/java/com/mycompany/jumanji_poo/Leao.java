@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Leao extends Animal implements Panthera {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Leao(String nome) {
         super(nome);

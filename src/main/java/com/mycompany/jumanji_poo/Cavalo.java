@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Cavalo extends Animal implements Equus {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Cavalo() {
         setAtratividadeBase(3000);

@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class UrsoCastanho extends Animal implements Ursus {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public UrsoCastanho(String nome) {
         super(nome);

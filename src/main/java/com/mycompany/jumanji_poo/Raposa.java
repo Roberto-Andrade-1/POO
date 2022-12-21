@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Raposa extends Animal implements Canis {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Raposa(String nome) {
         super(nome);

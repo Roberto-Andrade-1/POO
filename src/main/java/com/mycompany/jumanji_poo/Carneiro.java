@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Carneiro extends Animal implements Ovis {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Carneiro(String nome) {
         super(nome);

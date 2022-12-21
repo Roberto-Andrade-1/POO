@@ -2,7 +2,7 @@ package com.mycompany.jumanji_poo;
 
 public class Lobo extends Animal implements Canis {
 
-    public static double atratividadeBase;
+    private static double atratividadeBase;
 
     public Lobo(String nome) {
         super(nome);
