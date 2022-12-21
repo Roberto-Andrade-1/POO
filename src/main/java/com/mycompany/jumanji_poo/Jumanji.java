@@ -239,13 +239,50 @@ public class Jumanji {
 
     public static void calendarioChines() {
 
-        Animal[] calendario = { new Tigre(), new Coelho(), new Dragao(), new Cobra(), new Cavalo(), new (), "Macaco",
-                "Galo", "Cao",
+        String[] calendario = { "Tigre", "Coelho", "Dragão", "Serpente", "Cavalo", "Carneiro", "Macaco", "Galo", "Cão",
                 "Porco", "Rato", "Boi" };
 
         Random rand = new Random();
         String chinesAnimal = calendario[rand.nextInt(calendario.length)];
         System.out.println(chinesAnimal);
+        switch (chinesAnimal) {
+            case "Tigre":
+                Tigre.setAtratividadeBase(Tigre.getAtratividadeBase() * 1.50);
+                break;
+            case "Coelho":
+                Coelho.setAtratividadeBase(Coelho.getAtratividadeBase() * 1.50);
+                break;
+            case "Dragão":
+                Dragao.setAtratividadeBase(Dragao.getAtratividadeBase() * 1.50);
+                break;
+            case "Serpente":
+                Serpente.setAtratividadeBase(Serpente.getAtratividadeBase() * 1.50);
+                break;
+            case "Cavalo":
+                Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase() * 1.50);
+                break;
+            case "Carneiro":
+                Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase() * 1.50);
+                break;
+            case "Macaco":
+                Macaco.setAtratividadeBase(Macaco.getAtratividadeBase() * 1.50);
+                break;
+            case "Galo":
+                Galo.setAtratividadeBase(Galo.getAtratividadeBase() * 1.50);
+                break;
+            case "Cão":
+                Cao.setAtratividadeBase(Cao.getAtratividadeBase() * 1.50);
+                break;
+            case "Porco":
+                Porco.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
+                break;
+            case "Rato":
+                Rato.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
+                break;
+            case "Boi":
+                Boi.setAtratividadeBase(Boi.getAtratividadeBase() * 1.50);
+                break;
+        }
 
     }
 
