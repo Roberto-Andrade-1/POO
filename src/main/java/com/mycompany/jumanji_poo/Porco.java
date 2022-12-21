@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Porco extends Animal {
 
+    public static double atratividadeBase;
+
     public Porco(String nome) {
         super(nome);
         setAtratividadeBase(200);
@@ -15,6 +17,14 @@ public class Porco extends Animal {
         setEsperancaVida(14);
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Porco.atratividadeBase = atratividadeBase;
     }
 
 }

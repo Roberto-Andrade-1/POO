@@ -1,5 +1,6 @@
 package com.mycompany.jumanji_poo;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Jumanji {
 
         boolean sair = false;
         Scanner scan = new Scanner(System.in);
-        Zoo zoo = new Zoo(100000);
+        Zoo zoo = new Zoo(1000000);
 
         while (!sair) {
             System.out.println("""
@@ -35,7 +36,7 @@ public class Jumanji {
             int escolha = scan.nextInt();
             switch (escolha) {
                 case 1:
-                    animaisAleatorios();
+                    animaisAleatorios(zoo);
                     break;
                 case 2:
                     break;
@@ -48,13 +49,14 @@ public class Jumanji {
                     calendarioChines();
                     break;
                 case 6:
+                    zoo.listarAnimais();
                     break;
                 case 7:
                     break;
                 case 8:
                     break;
                 case 9:
-                    listarInstalacoes(zoo);
+                    listarRecintos(zoo);
                     break;
                 case 10:
                     break;
@@ -76,7 +78,7 @@ public class Jumanji {
         }
     }
 
-    public static void animaisAleatorios() {
+    public static void animaisAleatorios(Zoo zoo) /* throws IOException */ {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
 
@@ -152,9 +154,12 @@ public class Jumanji {
                     break;
             }
         }
-        System.out.println("\nAnimais:");
+
+        System.out.println("\nAnimais para comprar:");
+        int i = 1;
+
         for (Animal animal : treAnimaisAleat) {
-            System.out.println("Espécie: " + animal.getClass().getSimpleName() +
+            System.out.println(i + ".Espécie: " + animal.getClass().getSimpleName() +
                     " | Nome: " + animal.getNome() +
                     " | Idade: " + animal.getIdade() +
                     " | Albino: " + (animal.isAlbinismo() == true ? "sim" : "não") +
@@ -162,7 +167,23 @@ public class Jumanji {
                     " | Melanismo: " + (animal.isMelanismo() == true ? "sim" : "não") +
                     " | Siames: " + (animal.isSiames() == true ? "sim" : "não") +
                     " | Vitiligo: " + (animal.isVitiligo() == true ? "sim" : "não"));
+            i++;
         }
+
+        System.out.println("\nQual animal deseja comprar (1, 2,ou 3): ");
+        int numAnimal = scan.nextInt();
+        switch (numAnimal) {
+            case 1:
+                zoo.setAnimaisErrantes(treAnimaisAleat[1 - 1]);
+                break;
+            case 2:
+                zoo.setAnimaisErrantes(treAnimaisAleat[2 - 1]);
+                break;
+            case 3:
+                zoo.setAnimaisErrantes(treAnimaisAleat[3 - 1]);
+                break;
+        }
+
     }
 
     public static void recintosAleatorio(Zoo zoo) {
@@ -187,17 +208,17 @@ public class Jumanji {
                 break;
             case 1:
                 rec1.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setInstalacoes(rec1);
+                zoo.setRecintos(rec1);
                 zoo.setSaldo(zoo.getSaldo() - rec1.getCusto());
                 break;
             case 2:
                 rec2.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setInstalacoes(rec2);
+                zoo.setRecintos(rec2);
                 zoo.setSaldo(zoo.getSaldo() - rec2.getCusto());
                 break;
             case 3:
                 rec3.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setInstalacoes(rec3);
+                zoo.setRecintos(rec3);
                 zoo.setSaldo(zoo.getSaldo() - rec3.getCusto());
                 break;
             default:
@@ -206,7 +227,7 @@ public class Jumanji {
         }
     }
 
-    public static void listarInstalacoes(Zoo zoo) {
+    public static void listarRecintos(Zoo zoo) {
         System.out.println("\nRECINTOS");
         for (Recinto i : zoo.getInstalcoes().keySet()) {
             System.out.println("ID: " + i.getIdRecinto() + " | capacidade: " + i.getCapacidade() + " | custo: "
@@ -227,5 +248,18 @@ public class Jumanji {
         // i = 0;
         // }
         // }
+    }
+
+    public static void periodoContabilistico(Zoo zoo) {
+        //calcular primeiro os custos totais do zoo
+        zoo.calculaDespesas();
+
+        //calcula os proveitos totais do zoo
+        
+        //retira do saldo do zoo os custos
+        zoo.getSaldo() - zoo.calculaDespesas();
+        //registar os nascimentos e obitos
+
+        //em caso de prejuizo pode-se perder animais
     }
 }

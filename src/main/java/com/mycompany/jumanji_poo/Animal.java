@@ -5,18 +5,16 @@ import java.util.Random;
 
 public abstract class Animal implements Mutacoes {
 
-    String[] nomesAleatorios = { "Johannah", "Kitty", "Von", "Joanne", "Goddart", "Lottie", "Lorilee",
-            "Esta", "Phaidra", "Nikos", "Elbert", "Sloane", "Shaun", "Benedikta", "Bea", "Arley",
-            "Jori", "Franni", "Isidore", "Dolly", "Hephzibah", "Clarence", "Adelle", "Alasdair", "Adina",
-            "Morganica", "Efren", "Jobie", "Jimmi", "Rosco", "Arline", "Jaye", "Stavros", "Zachery", "Derby",
-            "Teressa", "Chane", "Jeanelle", "Shelagh", "Sianna", "Annmaria", "Willetta", "Daisi", "Tine", "Yul",
-            "Bunni", "Rhianon", "Jen", "Friederike" };
+    private static final String[] nomesAleatorios = { "Johannah", "Kitty", "Von", "Joanne", "Goddart", "Lottie",
+            "Lorilee", "Esta", "Phaidra", "Nikos", "Elbert", "Sloane", "Shaun", "Benedikta", "Bea", "Arley", "Jori",
+            "Franni", "Isidore", "Dolly", "Hephzibah", "Clarence", "Adelle", "Alasdair", "Adina", "Morganica", "Efren",
+            "Jobie", "Jimmi", "Rosco", "Arline", "Jaye", "Stavros", "Zachery", "Derby", "Teressa", "Chane", "Jeanelle",
+            "Shelagh", "Sianna", "Annmaria", "Willetta", "Daisi", "Tine", "Yul", "Bunni", "Rhianon", "Jen",
+            "Friederike" };
 
     private static int idAnimalAtualizado;
     private int idAnimal, idade, esperancaVida;
     private String nome;
-    private double atratividade;
-    private int atratividadeBase;
     private boolean viasExtincao;
     private final boolean albinismo, vitiligo, melanismo, heterocromia, siames;
 
@@ -24,8 +22,6 @@ public abstract class Animal implements Mutacoes {
         idAnimal = 0;
         this.nome = nome;
         this.idade = 0;
-        atratividade = 0; // €
-        atratividadeBase = 0;
         esperancaVida = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
@@ -38,9 +34,7 @@ public abstract class Animal implements Mutacoes {
     public Animal(boolean albinismo) {
         idAnimal = 0;
         this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
-        this.idade = 0;
-        atratividade = 0; // €
-        atratividadeBase = 0;
+        this.idade = 0; // €
         esperancaVida = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
@@ -53,8 +47,6 @@ public abstract class Animal implements Mutacoes {
         idAnimal = 0;
         this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
         this.idade = 0;
-        atratividade = 0; // €
-        atratividadeBase = 0;
         esperancaVida = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
@@ -121,14 +113,6 @@ public abstract class Animal implements Mutacoes {
         this.nomesAleatorios = nomesAleatorios;
     }
 
-    public int getAtratividadeBase() {
-        return atratividadeBase;
-    }
-
-    public void setAtratividadeBase(int atratividadeBase) {
-        this.atratividadeBase = atratividadeBase;
-    }
-
     public void setViasExtincao(boolean viasExtincao) {
         this.viasExtincao = viasExtincao;
     }
@@ -154,7 +138,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public int numAleatorioObjHash() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, atratividade, viasExtincao, idade, atratividadeBase);
+        int num = Objects.hash(idAnimal, nome, esperancaVida, viasExtincao, idade);
         if (num < 0) {
             num = num * (-1);
         }
@@ -164,7 +148,7 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetAlbinismo() {
         int num = numAleatorioObjHash();
-        System.out.println(num);
+        // System.out.println(num);
         if ((num % 100) <= 15) {
             return true;
         } else
@@ -204,59 +188,47 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaVitiligo() {
         int num = numAleatorioObjHash();
-        if ((num % 50) <= 40) {
+        if ((num % 100) <= 40) {
             return true;
         } else
             return false;
     }
 
-    public double getAtratividade() {
-        return atratividade;
-    }
+    public double retornaAtratividade(double atratividadeBase) {
+        double total = atratividadeBase;
 
-    public void setAtratividade(double atratividade) {
-        this.atratividade = atratividade;
-    }
-
-    public void atualizaAtratividade() {
-
-        // vias de extinção
         if (isViasExtincao()) {
-            setAtratividade(getAtratividade() + (getAtratividade() * 0.5));
+            total += atratividadeBase * 0.5;
         }
 
         // bebe
         if (idade <= Math.round(getEsperancaVida() / 5)) {
-            setAtratividade(getAtratividade() + (getAtratividade() * 0.5));
-        }
-
-        // adolescente
-        else if (idade > Math.round(getEsperancaVida() / 5) && idade < Math.round(getEsperancaVida() * (3 / 4))) {
-            setAtratividade(getAtratividade() - (getAtratividade() * 0.25));
+            total += atratividadeBase * 0.5;
         }
 
         // velho
-        else {
-            setAtratividade(getAtratividade() - (getAtratividade() * 0.25));
+        else if (idade < Math.round(getEsperancaVida() * (3 / 4))) {
+            total -= atratividadeBase - (atratividadeBase * 0.25);
         }
 
         // Mutações
         if (isAlbinismo()) {
-            setAtratividade(getAtratividade() + (getAtratividade() * 0.5));
+            total += atratividadeBase * 0.5;
         }
         if (isHeterocromia()) {
-
+            total += atratividadeBase * 0.35;
         }
         if (isMelanismo()) {
-
+            total += atratividadeBase * 0.5;
         }
         if (isVitiligo()) {
-
+            total += atratividadeBase * 0.25;
         }
         if (isSiames()) {
-
+            total += atratividadeBase * 0.1;
         }
 
+        return total;
     }
 
 }

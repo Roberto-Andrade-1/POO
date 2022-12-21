@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Leao extends Animal implements Panthera {
 
+    public static double atratividadeBase;
+
     public Leao(String nome) {
         super(nome);
         setAtratividadeBase(5000);
@@ -20,5 +22,13 @@ public class Leao extends Animal implements Panthera {
     @Override
     public void rugir() {
         System.out.println("Roawr");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Leao.atratividadeBase = atratividadeBase;
     }
 }

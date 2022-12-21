@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Cao extends Animal implements Canis {
 
+    public static double atratividadeBase;
+
     public Cao(String nome) {
         super(nome);
         setAtratividadeBase(1500);
@@ -20,6 +22,14 @@ public class Cao extends Animal implements Canis {
     @Override
     public void uivar() {
         System.out.println("auuuu");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Cao.atratividadeBase = atratividadeBase;
     }
 
 }

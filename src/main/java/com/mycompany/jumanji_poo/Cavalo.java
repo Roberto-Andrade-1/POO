@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Cavalo extends Animal implements Equus {
 
+    public static double atratividadeBase;
+
     public Cavalo() {
         setAtratividadeBase(3000);
         setEsperancaVida(28);
@@ -25,6 +27,14 @@ public class Cavalo extends Animal implements Equus {
     @Override
     public void montar() {
         System.out.println("Cacalo foi montado");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Cavalo.atratividadeBase = atratividadeBase;
     }
 
 }

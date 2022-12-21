@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Macaco extends Animal {
 
+    public static double atratividadeBase;
+
     public Macaco(String nome) {
         super(nome);
         setAtratividadeBase(3500);
@@ -15,5 +17,13 @@ public class Macaco extends Animal {
         setEsperancaVida(17);
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Macaco.atratividadeBase = atratividadeBase;
     }
 }

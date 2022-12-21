@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Panda extends Animal implements Ursus {
 
+    public static double atratividadeBase;
+
     public Panda(String nome) {
         super(nome);
         setAtratividadeBase(10000);
@@ -20,5 +22,13 @@ public class Panda extends Animal implements Ursus {
     @Override
     public void hibernar() {
         System.out.println("mimir");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Panda.atratividadeBase = atratividadeBase;
     }
 }

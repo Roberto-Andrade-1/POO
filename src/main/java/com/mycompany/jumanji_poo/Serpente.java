@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Serpente extends Animal implements Naja {
 
+    public static double atratividadeBase;
+
     public Serpente(String nome) {
         super(nome);
         setAtratividadeBase(4000);
@@ -25,6 +27,14 @@ public class Serpente extends Animal implements Naja {
     @Override
     public void veneno() {
         System.out.println("Serpente matou uma presa com veneno");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Serpente.atratividadeBase = atratividadeBase;
     }
 
 }

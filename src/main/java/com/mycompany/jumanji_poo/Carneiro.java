@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Carneiro extends Animal implements Ovis {
 
+    public static double atratividadeBase;
+
     public Carneiro(String nome) {
         super(nome);
         setAtratividadeBase(3100);
@@ -20,6 +22,14 @@ public class Carneiro extends Animal implements Ovis {
     @Override
     public void regurgitar() {
         System.out.println("urrrrrr");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Carneiro.atratividadeBase = atratividadeBase;
     }
 
 }

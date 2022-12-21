@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class UrsoPolar extends Animal implements Ursus {
 
+    public static double atratividadeBase;
+
     public UrsoPolar(String nome) {
         super(nome);
         setAtratividadeBase(4000);
@@ -20,6 +22,14 @@ public class UrsoPolar extends Animal implements Ursus {
     @Override
     public void hibernar() {
         System.out.println("mimir");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        UrsoPolar.atratividadeBase = atratividadeBase;
     }
 
 }

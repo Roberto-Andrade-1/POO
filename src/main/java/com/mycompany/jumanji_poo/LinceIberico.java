@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class LinceIberico extends Animal {
 
+    public static double atratividadeBase;
+
     public LinceIberico(String nome) {
         super(nome);
         setAtratividadeBase(5500);
@@ -15,5 +17,13 @@ public class LinceIberico extends Animal {
         setEsperancaVida(13);
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        LinceIberico.atratividadeBase = atratividadeBase;
     }
 }

@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 public class Raposa extends Animal implements Canis {
 
+    public static double atratividadeBase;
+
     public Raposa(String nome) {
         super(nome);
         setAtratividadeBase(3000);
@@ -20,6 +22,14 @@ public class Raposa extends Animal implements Canis {
     @Override
     public void uivar() {
         System.out.println("auuu");
+    }
+
+    public static double getAtratividadeBase() {
+        return atratividadeBase;
+    }
+
+    public static void setAtratividadeBase(double atratividadeBase) {
+        Raposa.atratividadeBase = atratividadeBase;
     }
 
 }

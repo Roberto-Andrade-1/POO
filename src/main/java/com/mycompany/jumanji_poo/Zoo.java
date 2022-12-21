@@ -2,19 +2,21 @@ package com.mycompany.jumanji_poo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.HashMap;
 
 public class Zoo {
 
     private int saldo, staff;
-    private HashMap<Recinto, Animal[]> instalacoes;
+    private HashMap<Recinto, Animal[]> recintos;
     private List<Animal> animaisPerdidos;
     private List<Animal> animaisErrantes;
     private List<Animal> animaisMortos;
 
     public Zoo(int saldo) {
         this.saldo = saldo;
-        this.instalacoes = new HashMap<Recinto, Animal[]>();
+        this.staff = 20;
+        this.recintos = new HashMap<Recinto, Animal[]>();
         this.animaisPerdidos = new ArrayList<Animal>();
         this.animaisErrantes = new ArrayList<Animal>();
     }
@@ -28,20 +30,21 @@ public class Zoo {
     }
 
     public HashMap<Recinto, Animal[]> getInstalcoes() {
-        return instalacoes;
+        return recintos;
     }
 
-    public void setInstalacoes(Recinto rec) {
+    public void setRecintos(Recinto rec) {
         Animal[] animais = new Animal[rec.getCapacidade()];
-        instalacoes.put(rec, animais);
+        recintos.put(rec, animais);
+        setStaff(getStaff() + 10);
     }
 
-    public HashMap<Recinto, Animal[]> getInstalacoes() {
-        return instalacoes;
+    public HashMap<Recinto, Animal[]> getRecintos() {
+        return recintos;
     }
 
-    public void setInstalacoes(HashMap<Recinto, Animal[]> instalacoes) {
-        this.instalacoes = instalacoes;
+    public void setrecintos(HashMap<Recinto, Animal[]> recintos) {
+        this.recintos = recintos;
     }
 
     public List<Animal> getAnimaisPerdidos() {
@@ -56,8 +59,8 @@ public class Zoo {
         return animaisErrantes;
     }
 
-    public void setAnimaisErrantes(List<Animal> animaisErrantes) {
-        this.animaisErrantes = animaisErrantes;
+    public void setAnimaisErrantes(Animal ani) {
+        animaisErrantes.add(ani);
     }
 
     public List<Animal> getAnimaisMortos() {
@@ -77,7 +80,15 @@ public class Zoo {
     }
 
     public int calculaDespesas() {
-        return (getStaff() * 800) + (getCapacidade() * 2000);
+        int total = 0;
+        total += getStaff() * 800; // pagamento da staff
+        for (Map.Entry<Recinto, Animal[]> instalacoes : recintos.entrySet()) {
+
+        }
+        return total;
     }
 
+    public void listarAnimais() {
+        animaisErrantes.forEach(t -> System.out.println(t.getNome()));
+    }
 }
