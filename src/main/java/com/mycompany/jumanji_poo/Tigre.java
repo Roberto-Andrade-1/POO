@@ -29,7 +29,7 @@ public class Tigre extends Animal implements Panthera {
     }
 
     public static void setAtratividadeBase(double atratividadeBase) {
-        Tigre.atratividadeBase = getAtratividadeBase();
+        Tigre.atratividadeBase = atratividadeBase;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Tigre extends Animal implements Panthera {
         }
 
         // velho
-        else if (getIdade() < Math.round(getEsperancaVida() * (3 / 4))) {
+        else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4))) {
             total -= getAtratividadeBase() - (getAtratividadeBase() * 0.25);
         }
 

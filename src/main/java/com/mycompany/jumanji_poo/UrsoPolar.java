@@ -46,7 +46,7 @@ public class UrsoPolar extends Animal implements Ursus {
         }
 
         // velho
-        else if (getIdade() < Math.round(getEsperancaVida() * (3 / 4))) {
+        else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4))) {
             total -= getAtratividadeBase() - (getAtratividadeBase() * 0.25);
         }
 

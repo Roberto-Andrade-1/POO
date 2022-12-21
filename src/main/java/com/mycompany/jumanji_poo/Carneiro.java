@@ -46,7 +46,7 @@ public class Carneiro extends Animal implements Ovis {
         }
 
         // velho
-        else if (getIdade() < Math.round(getEsperancaVida() * (3 / 4))) {
+        else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4))) {
             total -= getAtratividadeBase() - (getAtratividadeBase() * 0.25);
         }
 
