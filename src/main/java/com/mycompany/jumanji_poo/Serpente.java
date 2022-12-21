@@ -1,10 +1,10 @@
 package com.mycompany.jumanji_poo;
 
-public class Cobra extends Animal implements Naja {
+public class Serpente extends Animal implements Naja {
 
     public static double atratividadeBase;
 
-    public Cobra(String nome) {
+    public Serpente(String nome) {
         super(nome);
         setAtratividadeBase(4000);
         setEsperancaVida(23);
@@ -12,7 +12,7 @@ public class Cobra extends Animal implements Naja {
         setViasExtincao(true);
     }
 
-    public Cobra() {
+    public Serpente() {
         setAtratividadeBase(4000);
         setEsperancaVida(23);
         setIdade(numAleatorioArray(getEsperancaVida()));
@@ -34,7 +34,7 @@ public class Cobra extends Animal implements Naja {
     }
 
     public static void setAtratividadeBase(double atratividadeBase) {
-        Cobra.atratividadeBase = atratividadeBase;
+        Serpente.atratividadeBase = atratividadeBase;
     }
 
 }

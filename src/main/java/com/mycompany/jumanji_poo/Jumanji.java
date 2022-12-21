@@ -239,7 +239,7 @@ public class Jumanji {
 
     public static void calendarioChines() {
 
-        Animal[] calendario = { new Tigre(), new Coelho(), new Dragao(), new Cobra(), "Cavalo", "Cabra", "Macaco",
+        Animal[] calendario = { new Tigre(), new Coelho(), new Dragao(), new Cobra(), new Cavalo(), new (), "Macaco",
                 "Galo", "Cao",
                 "Porco", "Rato", "Boi" };
 
