@@ -184,8 +184,4 @@ public abstract class Animal implements Mutacoes {
 
     public abstract double retornaAtratividade();
 
-    public void calculaCusto(){
-        double total=0;
-        if()
-    }
 }
