@@ -78,82 +78,90 @@ public class Jumanji {
         }
     }
 
+    public static Animal animaisAleatorios() {
+        Random rand = new Random();
+        int totalAnimais = 21;
+        int numAleatorio = rand.nextInt(totalAnimais);
+
+        Animal a = null;
+
+        switch (numAleatorio) {
+            case 0:
+                a = new Boi();
+                break;
+            case 1:
+                a = new Cao();
+                break;
+            case 2:
+                a = new Carneiro();
+                break;
+            case 3:
+                a = new Cavalo();
+                break;
+            case 4:
+                a = new Chita();
+                break;
+            case 5:
+                a = new Coelho();
+                break;
+            case 6:
+                a = new Dragao();
+                break;
+            case 7:
+                a = new Galo();
+                break;
+            case 8:
+                a = new Leao();
+                break;
+            case 9:
+                a = new LinceIberico();
+                break;
+            case 10:
+                a = new Lobo();
+                break;
+            case 11:
+                a = new Macaco();
+                break;
+            case 12:
+                a = new Panda();
+                break;
+            case 13:
+                a = new Porco();
+                break;
+            case 14:
+                a = new Raposa();
+                break;
+            case 15:
+                a = new Rato();
+                break;
+            case 16:
+                a = new Serpente();
+                break;
+            case 17:
+                a = new Tigre();
+                break;
+            case 18:
+                a = new UrsoCastanho();
+                break;
+            case 19:
+                a = new UrsoPolar();
+                break;
+            case 20:
+                a = new UrsoPreto();
+                break;
+        }
+        return a;
+    }
+
     // 1.adquirir um animal aleatório
     public static void adquirirAnimaisAleatorios(Zoo zoo) /* throws IOException */ {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
 
-        int totalAnimais = 21;
-
         Animal[] treAnimaisAleat = new Animal[3];
         // cria 3 animais
         for (int i = 0; i < treAnimaisAleat.length; i++) {
-            int numAleatorio = rand.nextInt(totalAnimais);
-            switch (numAleatorio) {
-                case 0:
-                    treAnimaisAleat[i] = new Boi();
-                    break;
-                case 1:
-                    treAnimaisAleat[i] = new Cao();
-                    break;
-                case 2:
-                    treAnimaisAleat[i] = new Carneiro();
-                    break;
-                case 3:
-                    treAnimaisAleat[i] = new Cavalo();
-                    break;
-                case 4:
-                    treAnimaisAleat[i] = new Chita();
-                    break;
-                case 5:
-                    treAnimaisAleat[i] = new Coelho();
-                    break;
-                case 6:
-                    treAnimaisAleat[i] = new Dragao();
-                    break;
-                case 7:
-                    treAnimaisAleat[i] = new Galo();
-                    break;
-                case 8:
-                    treAnimaisAleat[i] = new Leao();
-                    break;
-                case 9:
-                    treAnimaisAleat[i] = new LinceIberico();
-                    break;
-                case 10:
-                    treAnimaisAleat[i] = new Lobo();
-                    break;
-                case 11:
-                    treAnimaisAleat[i] = new Macaco();
-                    break;
-                case 12:
-                    treAnimaisAleat[i] = new Panda();
-                    break;
-                case 13:
-                    treAnimaisAleat[i] = new Porco();
-                    break;
-                case 14:
-                    treAnimaisAleat[i] = new Raposa();
-                    break;
-                case 15:
-                    treAnimaisAleat[i] = new Rato();
-                    break;
-                case 16:
-                    treAnimaisAleat[i] = new Serpente();
-                    break;
-                case 17:
-                    treAnimaisAleat[i] = new Tigre();
-                    break;
-                case 18:
-                    treAnimaisAleat[i] = new UrsoCastanho();
-                    break;
-                case 19:
-                    treAnimaisAleat[i] = new UrsoPolar();
-                    break;
-                case 20:
-                    treAnimaisAleat[i] = new UrsoPreto();
-                    break;
-            }
+            treAnimaisAleat[i] = animaisAleatorios();
         }
 
         System.out.println("\nAnimais para comprar:");
