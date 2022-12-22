@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Panda extends Animal implements Ursus {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Panda(String nome) {
         super(nome);
         setAtratividadeBase(10000);
-        setEsperancaVida(20);
+        esperancaVida = 20;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public Panda() {
         setAtratividadeBase(10000);
-        setEsperancaVida(20);
+        esperancaVida = 20;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override

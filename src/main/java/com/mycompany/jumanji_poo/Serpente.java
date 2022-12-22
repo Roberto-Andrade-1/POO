@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Serpente extends Animal implements Naja {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Serpente(String nome) {
         super(nome);
         setAtratividadeBase(4000);
-        setEsperancaVida(23);
+        esperancaVida = 23;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public Serpente() {
         setAtratividadeBase(4000);
-        setEsperancaVida(23);
+        esperancaVida = 23;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override

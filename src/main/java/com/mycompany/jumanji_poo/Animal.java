@@ -13,16 +13,17 @@ public abstract class Animal implements Mutacoes {
             "Friederike" };
 
     private static int idAnimalAtualizado;
-    private int idAnimal, idade, esperancaVida;
+    private int idAnimal, idade;
     private String nome;
     private boolean viasExtincao;
     private final boolean albinismo, vitiligo, melanismo, heterocromia, siames;
+    private final int custo;
 
     public Animal(String nome) {
         idAnimal = 0;
         this.nome = nome;
         this.idade = 0;
-        esperancaVida = 0;
+        this.custo = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
@@ -34,8 +35,8 @@ public abstract class Animal implements Mutacoes {
     public Animal(boolean albinismo) {
         idAnimal = 0;
         this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
-        this.idade = 0; // €
-        esperancaVida = 0;
+        this.idade = 0;
+        this.custo = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
@@ -47,7 +48,7 @@ public abstract class Animal implements Mutacoes {
         idAnimal = 0;
         this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
         this.idade = 0;
-        esperancaVida = 0;
+        this.custo = 0;
         this.albinismo = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
@@ -93,14 +94,6 @@ public abstract class Animal implements Mutacoes {
         this.idade = idade;
     }
 
-    public int getEsperancaVida() {
-        return esperancaVida;
-    }
-
-    public void setEsperancaVida(int esperancaVida) {
-        this.esperancaVida = esperancaVida;
-    }
-
     public boolean isViasExtincao() {
         return viasExtincao;
     }
@@ -134,7 +127,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public int numAleatorioObjHash() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, viasExtincao, idade, nomesAleatorios, idAnimalAtualizado);
+        int num = Objects.hash(idAnimal, nome, viasExtincao, idade, nomesAleatorios, idAnimalAtualizado);
         if (num < 0) {
             num = num * (-1);
         }

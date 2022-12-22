@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class UrsoPreto extends Animal implements Ursus {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public UrsoPreto(String nome) {
         super(nome);
         setAtratividadeBase(3500);
-        setEsperancaVida(25);
+        esperancaVida = 25;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public UrsoPreto() {
         setAtratividadeBase(3500);
-        setEsperancaVida(25);
+        esperancaVida = 25;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override

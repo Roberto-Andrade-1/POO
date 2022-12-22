@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Raposa extends Animal implements Canis {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Raposa(String nome) {
         super(nome);
         setAtratividadeBase(3000);
-        setEsperancaVida(15);
+        esperancaVida = 15;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public Raposa() {
         setAtratividadeBase(3000);
-        setEsperancaVida(15);
+        esperancaVida = 15;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override

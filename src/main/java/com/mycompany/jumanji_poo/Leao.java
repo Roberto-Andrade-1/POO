@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Leao extends Animal implements Panthera {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Leao(String nome) {
         super(nome);
         setAtratividadeBase(5000);
-        setEsperancaVida(10);
+        esperancaVida = 10;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public Leao() {
         setAtratividadeBase(5000);
-        setEsperancaVida(10);
+        esperancaVida = 10;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override

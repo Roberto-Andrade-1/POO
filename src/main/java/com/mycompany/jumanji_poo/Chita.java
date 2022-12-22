@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Chita extends Animal {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Chita(String nome) {
         super(nome);
         setAtratividadeBase(5000);
-        setEsperancaVida(12);
+        esperancaVida = 12;
         setViasExtincao(true);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public Chita() {
         setAtratividadeBase(5000);
-        setEsperancaVida(12);
+        esperancaVida = 12;
         setViasExtincao(true);
         setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     public static double getAtratividadeBase() {

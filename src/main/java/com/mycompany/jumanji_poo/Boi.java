@@ -3,11 +3,12 @@ package com.mycompany.jumanji_poo;
 public class Boi extends Animal {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Boi(String nome) {
         super(nome);
         setAtratividadeBase(1000);
-        setEsperancaVida(17);
+        esperancaVida = 17;
         // num aleatorio de 0 a 17
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
@@ -15,10 +16,14 @@ public class Boi extends Animal {
 
     public Boi() {
         setAtratividadeBase(1000);
-        setEsperancaVida(17);
+        esperancaVida = 17;
         // num aleatorio de 0 a 17
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     public static double getAtratividadeBase() {

@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Cao extends Animal implements Canis {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Cao(String nome) {
         super(nome);
         setAtratividadeBase(1500);
-        setEsperancaVida(15);
+        esperancaVida = 15;
         setViasExtincao(false);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public Cao() {
         setAtratividadeBase(1500);
-        setEsperancaVida(15);
+        esperancaVida = 15;
         setViasExtincao(false);
         setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override

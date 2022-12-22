@@ -3,21 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Coelho extends Animal {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Coelho(String nome) {
         super(nome);
         setAtratividadeBase(500);
-        setEsperancaVida(8);
+        esperancaVida = 8;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public Coelho() {
         setAtratividadeBase(500);
-        setEsperancaVida(8);
-        // num aleatorio de 0 a 17
+        esperancaVida = 8;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     public static double getAtratividadeBase() {

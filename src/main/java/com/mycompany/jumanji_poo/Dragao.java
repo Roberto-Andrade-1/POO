@@ -3,20 +3,25 @@ package com.mycompany.jumanji_poo;
 public class Dragao extends Animal {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Dragao(String nome) {
         super(nome);
         setAtratividadeBase(3500);
-        setEsperancaVida(30);
+        esperancaVida = 30;
         setViasExtincao(true);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public Dragao() {
         setAtratividadeBase(3500);
-        setEsperancaVida(30);
+        esperancaVida = 30;
         setViasExtincao(true);
         setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     public static double getAtratividadeBase() {

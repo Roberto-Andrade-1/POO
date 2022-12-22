@@ -3,10 +3,11 @@ package com.mycompany.jumanji_poo;
 public class Cavalo extends Animal implements Equus {
 
     private static double atratividadeBase;
+    private final int esperancaVida;
 
     public Cavalo() {
         setAtratividadeBase(3000);
-        setEsperancaVida(28);
+        esperancaVida = 28;
         setViasExtincao(false);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
@@ -14,9 +15,13 @@ public class Cavalo extends Animal implements Equus {
     public Cavalo(String nome) {
         super(nome);
         setAtratividadeBase(3000);
-        setEsperancaVida(28);
+        esperancaVida = 28;
         setViasExtincao(false);
         setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
+    public int getEsperancaVida() {
+        return esperancaVida;
     }
 
     @Override
