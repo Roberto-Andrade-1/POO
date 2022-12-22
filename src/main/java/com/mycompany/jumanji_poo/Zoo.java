@@ -26,7 +26,7 @@ public class Zoo {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
@@ -89,7 +89,7 @@ public class Zoo {
         return total;
     }
 
-    public void listarAnimais() {
+    public void listarAnimaisErrantes() {
         System.out.println("Animais errantes");
         for (Animal animal : animaisErrantes) {
             System.out.print("\nID: " + animal.getIdAnimal() + " | Espécie: " + animal.getClass().getSimpleName() +

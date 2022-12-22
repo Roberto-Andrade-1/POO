@@ -36,7 +36,7 @@ public class Jumanji {
             int escolha = scan.nextInt();
             switch (escolha) {
                 case 1:
-                    animaisAleatorios(zoo);
+                    adquirirAnimaisAleatorios(zoo);
                     break;
                 case 2:
                     break;
@@ -49,7 +49,7 @@ public class Jumanji {
                     calendarioChines();
                     break;
                 case 6:
-                    zoo.listarAnimais();
+                    zoo.listarAnimaisErrantes();
                     break;
                 case 7:
                     break;
@@ -78,7 +78,8 @@ public class Jumanji {
         }
     }
 
-    public static void animaisAleatorios(Zoo zoo) /* throws IOException */ {
+    // 1.adquirir um animal aleatório
+    public static void adquirirAnimaisAleatorios(Zoo zoo) /* throws IOException */ {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
 
@@ -191,6 +192,12 @@ public class Jumanji {
             default:
                 System.out.println("Valor inválido");
         }
+
+    }
+
+    // Adquirir animal com característica genética
+    public void AnimalCaracAlea(Zoo zoo) {
+        System.out.println("Escolha uma das seguintes caracteristicas genéticas: ");
 
     }
 
