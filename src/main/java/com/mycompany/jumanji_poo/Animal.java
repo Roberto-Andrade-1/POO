@@ -134,7 +134,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public int numAleatorioObjHash() {
-        int num = Objects.hash(idAnimal, nome, esperancaVida, viasExtincao, idade);
+        int num = Objects.hash(idAnimal, nome, esperancaVida, viasExtincao, idade, nomesAleatorios, idAnimalAtualizado);
         if (num < 0) {
             num = num * (-1);
         }
@@ -144,7 +144,6 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetAlbinismo() {
         int num = numAleatorioObjHash();
-        // System.out.println(num);
         if ((num % 100) <= 15) {
             return true;
         } else
