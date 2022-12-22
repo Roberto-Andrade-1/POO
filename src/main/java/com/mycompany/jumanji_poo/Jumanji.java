@@ -174,12 +174,18 @@ public class Jumanji {
         int numAnimal = scan.nextInt();
         switch (numAnimal) {
             case 1:
+                Animal.setIdAnimalAtualizado();
+                treAnimaisAleat[0].setIdAnimal(Animal.getIdAnimalAtualizado());
                 zoo.setAnimaisErrantes(treAnimaisAleat[1 - 1]);
                 break;
             case 2:
+                Animal.setIdAnimalAtualizado();
+                treAnimaisAleat[1].setIdAnimal(Animal.getIdAnimalAtualizado());
                 zoo.setAnimaisErrantes(treAnimaisAleat[2 - 1]);
                 break;
             case 3:
+                Animal.setIdAnimalAtualizado();
+                treAnimaisAleat[2].setIdAnimal(Animal.getIdAnimalAtualizado());
                 zoo.setAnimaisErrantes(treAnimaisAleat[3 - 1]);
                 break;
             default:

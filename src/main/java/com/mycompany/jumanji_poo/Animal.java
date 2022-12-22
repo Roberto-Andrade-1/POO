@@ -146,7 +146,7 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaHeterocromia() {
         int num = numAleatorioObjHash();
-        if ((num % 100) <= 40) {
+        if ((num % 100) <= 25) {
             return true;
         } else
             return false;
@@ -167,7 +167,7 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaSiames() {
         int num = numAleatorioObjHash();
-        if ((num % 100) <= 10) {
+        if ((num % 100) >= 95) {
             return true;
         } else
             return false;
@@ -176,7 +176,7 @@ public abstract class Animal implements Mutacoes {
     @Override
     public boolean detetaVitiligo() {
         int num = numAleatorioObjHash();
-        if ((num % 100) <= 40) {
+        if ((num % 100) >= 80 && (num % 100) <= 98) {
             return true;
         } else
             return false;

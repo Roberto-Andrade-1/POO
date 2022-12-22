@@ -7,7 +7,8 @@ import java.util.HashMap;
 
 public class Zoo {
 
-    private int saldo, staff;
+    private double saldo;
+    private int staff;
     private HashMap<Recinto, Animal[]> recintos;
     private List<Animal> animaisPerdidos;
     private List<Animal> animaisErrantes;
@@ -21,7 +22,7 @@ public class Zoo {
         this.animaisErrantes = new ArrayList<Animal>();
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
@@ -89,11 +90,11 @@ public class Zoo {
     }
 
     public void listarAnimais() {
-        // animaisErrantes.forEach(t -> System.out.print(t.getClass().getSimpleName() +
-        // " " + t.getNome()));
+        System.out.println("Animais errantes");
         for (Animal animal : animaisErrantes) {
-            System.out.print("\nEspécie: " + animal.getClass().getSimpleName() +
+            System.out.print("\nID: " + animal.getIdAnimal() + " | Espécie: " + animal.getClass().getSimpleName() +
                     " | " + animal.getNome() + " | " + animal.retornaAtratividade());
         }
     }
+
 }
