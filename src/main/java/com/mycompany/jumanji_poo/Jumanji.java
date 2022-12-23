@@ -357,20 +357,22 @@ public class Jumanji {
         for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
             Recinto rec = recintos.getKey();
             Animal[] animais = recintos.getValue();
-            if (rec.getIdRecinto() == idRecinto) {
-                for (int j = 0; j < zoo.getAnimaisErrantes().size(); j++) {
+            if (rec.getIdRecinto() == idRecinto) {// verifica o id do recinto
+                for (int j = 0; j < zoo.getAnimaisErrantes().size(); j++) {// percorrer lista animais errantes
                     Animal ani = zoo.getAnimaisErrantes().get(j);
-                    if (ani.getIdAnimal() == idAnimal) {
-                        if (rec.getCapacidade() != rec.getOcupacao()) {
-                            animais[rec.getOcupacao()] = ani;
-                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));
-                        } else {
+                    if (ani.getIdAnimal() == idAnimal) {// se o id for igual ao qur o utilizador escolheu
+                        if (rec.getCapacidade() != rec.getOcupacao()) {// se ainda houver lugares disponiveis no recinto
+                            animais[rec.getOcupacao()] = ani;// adiciona na Hashmap
+                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira da lista de
+                                                                                             // aniamis errantes
+                        } else {// caso esteja cheio o recinto
                             Random rand = new Random();
-                            int num = rand.nextInt(rec.getCapacidade());
-                            Animal a = animais[num];
-                            animais[num] = ani;
-                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));
-                            zoo.setAnimaisErrantes(a);
+                            int num = rand.nextInt(rec.getCapacidade());// é gerado um número aleatorio para escolher
+                                                                        // qual animal (posição) irá sair
+                            Animal a = animais[num];// variavel para guardar aniaml do recinto
+                            animais[num] = ani;// adiciona hashmap o animal errante
+                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira hashmap
+                            zoo.setAnimaisErrantes(a);// insere o animal antigo da hashmap na lista de animais
                         }
                     }
                 }
