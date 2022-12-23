@@ -1,18 +1,16 @@
 package com.mycompany.jumanji_poo;
 
-import java.io.IOException;
-import java.net.InterfaceAddress;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Jumanji {
 
-    public static void main(String[] args) {
+    private static Scanner scan;
 
+    public static void main(String[] args) {
+        scan = new Scanner(System.in);
         boolean sair = false;
-        Scanner scan = new Scanner(System.in);
         Zoo zoo = new Zoo(1000000);
 
         while (!sair) {
@@ -57,9 +55,10 @@ public class Jumanji {
                     zoo.listarAnimais();
                     break;
                 case 7:
-                    zoo.listarAnimaisCarGenetica();
+                    listarAnimaisCarGenetica(zoo);
                     break;
                 case 8:
+                    listarDadaMutacao(zoo);
                     break;
                 case 9:
                     zoo.listarRecintos();
@@ -162,8 +161,7 @@ public class Jumanji {
 
     // 1.adquirir um animal aleatório
     public static void adquirirAnimaisAleatorios(Zoo zoo) /* throws IOException */ {
-        Scanner scan = new Scanner(System.in);
-        Random rand = new Random();
+        // scan = new Scanner(System.in);
 
         Animal[] treAnimaisAleat = new Animal[3];
         // cria 3 animais
@@ -208,7 +206,7 @@ public class Jumanji {
 
     // 2.Adquirir animal com característica genética
     public static void animalCaracAlea(Zoo zoo) {
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
 
         System.out.println("""
 
@@ -299,8 +297,9 @@ public class Jumanji {
         }
     }
 
+    // 3.Recintos Aleatorios
     public static void recintosAleatorio(Zoo zoo) {
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
 
         // cria 3 recintos
         Recinto rec1 = new Recinto();
@@ -340,8 +339,9 @@ public class Jumanji {
         }
     }
 
+    // 4.Adicionar animal nas instalações
     public static void adicionarInstalacao(Zoo zoo) {
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
 
         System.out.println("\nQual animal deseja adicionar? (ID)");
         zoo.listarAnimaisErrantes();
@@ -350,10 +350,6 @@ public class Jumanji {
         System.out.println("\nQual o recinto que pretende inserir o Animal? (ID)");
         zoo.listarRecintos();
         int idRecinto = scan.nextInt();
-
-        // System.out.println("\nQual a posição que pretende inserir o Animal no recinto
-        // ?");
-        // int posicaoRecinto = scan.nextInt();
 
         for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
             Recinto rec = recintos.getKey();
@@ -382,6 +378,7 @@ public class Jumanji {
         }
     }
 
+    // 5.Calendario Chines
     public static void calendarioChines() {
 
         String[] calendario = { "Tigre", "Coelho", "Dragão", "Serpente", "Cavalo", "Carneiro", "Macaco", "Galo", "Cão",
@@ -431,16 +428,199 @@ public class Jumanji {
 
     }
 
+    // 7.Listar Animais com caracteristica Generica especificada
+    public static void listarAnimaisCarGenetica(Zoo zoo) {
+        System.out.println("""
+
+                Qual a característica genetica que pretende?
+                1.Canis
+                2.Equus
+                3.Naja
+                4.Ovis
+                5.Phantera
+                6.Ursus
+
+                """);
+        int escolha = scan.nextInt();
+        switch (escolha) {
+            case 1:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Canis.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Canis.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 2:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Equus.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Equus.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Naja.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Naja.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 4:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Ovis.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Ovis.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 5:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Panthera.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Panthera.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 6:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Ursus.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Ursus.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+    // 8.Listar animal com uma dada mutação
+    public static void listarDadaMutacao(Zoo zoo) {
+        scan = new Scanner(System.in);
+        System.out.println("""
+
+                Qual a mutação pretende?
+                1.Albino
+                2.Heterocromia
+                3.Melanismo
+                4.Siames
+                5.Vitiligo
+
+                """);
+        int escolha = scan.nextInt();
+        switch (escolha) {
+            case 1:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isAlbinismo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isAlbinismo())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 2:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isHeterocromia())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isHeterocromia())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 3:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isMelanismo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isMelanismo())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 4:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isSiames())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isSiames())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 5:
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isVitiligo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isVitiligo())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            default:
+                System.out.println("Valor inválido");
+                break;
+        }
+    }
+
     public static void periodoContabilistico(Zoo zoo) {
-        //calcular primeiro os custos totais do zoo
+        // calcular primeiro os custos totais do zoo
         zoo.calculaDespesas();
 
-        //calcula os proveitos totais do zoo
-        
-        //retira do saldo do zoo os custos
-        zoo.getSaldo() - zoo.calculaDespesas();
-        //registar os nascimentos e obitos
+        // calcula os proveitos totais do zoo
 
-        //em caso de prejuizo pode-se perder animais
+        // retira do saldo do zoo os custos
+        // zoo.getSaldo() - zoo.calculaDespesas();
+        // registar os nascimentos e obitos
+
+        // em caso de prejuizo pode-se perder animais
     }
 }

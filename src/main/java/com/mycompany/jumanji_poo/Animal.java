@@ -45,7 +45,7 @@ public abstract class Animal implements Mutacoes {
         this.SEXO = sexoAleatorio();
     }
 
-    public String getSEXO() {
+    public String getSexo() {
         return SEXO;
     }
 
@@ -188,7 +188,7 @@ public abstract class Animal implements Mutacoes {
         texto += "Espécie: " + this.getClass().getSimpleName();
         texto += " | Nome: " + getNome();
         texto += " | Idade: " + getIdade();
-        texto += " | SEXO: " + getSEXO();
+        texto += " | Sexo: " + getSexo();
         // mostrar mutacoes só na hora da compra
         if (getIdAnimal() == 0) {
             texto += " \n-> Albino: " + (isAlbinismo() == true ? "sim" : "não");
