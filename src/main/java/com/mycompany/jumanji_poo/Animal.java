@@ -176,6 +176,8 @@ public abstract class Animal implements Mutacoes {
 
     public abstract double retornaAtratividade();
 
+    public abstract void calculaCusto();
+
     @Override
     public String toString() {
         String texto = new String();
@@ -198,10 +200,6 @@ public abstract class Animal implements Mutacoes {
             texto += " | Atratividade: " + retornaAtratividade();
         }
         return texto;
-    }
-
-    public void calculaCusto() {
-
     }
 
 }
