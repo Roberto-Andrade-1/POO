@@ -2,6 +2,8 @@ package com.mycompany.jumanji_poo;
 
 import java.io.IOException;
 import java.net.InterfaceAddress;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class Jumanji {
 
         boolean sair = false;
         Scanner scan = new Scanner(System.in);
-        Zoo zoo = new Zoo(100000);
+        Zoo zoo = new Zoo(1000000);
 
         while (!sair) {
             System.out.println("""
@@ -46,6 +48,7 @@ public class Jumanji {
                     recintosAleatorio(zoo);
                     break;
                 case 4:
+                    adicionarInstalacao(zoo);
                     break;
                 case 5:
                     calendarioChines();
@@ -58,7 +61,7 @@ public class Jumanji {
                 case 8:
                     break;
                 case 9:
-                    listarRecintos(zoo);
+                    zoo.listarRecintos();
                     break;
                 case 10:
                     break;
@@ -336,12 +339,44 @@ public class Jumanji {
         }
     }
 
-    public static void listarRecintos(Zoo zoo) {
-        System.out.println("\nRECINTOS");
-        for (Recinto i : zoo.getInstalcoes().keySet()) {
-            System.out.println("ID: " + i.getIdRecinto() + " | capacidade: " + i.getCapacidade() + " | custo: "
-                    + i.getCusto() + "€");
+    public static void adicionarInstalacao(Zoo zoo) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("\nQual animal deseja adicionar? (ID)");
+        zoo.listarAnimaisErrantes();
+        int idAnimal = scan.nextInt();
+
+        System.out.println("\nQual o recinto que pretende inserir o Animal? (ID)");
+        zoo.listarRecintos();
+        int idRecinto = scan.nextInt();
+
+        // System.out.println("\nQual a posição que pretende inserir o Animal no recinto
+        // ?");
+        // int posicaoRecinto = scan.nextInt();
+
+        for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
+            Recinto rec = recintos.getKey();
+            Animal[] animais = recintos.getValue();
+            if (rec.getIdRecinto() == idRecinto) {
+                for (int j = 0; j < zoo.getAnimaisErrantes().size(); j++) {
+                    Animal ani = zoo.getAnimaisErrantes().get(j);
+                    if (ani.getIdAnimal() == idAnimal) {
+                        if (rec.getCapacidade() != rec.getOcupacao()) {
+                            animais[rec.getOcupacao()] = ani;
+                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));
+                        } else {
+                            Random rand = new Random();
+                            int num = rand.nextInt(rec.getCapacidade());
+                            Animal a = animais[num];
+                            animais[num] = ani;
+                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));
+                            zoo.setAnimaisErrantes(a);
+                        }
+                    }
+                }
+            }
         }
+        // System.out.println(zoo.getRecintos());
     }
 
     public static void calendarioChines() {

@@ -30,10 +30,6 @@ public class Zoo {
         this.saldo = saldo;
     }
 
-    public HashMap<Recinto, Animal[]> getInstalcoes() {
-        return recintos;
-    }
-
     public void setRecintos(Recinto rec) {
         Animal[] animais = new Animal[rec.getCapacidade()];
         recintos.put(rec, animais);
@@ -84,7 +80,7 @@ public class Zoo {
         int total = 0;
         total += getStaff() * 800; // pagamento da staff
         for (Map.Entry<Recinto, Animal[]> instalacoes : recintos.entrySet()) {
-
+            Recinto rec = instalacoes.getKey();
         }
         return total;
     }
@@ -96,4 +92,24 @@ public class Zoo {
         }
     }
 
+    public void verificaOcupacaoRec() {
+        for (Map.Entry<Recinto, Animal[]> recintos : recintos.entrySet()) {
+            int total = 0;
+            Recinto rec = recintos.getKey();
+            Animal[] animais = recintos.getValue();
+            for (int i = 0; i < animais.length; i++) {
+                if (animais[i] != null)
+                    total++;
+            }
+            rec.setOcupacao(total);
+        }
+    }
+
+    public void listarRecintos() {
+        verificaOcupacaoRec();
+        System.out.println("\nRECINTOS");
+        for (Recinto i : getRecintos().keySet()) {
+            System.out.println(i);
+        }
+    }
 }

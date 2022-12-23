@@ -5,12 +5,15 @@ import java.util.Random;
 public class Recinto {
 
     private static int idRecintoAtualizado;
-    private int capacidade, custo, idRecinto;
+    private final int capacidade, custo;
+    private int ocupacao;
+    private int idRecinto;
 
     public Recinto() {
         this.capacidade = capacidadeAleatoria();
         this.custo = custoAleatorio();
         idRecinto = 0;
+        this.ocupacao = 0;
     }
 
     public final int capacidadeAleatoria() {
@@ -35,16 +38,8 @@ public class Recinto {
         return capacidade;
     }
 
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
-    }
-
     public int getCusto() {
         return custo;
-    }
-
-    public void setCusto(int custo) {
-        this.custo = custo;
     }
 
     public int getIdRecinto() {
@@ -54,4 +49,24 @@ public class Recinto {
     public void setIdRecinto(int idRecinto) {
         this.idRecinto = idRecinto;
     }
+
+    public int getOcupacao() {
+        return ocupacao;
+    }
+
+    public void setOcupacao(int ocupacao) {
+        this.ocupacao = ocupacao;
+    }
+
+    @Override
+    public String toString() {
+        String texto = new String();
+        texto = "ID: " + getIdRecinto();
+        texto += " | capacidade: " + getCapacidade();
+        texto += " | Ocupação: " + getOcupacao();
+        if (idRecinto == 0)
+            texto += " | custo: " + getCusto() + "€";
+        return texto;
+    }
+
 }
