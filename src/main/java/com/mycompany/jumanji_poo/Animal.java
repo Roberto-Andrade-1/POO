@@ -5,7 +5,7 @@ import java.util.Random;
 
 public abstract class Animal implements Mutacoes {
 
-    private static final String[] nomesAleatorios = { "Johannah", "Kitty", "Von", "Joanne", "Goddart", "Lottie",
+    private static final String[] NOMES_ALEATORIOS = { "Johannah", "Kitty", "Von", "Joanne", "Goddart", "Lottie",
             "Lorilee", "Esta", "Phaidra", "Nikos", "Elbert", "Sloane", "Shaun", "Benedikta", "Bea", "Arley", "Jori",
             "Franni", "Isidore", "Dolly", "Hephzibah", "Clarence", "Adelle", "Alasdair", "Adina", "Morganica", "Efren",
             "Jobie", "Jimmi", "Rosco", "Arline", "Jaye", "Stavros", "Zachery", "Derby", "Teressa", "Chane", "Jeanelle",
@@ -16,37 +16,37 @@ public abstract class Animal implements Mutacoes {
     private int idAnimal, idade;
     private String nome;
     private boolean viasExtincao;
-    private final String sexo;
-    private final boolean albinismo, vitiligo, melanismo, heterocromia, siames;
+    private final String SEXO;
+    private final boolean ALBINISMO, vitiligo, melanismo, heterocromia, siames;
     // private final int custo;
 
     public Animal(String nome) {
         idAnimal = 0;
         this.nome = nome;
         this.idade = 0;
-        this.albinismo = detetAlbinismo();
+        this.ALBINISMO = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
         this.heterocromia = detetaHeterocromia();
         this.siames = detetaSiames();
-        this.sexo = sexoAleatorio();
+        this.SEXO = SEXOAleatorio();
 
     }
 
     public Animal() {
         idAnimal = 0;
-        this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
+        this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
         this.idade = 0;
-        this.albinismo = detetAlbinismo();
+        this.ALBINISMO = detetAlbinismo();
         this.vitiligo = detetaVitiligo();
         this.melanismo = detetaMelanismo();
         this.heterocromia = detetaHeterocromia();
         this.siames = detetaSiames();
-        this.sexo = sexoAleatorio();
+        this.SEXO = SEXOAleatorio();
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getSEXO() {
+        return SEXO;
     }
 
     public int numAleatorioArray(int length) {
@@ -91,8 +91,8 @@ public abstract class Animal implements Mutacoes {
         return viasExtincao;
     }
 
-    public static String[] getNomesaleatorios() {
-        return nomesAleatorios;
+    public static String[] getNOMES_ALEATORIOS() {
+        return NOMES_ALEATORIOS;
     }
 
     public void setViasExtincao(boolean viasExtincao) {
@@ -100,7 +100,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public boolean isAlbinismo() {
-        return albinismo;
+        return ALBINISMO;
     }
 
     public boolean isVitiligo() {
@@ -120,7 +120,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public int numAleatorioObjHash() {
-        int num = Objects.hash(idAnimal, nome, viasExtincao, idade, nomesAleatorios, idAnimalAtualizado);
+        int num = Objects.hash(idAnimal, nome, viasExtincao, idade, NOMES_ALEATORIOS, idAnimalAtualizado);
         if (num < 0) {
             num = num * (-1);
         }
@@ -188,7 +188,7 @@ public abstract class Animal implements Mutacoes {
         texto += "Espécie: " + this.getClass().getSimpleName();
         texto += " | Nome: " + getNome();
         texto += " | Idade: " + getIdade();
-        texto += " | Sexo: " + getSexo();
+        texto += " | SEXO: " + getSEXO();
         // mostrar mutacoes só na hora da compra
         if (getIdAnimal() == 0) {
             texto += " \n-> Albino: " + (isAlbinismo() == true ? "sim" : "não");
@@ -205,7 +205,7 @@ public abstract class Animal implements Mutacoes {
         return texto;
     }
 
-    public String sexoAleatorio() {
+    public String SEXOAleatorio() {
         Random rand = new Random();
         int num = rand.nextInt(10);
         if ((num % 2) == 0)
