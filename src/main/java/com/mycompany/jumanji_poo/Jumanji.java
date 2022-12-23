@@ -1,6 +1,7 @@
 package com.mycompany.jumanji_poo;
 
 import java.io.IOException;
+import java.net.InterfaceAddress;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -39,6 +40,7 @@ public class Jumanji {
                     adquirirAnimaisAleatorios(zoo);
                     break;
                 case 2:
+                    animalCaracAlea(zoo);
                     break;
                 case 3:
                     recintosAleatorio(zoo);
@@ -168,18 +170,20 @@ public class Jumanji {
         int i = 1;
 
         for (Animal animal : treAnimaisAleat) {
-            System.out.println(i + ".Espécie: " + animal.getClass().getSimpleName() +
-                    " | Nome: " + animal.getNome() +
-                    " | Idade: " + animal.getIdade() +
-                    " | Albino: " + (animal.isAlbinismo() == true ? "sim" : "não") +
-                    " | Heterocromia: " + (animal.isHeterocromia() == true ? "sim" : "não") +
-                    " | Melanismo: " + (animal.isMelanismo() == true ? "sim" : "não") +
-                    " | Siames: " + (animal.isSiames() == true ? "sim" : "não") +
-                    " | Vitiligo: " + (animal.isVitiligo() == true ? "sim" : "não"));
+            // System.out.println(i + ".Espécie: " + animal.getClass().getSimpleName() +
+            // " | Nome: " + animal.getNome() +
+            // " | Idade: " + animal.getIdade() +
+            // " | Albino: " + (animal.isAlbinismo() == true ? "sim" : "não") +
+            // " | Heterocromia: " + (animal.isHeterocromia() == true ? "sim" : "não") +
+            // " | Melanismo: " + (animal.isMelanismo() == true ? "sim" : "não") +
+            // " | Siames: " + (animal.isSiames() == true ? "sim" : "não") +
+            // " | Vitiligo: " + (animal.isVitiligo() == true ? "sim" : "não"));
+            // System.out.print("\n" + i + ".");
+            System.out.print("\n" + i + "." + animal);
             i++;
         }
 
-        System.out.println("\nQual animal deseja comprar (1, 2,ou 3): ");
+        System.out.println("\n\nQual animal deseja comprar (1, 2 ou 3): ");
         int numAnimal = scan.nextInt();
         switch (numAnimal) {
             case 1:
@@ -203,10 +207,84 @@ public class Jumanji {
 
     }
 
-    // Adquirir animal com característica genética
-    public void AnimalCaracAlea(Zoo zoo) {
-        System.out.println("Escolha uma das seguintes caracteristicas genéticas: ");
+    // 2.Adquirir animal com característica genética
+    public static void animalCaracAlea(Zoo zoo) {
+        Scanner scan = new Scanner(System.in);
 
+        System.out.println("""
+                Escolha uma das seguintes caracteristicas genéticas:
+                1.Canis
+                2.Equus
+                3.Naja
+                4.Ovis
+                5.Panthera
+                6.Ursus\n
+                """);
+
+        int escolha = scan.nextInt();
+        Animal a = animaisAleatorios();
+
+        // isAssignableFrom verifica se a classe implementa a interface
+        switch (escolha) {
+            case 1:
+                if (Canis.class.isAssignableFrom(a.getClass())) {
+                } else {
+                    while (!Canis.class.isAssignableFrom(a.getClass())) {
+                        a = animaisAleatorios();
+                    }
+                }
+                break;
+            case 2:
+                if (Equus.class.isAssignableFrom(a.getClass())) {
+
+                } else {
+                    while (!Equus.class.isAssignableFrom(a.getClass())) {
+                        a = animaisAleatorios();
+                    }
+                }
+                break;
+            case 3:
+                if (Naja.class.isAssignableFrom(a.getClass())) {
+
+                } else {
+                    while (!Naja.class.isAssignableFrom(a.getClass())) {
+                        a = animaisAleatorios();
+                    }
+                }
+                break;
+            case 4:
+                if (Ovis.class.isAssignableFrom(a.getClass())) {
+
+                } else {
+                    while (!Ovis.class.isAssignableFrom(a.getClass())) {
+                        a = animaisAleatorios();
+                    }
+                }
+                break;
+            case 5:
+                if (Panthera.class.isAssignableFrom(a.getClass())) {
+
+                } else {
+                    while (!Panthera.class.isAssignableFrom(a.getClass())) {
+                        a = animaisAleatorios();
+                    }
+                }
+                break;
+            case 6:
+                if (Ursus.class.isAssignableFrom(a.getClass())) {
+
+                } else {
+                    while (!Ursus.class.isAssignableFrom(a.getClass())) {
+                        a = animaisAleatorios();
+                    }
+                }
+                break;
+
+        }
+        System.out.println(a);
+        Animal.setIdAnimalAtualizado();
+        a.setIdAnimal(Animal.getIdAnimalAtualizado());
+        zoo.setAnimaisErrantes(a);
     }
 
     public static void recintosAleatorio(Zoo zoo) {

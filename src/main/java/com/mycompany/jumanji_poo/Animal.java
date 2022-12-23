@@ -184,4 +184,28 @@ public abstract class Animal implements Mutacoes {
 
     public abstract double retornaAtratividade();
 
+    @Override
+    public String toString() {
+        String texto = new String();
+        // na hora da compra ainda não tem ID
+        if (getIdAnimal() != 0)
+            texto += "ID: " + getIdAnimal() + " | ";
+        texto += "Espécie: " + this.getClass().getSimpleName();
+        texto += " | Nome: " + getNome();
+        texto += " | Idade: " + getIdade();
+        // mostrar mutacoes só na hora da compra
+        if (getIdAnimal() == 0) {
+            texto += " | Albino: " + (isAlbinismo() == true ? "sim" : "não");
+            texto += " | Heterocromia: " + (isHeterocromia() == true ? "sim" : "não");
+            texto += " | Melanismo: " + (isMelanismo() == true ? "sim" : "não");
+            texto += " | Siames: " + (isSiames() == true ? "sim" : "não");
+            texto += " | Vitiligo: " + (isVitiligo() == true ? "sim" : "não");
+        }
+        // no caso do animal for comprado
+        else {
+            texto += " | Atratividade: " + retornaAtratividade();
+        }
+        return texto;
+    }
+
 }
