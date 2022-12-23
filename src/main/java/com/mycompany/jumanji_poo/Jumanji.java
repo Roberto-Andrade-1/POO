@@ -170,15 +170,6 @@ public class Jumanji {
         int i = 1;
 
         for (Animal animal : treAnimaisAleat) {
-            // System.out.println(i + ".Espécie: " + animal.getClass().getSimpleName() +
-            // " | Nome: " + animal.getNome() +
-            // " | Idade: " + animal.getIdade() +
-            // " | Albino: " + (animal.isAlbinismo() == true ? "sim" : "não") +
-            // " | Heterocromia: " + (animal.isHeterocromia() == true ? "sim" : "não") +
-            // " | Melanismo: " + (animal.isMelanismo() == true ? "sim" : "não") +
-            // " | Siames: " + (animal.isSiames() == true ? "sim" : "não") +
-            // " | Vitiligo: " + (animal.isVitiligo() == true ? "sim" : "não"));
-            // System.out.print("\n" + i + ".");
             System.out.print("\n" + i + "." + animal);
             i++;
         }
@@ -212,13 +203,14 @@ public class Jumanji {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("""
+
                 Escolha uma das seguintes caracteristicas genéticas:
                 1.Canis
                 2.Equus
                 3.Naja
                 4.Ovis
                 5.Panthera
-                6.Ursus\n
+                6.Ursus
                 """);
 
         int escolha = scan.nextInt();

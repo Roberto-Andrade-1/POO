@@ -32,18 +32,6 @@ public abstract class Animal implements Mutacoes {
 
     }
 
-    public Animal(boolean albinismo) {
-        idAnimal = 0;
-        this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
-        this.idade = 0;
-        this.custo = 0;
-        this.albinismo = detetAlbinismo();
-        this.vitiligo = detetaVitiligo();
-        this.melanismo = detetaMelanismo();
-        this.heterocromia = detetaHeterocromia();
-        this.siames = detetaSiames();
-    }
-
     public Animal() {
         idAnimal = 0;
         this.nome = nomesAleatorios[numAleatorioArray(nomesAleatorios.length)];
@@ -98,8 +86,12 @@ public abstract class Animal implements Mutacoes {
         return viasExtincao;
     }
 
-    public String[] getNomesAleatorios() {
+    public static String[] getNomesaleatorios() {
         return nomesAleatorios;
+    }
+
+    public int getCusto() {
+        return custo;
     }
 
     public void setViasExtincao(boolean viasExtincao) {
@@ -206,6 +198,10 @@ public abstract class Animal implements Mutacoes {
             texto += " | Atratividade: " + retornaAtratividade();
         }
         return texto;
+    }
+
+    public void calculaCusto() {
+
     }
 
 }
