@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.HashMap;
 
 public class Zoo {
@@ -13,6 +14,7 @@ public class Zoo {
     private List<Animal> animaisPerdidos;
     private List<Animal> animaisErrantes;
     private List<Animal> animaisMortos;
+    private Scanner scan;
 
     public Zoo(int saldo) {
         this.saldo = saldo;
@@ -85,13 +87,6 @@ public class Zoo {
         return total;
     }
 
-    public void listarAnimaisErrantes() {
-        System.out.println("Animais errantes");
-        for (Animal animal : animaisErrantes) {
-            System.out.println(animal);
-        }
-    }
-
     public void verificaOcupacaoRec() {
         for (Map.Entry<Recinto, Animal[]> recintos : recintos.entrySet()) {
             int total = 0;
@@ -110,6 +105,212 @@ public class Zoo {
         System.out.println("\nRECINTOS");
         for (Recinto i : getRecintos().keySet()) {
             System.out.println(i);
+        }
+    }
+
+    public void listarAnimaisErrantes() {
+        for (Animal animal : animaisErrantes) {
+            System.out.println(animal);
+        }
+    }
+
+    public void listarAnimaisRecintos() {
+        for (Animal[] ani : recintos.values()) {
+            for (Animal animal : ani) {
+                if (animal != null) {
+                    System.out.println(animal);
+                }
+            }
+
+        }
+    }
+
+    public void listarAnimais() {
+        System.out.println("\nAnimais errantes:");
+        listarAnimaisErrantes();
+        System.out.println("\nAnimais em recintos");
+        listarAnimaisRecintos();
+    }
+
+    public void listarAnimaisCarGenetica() {
+        scan = new Scanner(System.in);
+        System.out.println("""
+
+                Qual a característica genetica que pretende?
+                1.Canis
+                2.Equus
+                3.Naja
+                4.Ovis
+                5.Phantera
+                6.Ursus
+
+                """);
+        int escolha = scan.nextInt();
+        switch (escolha) {
+            case 1:
+                for (Animal animal : animaisErrantes) {
+                    if (Canis.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : recintos.values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Canis.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 2:
+                for (Animal animal : animaisErrantes) {
+                    if (Equus.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : recintos.values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Equus.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for (Animal animal : animaisErrantes) {
+                    if (Naja.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : recintos.values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Naja.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 4:
+                for (Animal animal : animaisErrantes) {
+                    if (Ovis.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : recintos.values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Ovis.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 5:
+                for (Animal animal : animaisErrantes) {
+                    if (Panthera.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : recintos.values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Panthera.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case 6:
+                for (Animal animal : animaisErrantes) {
+                    if (Ursus.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : recintos.values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Ursus.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+    public void listarDadaMutacao() {
+        scan = new Scanner(System.in);
+        System.out.println("""
+
+                Qual a mutação pretende?
+                1.Albino
+                2.Heterocromia
+                3.Melanismo
+                4.Siames
+                5.Vitiligo
+
+                """);
+        int escolha = scan.nextInt();
+        switch (escolha) {
+            case 1:
+                for (Animal animal : animaisErrantes) {
+                    if (animal.isAlbinismo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : recintos.values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isAlbinismo())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 2:
+                for (Animal animal : animaisErrantes) {
+                    if (animal.isHeterocromia())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : recintos.values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isHeterocromia())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 3:
+                for (Animal animal : animaisErrantes) {
+                    if (animal.isMelanismo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : recintos.values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isMelanismo())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 4:
+                for (Animal animal : animaisErrantes) {
+                    if (animal.isSiames())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : recintos.values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isSiames())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            case 5:
+                for (Animal animal : animaisErrantes) {
+                    if (animal.isVitiligo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : recintos.values()) {
+                    for (Animal ani : animal) {
+                        if (ani.isVitiligo())
+                            System.out.println(animal);
+                    }
+                }
+                break;
+            default:
+                System.out.println("Valor inválido");
+                break;
         }
     }
 }

@@ -17,7 +17,7 @@ public abstract class Animal implements Mutacoes {
     private String nome;
     private boolean viasExtincao;
     private final String SEXO;
-    private final boolean ALBINISMO, vitiligo, melanismo, heterocromia, siames;
+    private final boolean ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES;
     // private final int custo;
 
     public Animal(String nome) {
@@ -25,11 +25,11 @@ public abstract class Animal implements Mutacoes {
         this.nome = nome;
         this.idade = 0;
         this.ALBINISMO = detetAlbinismo();
-        this.vitiligo = detetaVitiligo();
-        this.melanismo = detetaMelanismo();
-        this.heterocromia = detetaHeterocromia();
-        this.siames = detetaSiames();
-        this.SEXO = SEXOAleatorio();
+        this.VITILIGO = detetaVitiligo();
+        this.MELANISMO = detetaMelanismo();
+        this.HETEROCROMIA = detetaHeterocromia();
+        this.SIAMES = detetaSiames();
+        this.SEXO = sexoAleatorio();
 
     }
 
@@ -38,11 +38,11 @@ public abstract class Animal implements Mutacoes {
         this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
         this.idade = 0;
         this.ALBINISMO = detetAlbinismo();
-        this.vitiligo = detetaVitiligo();
-        this.melanismo = detetaMelanismo();
-        this.heterocromia = detetaHeterocromia();
-        this.siames = detetaSiames();
-        this.SEXO = SEXOAleatorio();
+        this.VITILIGO = detetaVitiligo();
+        this.MELANISMO = detetaMelanismo();
+        this.HETEROCROMIA = detetaHeterocromia();
+        this.SIAMES = detetaSiames();
+        this.SEXO = sexoAleatorio();
     }
 
     public String getSEXO() {
@@ -104,19 +104,19 @@ public abstract class Animal implements Mutacoes {
     }
 
     public boolean isVitiligo() {
-        return vitiligo;
+        return VITILIGO;
     }
 
     public boolean isMelanismo() {
-        return melanismo;
+        return MELANISMO;
     }
 
     public boolean isHeterocromia() {
-        return heterocromia;
+        return HETEROCROMIA;
     }
 
     public boolean isSiames() {
-        return siames;
+        return SIAMES;
     }
 
     public int numAleatorioObjHash() {
@@ -205,7 +205,7 @@ public abstract class Animal implements Mutacoes {
         return texto;
     }
 
-    public String SEXOAleatorio() {
+    public String sexoAleatorio() {
         Random rand = new Random();
         int num = rand.nextInt(10);
         if ((num % 2) == 0)
@@ -213,4 +213,5 @@ public abstract class Animal implements Mutacoes {
         else
             return "Macho";
     }
+
 }

@@ -54,9 +54,10 @@ public class Jumanji {
                     calendarioChines();
                     break;
                 case 6:
-                    zoo.listarAnimaisErrantes();
+                    zoo.listarAnimais();
                     break;
                 case 7:
+                    zoo.listarAnimaisCarGenetica();
                     break;
                 case 8:
                     break;
@@ -216,7 +217,7 @@ public class Jumanji {
                 2.Equus
                 3.Naja
                 4.Ovis
-                5.Panthera
+                5.Phantera
                 6.Ursus
                 """);
 
@@ -374,11 +375,11 @@ public class Jumanji {
                             zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira hashmap
                             zoo.setAnimaisErrantes(a);// insere o animal antigo da hashmap na lista de animais
                         }
+                        System.out.println("\nAnimal inserido com sucesso");
                     }
                 }
             }
         }
-        // System.out.println(zoo.getRecintos());
     }
 
     public static void calendarioChines() {
