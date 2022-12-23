@@ -70,4 +70,27 @@ public class Porco extends Animal {
         return total;
     }
 
+    @Override
+    public double retornaCusto() {
+        // Random rand=new Random();
+        double total = getAtratividadeBase() / 10;
+        if (isAlbinismo())
+            total += getAtratividadeBase() / 5;
+        if (isSiames())
+            total += getAtratividadeBase() / 8;
+        if (isHeterocromia())
+            total += getAtratividadeBase() / 6;
+        if (isMelanismo())
+            total += getAtratividadeBase() / 6;
+        if (isVitiligo())
+            total += getAtratividadeBase() / 8;
+        if (isViasExtincao())
+            total += getAtratividadeBase() / 3;
+        if (getIdade() <= Math.round(getEsperancaVida() / 5))
+            total += getAtratividadeBase() / 4;
+        else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
+            total -= getAtratividadeBase() / 4;
+        return total;
+    }
+
 }

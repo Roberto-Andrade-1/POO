@@ -1,5 +1,7 @@
 package com.mycompany.jumanji_poo;
 
-public interface Canis extends CaracteristicaGenetica {
+public interface Canis {
+    double custoCanis = 1300;
+
     public void uivar();
 }
