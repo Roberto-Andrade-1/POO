@@ -16,6 +16,7 @@ public abstract class Animal implements Mutacoes {
     private int idAnimal, idade;
     private String nome;
     private boolean viasExtincao;
+    private final String sexo;
     private final boolean albinismo, vitiligo, melanismo, heterocromia, siames;
     // private final int custo;
 
@@ -28,6 +29,7 @@ public abstract class Animal implements Mutacoes {
         this.melanismo = detetaMelanismo();
         this.heterocromia = detetaHeterocromia();
         this.siames = detetaSiames();
+        this.sexo = sexoAleatorio();
 
     }
 
@@ -40,6 +42,11 @@ public abstract class Animal implements Mutacoes {
         this.melanismo = detetaMelanismo();
         this.heterocromia = detetaHeterocromia();
         this.siames = detetaSiames();
+        this.sexo = sexoAleatorio();
+    }
+
+    public String getSexo() {
+        return sexo;
     }
 
     public int numAleatorioArray(int length) {
@@ -181,14 +188,15 @@ public abstract class Animal implements Mutacoes {
         texto += "Espécie: " + this.getClass().getSimpleName();
         texto += " | Nome: " + getNome();
         texto += " | Idade: " + getIdade();
+        texto += " | Sexo: " + getSexo();
         // mostrar mutacoes só na hora da compra
         if (getIdAnimal() == 0) {
-            texto += " | Albino: " + (isAlbinismo() == true ? "sim" : "não");
-            texto += " | Heterocromia: " + (isHeterocromia() == true ? "sim" : "não");
-            texto += " | Melanismo: " + (isMelanismo() == true ? "sim" : "não");
-            texto += " | Siames: " + (isSiames() == true ? "sim" : "não");
-            texto += " | Vitiligo: " + (isVitiligo() == true ? "sim" : "não");
-            texto += " | Custo: " + retornaCusto(); // retorna o valor com duas casas decimais
+            texto += " \n-> Albino: " + (isAlbinismo() == true ? "sim" : "não");
+            texto += " \n-> Heterocromia: " + (isHeterocromia() == true ? "sim" : "não");
+            texto += " \n-> Melanismo: " + (isMelanismo() == true ? "sim" : "não");
+            texto += " \n-> Siames: " + (isSiames() == true ? "sim" : "não");
+            texto += " \n-> Vitiligo: " + (isVitiligo() == true ? "sim" : "não");
+            texto += " \n----> Custo: " + retornaCusto() + "\n"; // retorna o valor com duas casas decimais
         }
         // no caso do animal for comprado
         else {
@@ -197,4 +205,12 @@ public abstract class Animal implements Mutacoes {
         return texto;
     }
 
+    public String sexoAleatorio() {
+        Random rand = new Random();
+        int num = rand.nextInt(10);
+        if ((num % 2) == 0)
+            return "Fêmea";
+        else
+            return "Macho";
+    }
 }
