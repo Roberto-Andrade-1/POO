@@ -78,7 +78,7 @@ public class UrsoCastanho extends Animal implements Ursus {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 10 + custoUrsus;
+        double total = getAtratividadeBase() / 5 + custoUrsus;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -94,8 +94,8 @@ public class UrsoCastanho extends Animal implements Ursus {
         if (getIdade() <= Math.round(getEsperancaVida() / 5))
             total += getAtratividadeBase() / 4;
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
-            total -= getAtratividadeBase() / 4;
-        return total;
+            total -= getAtratividadeBase() / 10;
+        return Math.round(total * 100) / 100;
     }
 
 }

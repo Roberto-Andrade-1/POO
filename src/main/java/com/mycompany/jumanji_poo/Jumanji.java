@@ -11,7 +11,7 @@ public class Jumanji {
 
         boolean sair = false;
         Scanner scan = new Scanner(System.in);
-        Zoo zoo = new Zoo(1000000);
+        Zoo zoo = new Zoo(100000);
 
         while (!sair) {
             System.out.println("""
@@ -67,6 +67,7 @@ public class Jumanji {
                 case 12:
                     break;
                 case 13:
+                    System.out.println(zoo.getSaldo());
                     break;
                 case 14:
                     break;
@@ -180,17 +181,20 @@ public class Jumanji {
             case 1:
                 Animal.setIdAnimalAtualizado();
                 treAnimaisAleat[0].setIdAnimal(Animal.getIdAnimalAtualizado());
-                zoo.setAnimaisErrantes(treAnimaisAleat[1 - 1]);
+                zoo.setAnimaisErrantes(treAnimaisAleat[0]);
+                zoo.setSaldo(zoo.getSaldo() - treAnimaisAleat[0].retornaCusto());
                 break;
             case 2:
                 Animal.setIdAnimalAtualizado();
                 treAnimaisAleat[1].setIdAnimal(Animal.getIdAnimalAtualizado());
-                zoo.setAnimaisErrantes(treAnimaisAleat[2 - 1]);
+                zoo.setAnimaisErrantes(treAnimaisAleat[1]);
+                zoo.setSaldo(zoo.getSaldo() - treAnimaisAleat[1].retornaCusto());
                 break;
             case 3:
                 Animal.setIdAnimalAtualizado();
                 treAnimaisAleat[2].setIdAnimal(Animal.getIdAnimalAtualizado());
-                zoo.setAnimaisErrantes(treAnimaisAleat[3 - 1]);
+                zoo.setAnimaisErrantes(treAnimaisAleat[2]);
+                zoo.setSaldo(zoo.getSaldo() - treAnimaisAleat[2].retornaCusto());
                 break;
             default:
                 System.out.println("Valor inválido");
@@ -215,68 +219,80 @@ public class Jumanji {
 
         int escolha = scan.nextInt();
         Animal a = animaisAleatorios();
-
+        boolean inserir = false;
         // isAssignableFrom verifica se a classe implementa a interface
         switch (escolha) {
             case 1:
                 if (Canis.class.isAssignableFrom(a.getClass())) {
+                    inserir = true;
                 } else {
                     while (!Canis.class.isAssignableFrom(a.getClass())) {
                         a = animaisAleatorios();
                     }
+                    inserir = true;
                 }
                 break;
             case 2:
                 if (Equus.class.isAssignableFrom(a.getClass())) {
-
+                    inserir = true;
                 } else {
                     while (!Equus.class.isAssignableFrom(a.getClass())) {
                         a = animaisAleatorios();
                     }
+                    inserir = true;
                 }
                 break;
             case 3:
                 if (Naja.class.isAssignableFrom(a.getClass())) {
-
+                    inserir = true;
                 } else {
                     while (!Naja.class.isAssignableFrom(a.getClass())) {
                         a = animaisAleatorios();
                     }
+                    inserir = true;
                 }
                 break;
             case 4:
                 if (Ovis.class.isAssignableFrom(a.getClass())) {
-
+                    inserir = true;
                 } else {
                     while (!Ovis.class.isAssignableFrom(a.getClass())) {
                         a = animaisAleatorios();
                     }
+                    inserir = true;
                 }
                 break;
             case 5:
                 if (Panthera.class.isAssignableFrom(a.getClass())) {
-
+                    inserir = true;
                 } else {
                     while (!Panthera.class.isAssignableFrom(a.getClass())) {
                         a = animaisAleatorios();
                     }
+                    inserir = true;
                 }
                 break;
             case 6:
                 if (Ursus.class.isAssignableFrom(a.getClass())) {
-
+                    inserir = true;
                 } else {
                     while (!Ursus.class.isAssignableFrom(a.getClass())) {
                         a = animaisAleatorios();
                     }
+                    inserir = true;
                 }
                 break;
-
+            default:
+                System.out.println("Numero invalido");
+                break;
         }
-        System.out.println(a);
-        Animal.setIdAnimalAtualizado();
-        a.setIdAnimal(Animal.getIdAnimalAtualizado());
-        zoo.setAnimaisErrantes(a);
+        if (inserir) {
+            System.out.println(a);
+            Animal.setIdAnimalAtualizado();
+            a.setIdAnimal(Animal.getIdAnimalAtualizado());
+            zoo.setAnimaisErrantes(a);
+            zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());
+        }
     }
 
     public static void recintosAleatorio(Zoo zoo) {

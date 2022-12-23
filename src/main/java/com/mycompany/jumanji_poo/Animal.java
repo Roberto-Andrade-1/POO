@@ -188,6 +188,7 @@ public abstract class Animal implements Mutacoes {
             texto += " | Melanismo: " + (isMelanismo() == true ? "sim" : "não");
             texto += " | Siames: " + (isSiames() == true ? "sim" : "não");
             texto += " | Vitiligo: " + (isVitiligo() == true ? "sim" : "não");
+            texto += " | Custo: " + retornaCusto(); // retorna o valor com duas casas decimais
         }
         // no caso do animal for comprado
         else {

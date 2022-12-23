@@ -23,7 +23,7 @@ public class Zoo {
     }
 
     public double getSaldo() {
-        return saldo;
+        return Math.round(saldo * 100) / 100;
     }
 
     public void setSaldo(double saldo) {

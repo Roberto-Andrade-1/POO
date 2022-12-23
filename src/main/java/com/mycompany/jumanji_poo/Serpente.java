@@ -83,7 +83,7 @@ public class Serpente extends Animal implements Naja {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 10 + custoNaja;
+        double total = getAtratividadeBase() / 5 + custoNaja;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -99,8 +99,8 @@ public class Serpente extends Animal implements Naja {
         if (getIdade() <= Math.round(getEsperancaVida() / 5))
             total += getAtratividadeBase() / 4;
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
-            total -= getAtratividadeBase() / 4;
-        return total;
+            total -= getAtratividadeBase() / 10;
+        return Math.round(total * 100) / 100;
     }
 
 }
