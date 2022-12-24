@@ -634,6 +634,7 @@ public class Jumanji {
             }
         }
         System.out.println("Proveitos: " + proveitos + "\n");
+
         // aumenta idade dos animais
         for (Animal animal : zoo.getAnimaisErrantes()) {
             animal.setIdade(animal.getIdade() + 1);
@@ -743,13 +744,14 @@ public class Jumanji {
         // retira do saldo do zoo os custos (ja ta feito no metodo calculaDespesas no
         // zoo)
 
-        // registar os nascimentos e obitos
+        // nascimentos
         System.out.println("\nNasimentos: ");
         List<Animal> ani = new ArrayList<Animal>();
         for (Animal animal : zoo.getAnimaisErrantes()) {
             int num = rand.nextInt(101);
             Animal a = null;
-            if (animal.retornaApetiteReprodutivo() >= num) {
+            if (animal.retornaApetiteReprodutivo() >= num
+                    && animal.getIdade() >= Math.round((0.25) * animal.retornaEsperancaVida())) {
                 switch (animal.getClass().getSimpleName()) {
                     case "Boi":
                         a = new Boi(0);
@@ -823,13 +825,93 @@ public class Jumanji {
                 System.out.println(a);
             }
         }
-        for (Animal animal : ani) {
-            zoo.setAnimaisErrantes(animal);
-        }
+        for (Animal[] animais : zoo.getRecintos().values()) {
+            for (Animal animal : animais) {
+                int num = rand.nextInt(101);
+                Animal a = null;
+                if (animal != null && animal.retornaApetiteReprodutivo() >= num
+                        && animal.getIdade() >= Math.round((0.25) * animal.retornaEsperancaVida())) {
+                    switch (animal.getClass().getSimpleName()) {
+                        case "Boi":
+                            a = new Boi(0);
+                            break;
+                        case "Cao":
+                            a = new Cao(0);
+                            break;
+                        case "Carneiro":
+                            a = new Carneiro(0);
+                            break;
+                        case "Cavalo":
+                            a = new Cavalo(0);
+                            break;
+                        case "Chita":
+                            a = new Chita(0);
+                            break;
+                        case "Coelho":
+                            a = new Coelho(0);
+                            break;
+                        case "Dragao":
+                            a = new Dragao(0);
+                            break;
+                        case "Galo":
+                            a = new Galo(0);
+                            break;
+                        case "Leao":
+                            a = new Leao(0);
+                            break;
+                        case "LinceIberico":
+                            a = new LinceIberico(0);
+                            break;
+                        case "Lobo":
+                            a = new Lobo(0);
+                            break;
+                        case "Macaco":
+                            a = new Macaco(0);
+                            break;
+                        case "Panda":
+                            a = new Panda(0);
+                            break;
+                        case "Porco":
+                            a = new Porco(0);
+                            break;
+                        case "Raposa":
+                            a = new Raposa(0);
+                            break;
+                        case "Rato":
+                            a = new Rato(0);
+                            break;
+                        case "Serpente":
+                            a = new Serpente(0);
+                            break;
+                        case "Tigre":
+                            a = new Tigre(0);
+                            break;
+                        case "UrsoCastanho":
+                            a = new UrsoCastanho(0);
+                            break;
+                        case "UrsoPolar":
+                            a = new UrsoPolar(0);
+                            break;
+                        case "UrsoPreto":
+                            a = new UrsoPreto(0);
+                            break;
+                        default:
+                            System.out.println("Erro especie animal");
+                    }
+                    Animal.setIdAnimalAtualizado();
+                    a.setIdAnimal(Animal.getIdAnimalAtualizado());
+                    ani.add(a);
+                    System.out.println(a);
+                }
+            }
+            for (Animal animal : ani) {
+                zoo.setAnimaisErrantes(animal);
+            }
 
-        // em caso de prejuizo pode-se perder animais
-        if (proveitos < zoo.calculaDespesas()) {
+            // em caso de prejuizo pode-se perder animais
+            if (proveitos < zoo.calculaDespesas()) {
 
+            }
         }
     }
 }

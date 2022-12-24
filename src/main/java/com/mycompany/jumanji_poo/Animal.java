@@ -18,7 +18,6 @@ public abstract class Animal implements Mutacoes {
     private boolean viasExtincao;
     private final String SEXO;
     private final boolean ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES;
-    // private final int custo;
 
     public Animal(String nome) {
         idAnimal = 0;
@@ -31,18 +30,6 @@ public abstract class Animal implements Mutacoes {
         this.SIAMES = detetaSiames();
         this.SEXO = sexoAleatorio();
 
-    }
-
-    public Animal(int idade) {
-        idAnimal = 0;
-        this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
-        this.idade = idade;
-        this.ALBINISMO = detetAlbinismo();
-        this.VITILIGO = detetaVitiligo();
-        this.MELANISMO = detetaMelanismo();
-        this.HETEROCROMIA = detetaHeterocromia();
-        this.SIAMES = detetaSiames();
-        this.SEXO = sexoAleatorio();
     }
 
     public Animal() {
