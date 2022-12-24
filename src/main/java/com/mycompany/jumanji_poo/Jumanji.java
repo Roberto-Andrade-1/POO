@@ -71,6 +71,7 @@ public class Jumanji {
                     break;
                 case 13:
                     System.out.println(zoo.getSaldo());
+                    periodoContabilistico(zoo);
                     break;
                 case 14:
                     break;
@@ -552,8 +553,8 @@ public class Jumanji {
                 }
                 for (Animal[] animal : zoo.getRecintos().values()) {
                     for (Animal ani : animal) {
-                        if (ani.isAlbinismo())
-                            System.out.println(animal);
+                        if (ani != null && ani.isAlbinismo())
+                            System.out.println(ani);
                     }
                 }
                 break;
@@ -564,8 +565,8 @@ public class Jumanji {
                 }
                 for (Animal[] animal : zoo.getRecintos().values()) {
                     for (Animal ani : animal) {
-                        if (ani.isHeterocromia())
-                            System.out.println(animal);
+                        if (ani != null && ani.isHeterocromia())
+                            System.out.println(ani);
                     }
                 }
                 break;
@@ -576,8 +577,8 @@ public class Jumanji {
                 }
                 for (Animal[] animal : zoo.getRecintos().values()) {
                     for (Animal ani : animal) {
-                        if (ani.isMelanismo())
-                            System.out.println(animal);
+                        if (ani != null && ani.isMelanismo())
+                            System.out.println(ani);
                     }
                 }
                 break;
@@ -588,8 +589,8 @@ public class Jumanji {
                 }
                 for (Animal[] animal : zoo.getRecintos().values()) {
                     for (Animal ani : animal) {
-                        if (ani.isSiames())
-                            System.out.println(animal);
+                        if (ani != null && ani.isSiames())
+                            System.out.println(ani);
                     }
                 }
                 break;
@@ -600,8 +601,8 @@ public class Jumanji {
                 }
                 for (Animal[] animal : zoo.getRecintos().values()) {
                     for (Animal ani : animal) {
-                        if (ani.isVitiligo())
-                            System.out.println(animal);
+                        if (ani != null && ani.isVitiligo())
+                            System.out.println(ani);
                     }
                 }
                 break;
@@ -613,9 +614,15 @@ public class Jumanji {
 
     public static void periodoContabilistico(Zoo zoo) {
         // calcular primeiro os custos totais do zoo
-        zoo.calculaDespesas();
+        // zoo.calculaDespesas();
 
         // calcula os proveitos totais do zoo
+        for (Animal[] animais : zoo.getRecintos().values()) {
+            for (Animal animal : animais) {
+                if (animal != null)
+                    zoo.setSaldo(zoo.getSaldo() + animal.retornaAtratividade());
+            }
+        }
 
         // retira do saldo do zoo os custos
         // zoo.getSaldo() - zoo.calculaDespesas();
