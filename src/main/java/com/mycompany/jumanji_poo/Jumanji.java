@@ -426,6 +426,33 @@ public class Jumanji {
                 Boi.setAtratividadeBase(Boi.getAtratividadeBase() * 1.50);
                 break;
         }
+          Scanner scan =new Scanner(System.in);
+          System.out.println("Escolha um ano: ");
+          int year = scan.nextInt();
+          if((year-2000)%12 == 0){
+            Dragao.setAtratividadeBase(Dragao.getAtratividadeBase()*1.50);
+            System.out.println("Ano do Dragão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
+          }
+          else if((year-2000)%12 == 1){
+            Serpente.setAtratividadeBase(Serpente.getAtratividadeBase()*1.50);
+            System.out.println("Ano da Serpente, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
+          }
+          else if((year-2000)%12 == 2){
+            Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase()*1.50);
+            System.out.println("Ano do Cavalo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
+          }
+          else if((year-2000)%12 == 3){
+            Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase()*1.50);
+            System.out.println("Ano do Carneiro, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
+          }
+          else if((year-2000)%12 == 4){
+            Macaco.setAtratividadeBase(Macaco.getAtratividadeBase()*1.50);
+            System.out.println("Ano do Macaco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
+          }
+          else if((year-2000)%12 == 5){
+            Galo.setAtratividadeBase(Galo.getAtratividadeBase()*1.50);
+            System.out.println("Ano do Galo, o animal ")
+          }
 
     }
 
@@ -611,7 +638,10 @@ public class Jumanji {
                 break;
         }
     }
-
+    //9. Listar instalações
+    public static void listarInstalacoes (Zoo zoo){
+        for(){}
+    } 
     public static void periodoContabilistico(Zoo zoo) {
         // calcular primeiro os custos totais do zoo
         // zoo.calculaDespesas();
