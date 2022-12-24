@@ -3,7 +3,6 @@ package com.mycompany.jumanji_poo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.HashMap;
 
 public class Zoo {
@@ -14,7 +13,6 @@ public class Zoo {
     private List<Animal> animaisPerdidos;
     private List<Animal> animaisErrantes;
     private List<Animal> animaisMortos;
-    private Scanner scan;
 
     public Zoo(int saldo) {
         this.saldo = saldo;
