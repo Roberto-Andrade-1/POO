@@ -70,8 +70,8 @@ public class Jumanji {
                 case 12:
                     break;
                 case 13:
-                    System.out.println(zoo.getSaldo());
                     periodoContabilistico(zoo);
+                    System.out.println(zoo.getSaldo());
                     break;
                 case 14:
                     break;
@@ -360,7 +360,12 @@ public class Jumanji {
                     Animal ani = zoo.getAnimaisErrantes().get(j);
                     if (ani.getIdAnimal() == idAnimal) {// se o id for igual ao qur o utilizador escolheu
                         if (rec.getCapacidade() != rec.getOcupacao()) {// se ainda houver lugares disponiveis no recinto
-                            animais[rec.getOcupacao()] = ani;// adiciona na Hashmap
+                            for (int i = 0; i < animais.length; i++) {// adiciona na Hashmap numa posição nula
+                                if (animais[i] == null) {
+                                    animais[i] = ani;
+                                    break;
+                                }
+                            }
                             zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira da lista de
                                                                                              // aniamis errantes
                         } else {// caso esteja cheio o recinto
@@ -609,15 +614,19 @@ public class Jumanji {
         }
     }
 
+    // 13.Periodo contabilistico
     public static void periodoContabilistico(Zoo zoo) {
         // calcular primeiro os custos totais do zoo
         // zoo.calculaDespesas();
 
         // calcula os proveitos totais do zoo
+        int proveitos = 0;
         for (Animal[] animais : zoo.getRecintos().values()) {
             for (Animal animal : animais) {
-                if (animal != null)
+                if (animal != null) {
                     zoo.setSaldo(zoo.getSaldo() + animal.retornaAtratividade());
+                    proveitos += animal.retornaAtratividade();
+                }
             }
         }
 
@@ -632,10 +641,21 @@ public class Jumanji {
             }
         }
 
-        // retira do saldo do zoo os custos
-        // zoo.getSaldo() - zoo.calculaDespesas();
+        // Probabilidade de morrer
+        System.out.println("Foram perdidos neste periodo contabilistico os seguintes animais: ");
+        for (Animal animal : zoo.probabilidadeMorrer()) {
+            System.out.println(animal);
+        }
+
+        // retira do saldo do zoo os custos (ja ta feito no metodo calculaDespesas no
+        // zoo)
+
         // registar os nascimentos e obitos
+        System.out.println("\nNasimentos: ");
 
         // em caso de prejuizo pode-se perder animais
+        if (proveitos < zoo.calculaDespesas()) {
+
+        }
     }
 }
