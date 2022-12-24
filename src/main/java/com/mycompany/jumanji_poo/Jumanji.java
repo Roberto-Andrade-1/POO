@@ -1,5 +1,6 @@
 package com.mycompany.jumanji_poo;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -66,12 +67,13 @@ public class Jumanji {
                 case 10:
                     break;
                 case 11:
+                    zoo.listarAnimaisMortos();
                     break;
                 case 12:
                     break;
                 case 13:
                     periodoContabilistico(zoo);
-                    System.out.println(zoo.getSaldo());
+                    System.out.println("Saldo atualmente disponivel: " + zoo.getSaldo());
                     break;
                 case 14:
                     break;
@@ -642,9 +644,109 @@ public class Jumanji {
         }
 
         // Probabilidade de morrer
-        System.out.println("Foram perdidos neste periodo contabilistico os seguintes animais: ");
-        for (Animal animal : zoo.probabilidadeMorrer()) {
-            System.out.println(animal);
+        ArrayList<Animal> animaisMortosNumPeriodo = new ArrayList<Animal>();
+        Random rand = new Random();
+        for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
+            int num = rand.nextInt(101);
+            if (zoo.getAnimaisErrantes().get(i) != null) {
+                if (zoo.getAnimaisErrantes().get(i).getIdade() >= zoo.getAnimaisErrantes().get(i)
+                        .retornaEsperancaVida()) { // 90% de
+                    // animal
+                    // morrer
+                    if (num < 90) {
+                        animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
+                        zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
+                    }
+                } else if (zoo.getAnimaisErrantes().get(i).getIdade() >= 0.8
+                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 75$
+                    // do
+                    // animal
+                    // morrer
+                    if (num < 75) {
+                        animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
+                        zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
+                    }
+                } else if (zoo.getAnimaisErrantes().get(i).getIdade() >= 0.6
+                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 40%
+                    // do
+                    // animal
+                    // morrer
+                    if (num < 40) {
+                        animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
+                        zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
+                    }
+                } else if (zoo.getAnimaisErrantes().get(i).getIdade() >= 0.4
+                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 10%
+                    // do
+                    // animal
+                    // morrer
+                    if (num < 10) {
+                        animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
+                        zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
+                    }
+                } else { // 3% de morrer
+                    if (num < 3) {
+                        animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
+                        zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
+                    }
+                }
+            }
+        }
+
+        for (Animal[] animais : zoo.getRecintos().values()) {
+            int num = rand.nextInt(101);
+            for (int i = 0; i < animais.length; i++) {
+                if (animais[i] != null) {
+                    if (animais[i].getIdade() >= animais[i].retornaEsperancaVida()) { // 90% de o animal morrer
+                        if (num < 90) {
+                            animaisMortosNumPeriodo.add(animais[i]);
+                            zoo.setAnimaisMortos(animais[i]);
+                            animais[i] = null;
+                        }
+                    } else if (animais[i].getIdade() >= 0.8 * animais[i].retornaEsperancaVida()) {// 75$ do animal
+                                                                                                  // morrer
+                        if (num < 75) {
+                            animaisMortosNumPeriodo.add(animais[i]);
+                            zoo.setAnimaisMortos(animais[i]);
+                            animais[i] = null;
+                        }
+                    } else if (animais[i].getIdade() >= 0.6 * animais[i].retornaEsperancaVida()) {// 40% do animal
+                                                                                                  // morrer
+                        if (num < 40) {
+                            animaisMortosNumPeriodo.add(animais[i]);
+                            zoo.setAnimaisMortos(animais[i]);
+                            animais[i] = null;
+                        }
+                    } else if (animais[i].getIdade() >= 0.4 * animais[i].retornaEsperancaVida()) {// 10% do animal
+                                                                                                  // morrer
+                        if (num < 10) {
+                            animaisMortosNumPeriodo.add(animais[i]);
+                            zoo.setAnimaisMortos(animais[i]);
+                            animais[i] = null;
+                        }
+                    } else { // 3% de morrer
+                        if (num < 3) {
+                            animaisMortosNumPeriodo.add(animais[i]);
+                            zoo.setAnimaisMortos(animais[i]);
+                            animais[i] = null;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (animaisMortosNumPeriodo.isEmpty()) {
+            System.out.println("Nenhum animal morreu neste período contabilístico");
+        } else {
+            System.out.println("Os seguintes animais morreram neste período contabilístico:");
+            for (Animal animal : animaisMortosNumPeriodo) {
+                System.out.println(animal);
+            }
         }
 
         // retira do saldo do zoo os custos (ja ta feito no metodo calculaDespesas no

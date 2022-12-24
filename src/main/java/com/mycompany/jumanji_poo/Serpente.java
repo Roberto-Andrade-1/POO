@@ -4,6 +4,7 @@ public class Serpente extends Animal implements Naja {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 23;
+    private static final int APETITE_REPRODUTIVO = 28;
 
     public Serpente(String nome) {
         super(nome);
@@ -106,4 +107,8 @@ public class Serpente extends Animal implements Naja {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }

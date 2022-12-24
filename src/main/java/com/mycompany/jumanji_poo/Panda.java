@@ -4,6 +4,7 @@ public class Panda extends Animal implements Ursus {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 20;
+    private static final int APETITE_REPRODUTIVO = 5;
 
     public Panda(String nome) {
         super(nome);
@@ -101,4 +102,8 @@ public class Panda extends Animal implements Ursus {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }

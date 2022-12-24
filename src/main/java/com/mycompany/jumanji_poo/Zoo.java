@@ -137,99 +137,12 @@ public class Zoo {
         listarAnimaisRecintos();
     }
 
-    public ArrayList<Animal> probabilidadeMorrer() {
-        ArrayList<Animal> animaisMortosNumPeriodo = new ArrayList<Animal>();
-        Random rand = new Random();
-        int num = rand.nextInt(101);
-        for (int i = 0; i < animaisErrantes.size(); i++) {
-            if (animaisErrantes.get(i) != null) {
-                if (animaisErrantes.get(i).getIdade() >= animaisErrantes.get(i).retornaEsperancaVida()) { // 90% de
-                                                                                                          // animal
-                                                                                                          // morrer
-                    if (num < 90) {
-                        animaisMortosNumPeriodo.add(animaisErrantes.get(i));
-                        setAnimaisMortos(animaisErrantes.get(i));
-                        animaisErrantes.remove(animaisErrantes.get(i));
-                    }
-                } else if (animaisErrantes.get(i).getIdade() >= 0.8 * animaisErrantes.get(i).retornaEsperancaVida()) {// 75$
-                                                                                                                      // do
-                                                                                                                      // animal
-                                                                                                                      // morrer
-                    if (num < 75) {
-                        animaisMortosNumPeriodo.add(animaisErrantes.get(i));
-                        setAnimaisMortos(animaisErrantes.get(i));
-                        animaisErrantes.remove(animaisErrantes.get(i));
-                    }
-                } else if (animaisErrantes.get(i).getIdade() >= 0.6 * animaisErrantes.get(i).retornaEsperancaVida()) {// 40%
-                                                                                                                      // do
-                                                                                                                      // animal
-                                                                                                                      // morrer
-                    if (num < 40) {
-                        animaisMortosNumPeriodo.add(animaisErrantes.get(i));
-                        setAnimaisMortos(animaisErrantes.get(i));
-                        animaisErrantes.remove(animaisErrantes.get(i));
-                    }
-                } else if (animaisErrantes.get(i).getIdade() >= 0.4 * animaisErrantes.get(i).retornaEsperancaVida()) {// 15%
-                                                                                                                      // do
-                                                                                                                      // animal
-                                                                                                                      // morrer
-                    if (num < 15) {
-                        animaisMortosNumPeriodo.add(animaisErrantes.get(i));
-                        setAnimaisMortos(animaisErrantes.get(i));
-                        animaisErrantes.remove(animaisErrantes.get(i));
-                    }
-                } else { // 5% de morrer
-                    if (num < 3) {
-                        animaisMortosNumPeriodo.add(animaisErrantes.get(i));
-                        setAnimaisMortos(animaisErrantes.get(i));
-                        animaisErrantes.remove(animaisErrantes.get(i));
-                    }
-                }
-            }
+    public void listarAnimaisMortos() {
+        System.out.println("Animais mortos:");
+        for (Animal animal : animaisMortos) {
+            System.out.println(animal);
         }
 
-        for (Animal[] animais : recintos.values()) {
-            for (int i = 0; i < animais.length; i++) {
-                if (animais[i] != null) {
-                    if (animais[i].getIdade() >= animais[i].retornaEsperancaVida()) { // 90% de o animal morrer
-                        if (num < 90) {
-                            animaisMortosNumPeriodo.add(animais[i]);
-                            setAnimaisMortos(animais[i]);
-                            animais[i] = null;
-                        }
-                    } else if (animais[i].getIdade() >= 0.8 * animais[i].retornaEsperancaVida()) {// 75$ do animal
-                                                                                                  // morrer
-                        if (num < 75) {
-                            animaisMortosNumPeriodo.add(animais[i]);
-                            setAnimaisMortos(animais[i]);
-                            animais[i] = null;
-                        }
-                    } else if (animais[i].getIdade() >= 0.6 * animais[i].retornaEsperancaVida()) {// 40% do animal
-                                                                                                  // morrer
-                        if (num < 40) {
-                            animaisMortosNumPeriodo.add(animais[i]);
-                            setAnimaisMortos(animais[i]);
-                            animais[i] = null;
-                        }
-                    } else if (animais[i].getIdade() >= 0.4 * animais[i].retornaEsperancaVida()) {// 15% do animal
-                                                                                                  // morrer
-                        if (num < 15) {
-                            animaisMortosNumPeriodo.add(animais[i]);
-                            setAnimaisMortos(animais[i]);
-                            animais[i] = null;
-                        }
-                    } else { // 5% de morrer
-                        if (num < 3) {
-                            animaisMortosNumPeriodo.add(animais[i]);
-                            setAnimaisMortos(animais[i]);
-                            animais[i] = null;
-                        }
-                    }
-                }
-            }
-        }
-
-        return animaisMortosNumPeriodo;
     }
 
 }

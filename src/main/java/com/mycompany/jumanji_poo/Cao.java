@@ -4,6 +4,7 @@ public class Cao extends Animal implements Canis {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 15;
+    private static final int APETITE_REPRODUTIVO = 60;
 
     public Cao(String nome) {
         super(nome);
@@ -101,4 +102,8 @@ public class Cao extends Animal implements Canis {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }

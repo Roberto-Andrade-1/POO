@@ -4,6 +4,7 @@ public class LinceIberico extends Animal {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 13;
+    private static final int APETITE_REPRODUTIVO = 46;
 
     public LinceIberico(String nome) {
         super(nome);
@@ -96,4 +97,8 @@ public class LinceIberico extends Animal {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }

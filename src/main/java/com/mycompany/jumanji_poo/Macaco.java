@@ -4,6 +4,7 @@ public class Macaco extends Animal {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 17;
+    private static final int APETITE_REPRODUTIVO = 58;
 
     public Macaco(String nome) {
         super(nome);
@@ -94,5 +95,10 @@ public class Macaco extends Animal {
     @Override
     public int retornaEsperancaVida() {
         return ESPERANCA_VIDA;
+    }
+
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
     }
 }

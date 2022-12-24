@@ -4,6 +4,7 @@ public class Porco extends Animal {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 14;
+    private static final int APETITE_REPRODUTIVO = 58;
 
     public Porco(String nome) {
         super(nome);
@@ -96,4 +97,8 @@ public class Porco extends Animal {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }

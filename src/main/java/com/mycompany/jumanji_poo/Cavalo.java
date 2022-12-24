@@ -4,6 +4,7 @@ public class Cavalo extends Animal implements Equus {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 28;
+    private static final int APETITE_REPRODUTIVO = 60;
 
     public Cavalo() {
         setAtratividadeBase(3000);
@@ -106,4 +107,8 @@ public class Cavalo extends Animal implements Equus {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }

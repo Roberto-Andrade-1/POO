@@ -4,6 +4,7 @@ public class Tigre extends Animal implements Panthera {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 10;
+    private static final int APETITE_REPRODUTIVO = 43;
 
     public Tigre(String nome) {
         super(nome);
@@ -99,5 +100,10 @@ public class Tigre extends Animal implements Panthera {
     @Override
     public int retornaEsperancaVida() {
         return ESPERANCA_VIDA;
+    }
+
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
     }
 }

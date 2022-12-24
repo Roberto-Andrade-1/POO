@@ -179,6 +179,10 @@ public abstract class Animal implements Mutacoes {
 
     public abstract double retornaCusto();
 
+    public abstract int retornaApetiteReprodutivo();
+
+    public abstract int retornaEsperancaVida();
+
     @Override
     public String toString() {
         String texto = new String();
@@ -213,7 +217,5 @@ public abstract class Animal implements Mutacoes {
         else
             return "Macho";
     }
-
-    public abstract int retornaEsperancaVida();
 
 }

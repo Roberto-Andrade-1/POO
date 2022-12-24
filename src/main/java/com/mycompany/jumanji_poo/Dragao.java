@@ -4,6 +4,7 @@ public class Dragao extends Animal {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 30;
+    private static final int APETITE_REPRODUTIVO = 30;
 
     public Dragao(String nome) {
         super(nome);
@@ -94,5 +95,10 @@ public class Dragao extends Animal {
     @Override
     public int retornaEsperancaVida() {
         return ESPERANCA_VIDA;
+    }
+
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
     }
 }

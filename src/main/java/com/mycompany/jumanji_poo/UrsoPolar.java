@@ -4,6 +4,7 @@ public class UrsoPolar extends Animal implements Ursus {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 30;
+    private static final int APETITE_REPRODUTIVO = 24;
 
     public UrsoPolar(String nome) {
         super(nome);
@@ -99,5 +100,10 @@ public class UrsoPolar extends Animal implements Ursus {
     @Override
     public int retornaEsperancaVida() {
         return ESPERANCA_VIDA;
+    }
+
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
     }
 }

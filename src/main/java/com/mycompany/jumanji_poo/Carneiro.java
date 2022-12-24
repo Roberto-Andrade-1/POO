@@ -4,6 +4,7 @@ public class Carneiro extends Animal implements Ovis {
 
     private static double atratividadeBase;
     private static final int ESPERANCA_VIDA = 10;
+    private static final int APETITE_REPRODUTIVO = 43;
 
     public Carneiro(String nome) {
         super(nome);
@@ -101,4 +102,8 @@ public class Carneiro extends Animal implements Ovis {
         return ESPERANCA_VIDA;
     }
 
+    @Override
+    public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
 }
