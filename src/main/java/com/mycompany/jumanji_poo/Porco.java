@@ -19,6 +19,13 @@ public class Porco extends Animal {
         setViasExtincao(false);
     }
 
+    public Porco(int idade) {
+        setAtratividadeBase(200);
+        // num aleatorio de 0 a 14
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

@@ -19,6 +19,13 @@ public class Coelho extends Animal {
         setViasExtincao(false);
     }
 
+    public Coelho(int idade) {
+        setAtratividadeBase(500);
+        // num aleatorio de 0 a 8
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

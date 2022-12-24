@@ -19,6 +19,13 @@ public class Chita extends Animal {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
+    public Chita(int idade) {
+        setAtratividadeBase(5000);
+        // num aleatorio de 0 a 12
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

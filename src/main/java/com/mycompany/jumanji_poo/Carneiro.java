@@ -19,6 +19,13 @@ public class Carneiro extends Animal implements Ovis {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
+    public Carneiro(int idade) {
+        setAtratividadeBase(3100);
+        // num aleatorio de 0 a 10
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

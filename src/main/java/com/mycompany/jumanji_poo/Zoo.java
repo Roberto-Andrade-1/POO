@@ -3,16 +3,15 @@ package com.mycompany.jumanji_poo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.HashMap;
 
 public class Zoo {
 
     private double saldo;
     private int staff;
-    private final int PAGAMENTO_STAFF = 1000;
-    private final int PAGAMENTO_RACAO = 3000;
-    private final int MANUTENCAO = 2500;
+    private final int PAGAMENTO_STAFF = 600;
+    private final int PAGAMENTO_RACAO = 150;
+    private final int MANUTENCAO = 200;
     private HashMap<Recinto, Animal[]> recintos;
     private List<Animal> animaisPerdidos;
     private List<Animal> animaisErrantes;
@@ -84,12 +83,14 @@ public class Zoo {
     public int calculaDespesas() {
         int total = 0;
         total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
+        // isto é necessário (o ciclo for?) não está so a multiplicar a capacidade do
+        // recinto mesmo não tendo animais?
         for (Map.Entry<Recinto, Animal[]> instalacoes : recintos.entrySet()) {
             Recinto rec = instalacoes.getKey();
-            total += total + (rec.getCapacidade() * MANUTENCAO);
-            Animal[] animais = instalacoes.getValue();
-            total += total + (animais.length * PAGAMENTO_RACAO);
+            total = total + (rec.getCapacidade() * MANUTENCAO);
         }
+        total += getRecintos().size() * MANUTENCAO;
+        total += animaisErrantes.size() * PAGAMENTO_RACAO;
         return total;
     }
 

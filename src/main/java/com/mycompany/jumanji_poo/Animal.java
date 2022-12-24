@@ -33,6 +33,18 @@ public abstract class Animal implements Mutacoes {
 
     }
 
+    public Animal(int idade) {
+        idAnimal = 0;
+        this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
+        this.idade = idade;
+        this.ALBINISMO = detetAlbinismo();
+        this.VITILIGO = detetaVitiligo();
+        this.MELANISMO = detetaMelanismo();
+        this.HETEROCROMIA = detetaHeterocromia();
+        this.SIAMES = detetaSiames();
+        this.SEXO = sexoAleatorio();
+    }
+
     public Animal() {
         idAnimal = 0;
         this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];

@@ -19,6 +19,13 @@ public class Tigre extends Animal implements Panthera {
         setViasExtincao(true);
     }
 
+    public Tigre(int idade) {
+        setAtratividadeBase(5000);
+        // num aleatorio de 0 a 10
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

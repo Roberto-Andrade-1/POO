@@ -19,6 +19,13 @@ public class Raposa extends Animal implements Canis {
         setViasExtincao(false);
     }
 
+    public Raposa(int idade) {
+        setAtratividadeBase(3000);
+        // num aleatorio de 0 a 15
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

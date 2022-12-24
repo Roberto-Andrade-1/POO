@@ -21,6 +21,13 @@ public class Boi extends Animal {
         setViasExtincao(false);
     }
 
+    public Boi(int idade) {
+        setAtratividadeBase(1000);
+        // num aleatorio de 0 a 17
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

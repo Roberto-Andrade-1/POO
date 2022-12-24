@@ -19,6 +19,13 @@ public class Galo extends Animal {
         setViasExtincao(false);
     }
 
+    public Galo(int idade) {
+        setAtratividadeBase(900);
+        // num aleatorio de 0 a 9
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

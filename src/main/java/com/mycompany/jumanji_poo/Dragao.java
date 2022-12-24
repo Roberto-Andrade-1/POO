@@ -19,6 +19,13 @@ public class Dragao extends Animal {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
+    public Dragao(int idade) {
+        setAtratividadeBase(3500);
+        // num aleatorio de 0 a 30
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }

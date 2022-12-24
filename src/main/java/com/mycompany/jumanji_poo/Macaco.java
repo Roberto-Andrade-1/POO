@@ -19,6 +19,13 @@ public class Macaco extends Animal {
         setViasExtincao(false);
     }
 
+    public Macaco(int idade) {
+        setAtratividadeBase(3500);
+        // num aleatorio de 0 a 17
+        setIdade(idade);
+        setViasExtincao(false);
+    }
+
     public int getEsperancaVida() {
         return ESPERANCA_VIDA;
     }
