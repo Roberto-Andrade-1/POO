@@ -214,4 +214,6 @@ public abstract class Animal implements Mutacoes {
             return "Macho";
     }
 
+    public abstract int retornaEsperancaVida();
+
 }

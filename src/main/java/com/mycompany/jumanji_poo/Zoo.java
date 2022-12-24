@@ -3,12 +3,16 @@ package com.mycompany.jumanji_poo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.HashMap;
 
 public class Zoo {
 
     private double saldo;
     private int staff;
+    private final int PAGAMENTO_STAFF = 1000;
+    private final int PAGAMENTO_RACAO = 3000;
+    private final int MANUTENCAO = 2500;
     private HashMap<Recinto, Animal[]> recintos;
     private List<Animal> animaisPerdidos;
     private List<Animal> animaisErrantes;
@@ -78,9 +82,12 @@ public class Zoo {
 
     public int calculaDespesas() {
         int total = 0;
-        total += getStaff() * 800; // pagamento da staff
+        total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
         for (Map.Entry<Recinto, Animal[]> instalacoes : recintos.entrySet()) {
             Recinto rec = instalacoes.getKey();
+
+            Animal[] animais = recintos.getValue();
+            total += total + (animais.length * PAGAMENTO_RACAO);
         }
         return total;
     }
@@ -119,7 +126,6 @@ public class Zoo {
                     System.out.println(animal);
                 }
             }
-
         }
     }
 
@@ -128,5 +134,38 @@ public class Zoo {
         listarAnimaisErrantes();
         System.out.println("\nAnimais em recintos");
         listarAnimaisRecintos();
+    }
+
+    public void probabilidadeMorrer() {
+        Random rand = new Random();
+        int num = rand.nextInt(101);
+        for (Animal animal : animaisErrantes) {
+            if (animal.getIdade() >= animal.retornaEsperancaVida()) { // 90% de o animal morrer
+                if (num < 90) {
+                    animaisMortos.add(animal);
+                    animaisErrantes.remove(animal);
+                }
+            } else if (animal.getIdade() >= 0.8 * animal.retornaEsperancaVida()) {// 75$ do animal morrer
+                if (num < 75) {
+                    animaisMortos.add(animal);
+                    animaisErrantes.remove(animal);
+                }
+            } else if (animal.getIdade() >= 0.6 * animal.retornaEsperancaVida()) {// 40% do animal morrer
+                if (num < 40) {
+                    animaisMortos.add(animal);
+                    animaisErrantes.remove(animal);
+                }
+            } else if (animal.getIdade() >= 0.4 * animal.retornaEsperancaVida()) {// 15% do animal morrer
+                if (num < 15) {
+                    animaisMortos.add(animal);
+                    animaisErrantes.remove(animal);
+                }
+            } else {
+                if (num < 5) {
+                    animaisMortos.add(animal);
+                    animaisErrantes.remove(animal);
+                }
+            }
+        }
     }
 }

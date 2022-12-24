@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Serpente extends Animal implements Naja {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 23;
 
     public Serpente(String nome) {
         super(nome);
         setAtratividadeBase(4000);
-        esperancaVida = 23;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public Serpente() {
         setAtratividadeBase(4000);
-        esperancaVida = 23;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     @Override
@@ -83,7 +81,7 @@ public class Serpente extends Animal implements Naja {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 5 + custoNaja;
+        double total = getAtratividadeBase() / 5 + CUSTO_NAJA;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -101,6 +99,11 @@ public class Serpente extends Animal implements Naja {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 
 }

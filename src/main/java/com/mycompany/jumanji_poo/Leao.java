@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Leao extends Animal implements Panthera {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 10;
 
     public Leao(String nome) {
         super(nome);
         setAtratividadeBase(5000);
-        esperancaVida = 10;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public Leao() {
         setAtratividadeBase(5000);
-        esperancaVida = 10;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     @Override
@@ -78,7 +76,7 @@ public class Leao extends Animal implements Panthera {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 5 + custoPhantera;
+        double total = getAtratividadeBase() / 5 + CUSTO_PHANTERA;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -96,5 +94,10 @@ public class Leao extends Animal implements Panthera {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 }

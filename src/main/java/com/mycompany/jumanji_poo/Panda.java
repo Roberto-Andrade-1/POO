@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Panda extends Animal implements Ursus {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 20;
 
     public Panda(String nome) {
         super(nome);
         setAtratividadeBase(10000);
-        esperancaVida = 20;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public Panda() {
         setAtratividadeBase(10000);
-        esperancaVida = 20;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     @Override
@@ -78,7 +76,7 @@ public class Panda extends Animal implements Ursus {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 5 + custoUrsus;
+        double total = getAtratividadeBase() / 5 + CUSTO_URSUS;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -96,6 +94,11 @@ public class Panda extends Animal implements Ursus {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 
 }

@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Raposa extends Animal implements Canis {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 15;
 
     public Raposa(String nome) {
         super(nome);
         setAtratividadeBase(3000);
-        esperancaVida = 15;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public Raposa() {
         setAtratividadeBase(3000);
-        esperancaVida = 15;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     @Override
@@ -78,7 +76,7 @@ public class Raposa extends Animal implements Canis {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 5 + custoCanis;
+        double total = getAtratividadeBase() / 5 + CUSTO_CANIS;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -96,6 +94,11 @@ public class Raposa extends Animal implements Canis {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 
 }

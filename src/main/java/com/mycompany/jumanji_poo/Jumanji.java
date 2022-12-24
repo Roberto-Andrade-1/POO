@@ -382,77 +382,47 @@ public class Jumanji {
     // 5.Calendario Chines
     public static void calendarioChines() {
 
-        String[] calendario = { "Tigre", "Coelho", "Dragão", "Serpente", "Cavalo", "Carneiro", "Macaco", "Galo", "Cão",
-                "Porco", "Rato", "Boi" };
-
-        Random rand = new Random();
-        String chinesAnimal = calendario[rand.nextInt(calendario.length)];
-        System.out.println(chinesAnimal);
-        switch (chinesAnimal) {
-            case "Tigre":
-                Tigre.setAtratividadeBase(Tigre.getAtratividadeBase() * 1.50);
-                break;
-            case "Coelho":
-                Coelho.setAtratividadeBase(Coelho.getAtratividadeBase() * 1.50);
-                break;
-            case "Dragão":
-                Dragao.setAtratividadeBase(Dragao.getAtratividadeBase() * 1.50);
-                break;
-            case "Serpente":
-                Serpente.setAtratividadeBase(Serpente.getAtratividadeBase() * 1.50);
-                break;
-            case "Cavalo":
-                Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase() * 1.50);
-                break;
-            case "Carneiro":
-                Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase() * 1.50);
-                break;
-            case "Macaco":
-                Macaco.setAtratividadeBase(Macaco.getAtratividadeBase() * 1.50);
-                break;
-            case "Galo":
-                Galo.setAtratividadeBase(Galo.getAtratividadeBase() * 1.50);
-                break;
-            case "Cão":
-                Cao.setAtratividadeBase(Cao.getAtratividadeBase() * 1.50);
-                break;
-            case "Porco":
-                Porco.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
-                break;
-            case "Rato":
-                Rato.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
-                break;
-            case "Boi":
-                Boi.setAtratividadeBase(Boi.getAtratividadeBase() * 1.50);
-                break;
-        }
-          Scanner scan =new Scanner(System.in);
-          System.out.println("Escolha um ano: ");
-          int year = scan.nextInt();
-          if((year-2000)%12 == 0){
-            Dragao.setAtratividadeBase(Dragao.getAtratividadeBase()*1.50);
+        System.out.println("Escolha um ano: ");
+        int year = scan.nextInt();
+        if (year < 2000)
+            System.out.println("Tem de inserir um ano a partir de 2000");
+        else if ((year - 2000) % 12 == 0) {
+            Dragao.setAtratividadeBase(Dragao.getAtratividadeBase() * 1.50);
             System.out.println("Ano do Dragão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-          }
-          else if((year-2000)%12 == 1){
-            Serpente.setAtratividadeBase(Serpente.getAtratividadeBase()*1.50);
+        } else if ((year - 2000) % 12 == 1) {
+            Serpente.setAtratividadeBase(Serpente.getAtratividadeBase() * 1.50);
             System.out.println("Ano da Serpente, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-          }
-          else if((year-2000)%12 == 2){
-            Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase()*1.50);
+        } else if ((year - 2000) % 12 == 2) {
+            Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase() * 1.50);
             System.out.println("Ano do Cavalo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-          }
-          else if((year-2000)%12 == 3){
-            Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase()*1.50);
+        } else if ((year - 2000) % 12 == 3) {
+            Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase() * 1.50);
             System.out.println("Ano do Carneiro, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-          }
-          else if((year-2000)%12 == 4){
-            Macaco.setAtratividadeBase(Macaco.getAtratividadeBase()*1.50);
+        } else if ((year - 2000) % 12 == 4) {
+            Macaco.setAtratividadeBase(Macaco.getAtratividadeBase() * 1.50);
             System.out.println("Ano do Macaco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-          }
-          else if((year-2000)%12 == 5){
-            Galo.setAtratividadeBase(Galo.getAtratividadeBase()*1.50);
-            System.out.println("Ano do Galo, o animal ")
-          }
+        } else if ((year - 2000) % 12 == 5) {
+            Galo.setAtratividadeBase(Galo.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Galo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        } else if ((year - 2000) % 12 == 6) {
+            Cao.setAtratividadeBase(Cao.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Cão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        } else if ((year - 2000) % 12 == 7) {
+            Porco.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Porco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        } else if ((year - 2000) % 12 == 8) {
+            Rato.setAtratividadeBase(Rato.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Rato, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        } else if ((year - 2000) % 12 == 9) {
+            Boi.setAtratividadeBase(Boi.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Boi, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        } else if ((year - 2000) % 12 == 10) {
+            Tigre.setAtratividadeBase(Tigre.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Tigre, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        } else {
+            Coelho.setAtratividadeBase(Coelho.getAtratividadeBase() * 1.50);
+            System.out.println("Ano do Coelho, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
+        }
 
     }
 
@@ -638,10 +608,7 @@ public class Jumanji {
                 break;
         }
     }
-    //9. Listar instalações
-    public static void listarInstalacoes (Zoo zoo){
-        for(){}
-    } 
+
     public static void periodoContabilistico(Zoo zoo) {
         // calcular primeiro os custos totais do zoo
         // zoo.calculaDespesas();
@@ -651,6 +618,17 @@ public class Jumanji {
             for (Animal animal : animais) {
                 if (animal != null)
                     zoo.setSaldo(zoo.getSaldo() + animal.retornaAtratividade());
+            }
+        }
+
+        // aumenta idade dos animais
+        for (Animal animal : zoo.getAnimaisErrantes()) {
+            animal.setIdade(animal.getIdade() + 1);
+        }
+        for (Animal[] animais : zoo.getRecintos().values()) {
+            for (Animal animal : animais) {
+                if (animal != null)
+                    animal.setIdade(animal.getIdade() + 1);
             }
         }
 

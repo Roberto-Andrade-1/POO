@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Macaco extends Animal {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 17;
 
     public Macaco(String nome) {
         super(nome);
         setAtratividadeBase(3500);
-        esperancaVida = 17;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public Macaco() {
         setAtratividadeBase(3500);
-        esperancaVida = 17;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     public static double getAtratividadeBase() {
@@ -93,4 +91,8 @@ public class Macaco extends Animal {
         return Math.round(total * 100) / 100;
     }
 
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
+    }
 }

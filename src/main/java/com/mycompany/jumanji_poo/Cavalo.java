@@ -3,11 +3,10 @@ package com.mycompany.jumanji_poo;
 public class Cavalo extends Animal implements Equus {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 28;
 
     public Cavalo() {
         setAtratividadeBase(3000);
-        esperancaVida = 28;
         setViasExtincao(false);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
@@ -15,13 +14,12 @@ public class Cavalo extends Animal implements Equus {
     public Cavalo(String nome) {
         super(nome);
         setAtratividadeBase(3000);
-        esperancaVida = 28;
         setViasExtincao(false);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     @Override
@@ -83,7 +81,7 @@ public class Cavalo extends Animal implements Equus {
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
-        double total = getAtratividadeBase() / 5 + custoEquus;
+        double total = getAtratividadeBase() / 5 + CUSTO_EQUUS;
         if (isAlbinismo())
             total += getAtratividadeBase() / 5;
         if (isSiames())
@@ -101,6 +99,11 @@ public class Cavalo extends Animal implements Equus {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 
 }

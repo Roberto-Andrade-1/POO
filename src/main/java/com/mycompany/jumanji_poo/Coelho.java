@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Coelho extends Animal {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 8;
 
     public Coelho(String nome) {
         super(nome);
         setAtratividadeBase(500);
-        esperancaVida = 8;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public Coelho() {
         setAtratividadeBase(500);
-        esperancaVida = 8;
         setIdade(numAleatorioArray(getEsperancaVida()));
         setViasExtincao(false);
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     public static double getAtratividadeBase() {
@@ -91,6 +89,11 @@ public class Coelho extends Animal {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 
 }

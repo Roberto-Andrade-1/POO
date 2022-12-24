@@ -3,25 +3,23 @@ package com.mycompany.jumanji_poo;
 public class Chita extends Animal {
 
     private static double atratividadeBase;
-    private final int esperancaVida;
+    private static final int ESPERANCA_VIDA = 12;
 
     public Chita(String nome) {
         super(nome);
         setAtratividadeBase(5000);
-        esperancaVida = 12;
         setViasExtincao(true);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public Chita() {
         setAtratividadeBase(5000);
-        esperancaVida = 12;
         setViasExtincao(true);
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
     public int getEsperancaVida() {
-        return esperancaVida;
+        return ESPERANCA_VIDA;
     }
 
     public static double getAtratividadeBase() {
@@ -91,5 +89,10 @@ public class Chita extends Animal {
         else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4)))
             total -= getAtratividadeBase() / 10;
         return Math.round(total * 100) / 100;
+    }
+
+    @Override
+    public int retornaEsperancaVida() {
+        return ESPERANCA_VIDA;
     }
 }
