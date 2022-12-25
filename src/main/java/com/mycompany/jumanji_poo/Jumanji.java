@@ -77,6 +77,7 @@ public class Jumanji {
                     System.out.println("Saldo atualmente disponivel: " + zoo.getSaldo());
                     break;
                 case 14:
+                    jumanji(zoo);
                     break;
                 case 15:
                     sair = true;
@@ -633,7 +634,8 @@ public class Jumanji {
                 }
             }
         }
-        System.out.println("Proveitos: " + proveitos + "\n");
+        System.out.println("Proveitos: " + proveitos);
+        System.out.println("Despesa: " + zoo.calculaDespesas());// só para ver
 
         // aumenta idade dos animais
         for (Animal animal : zoo.getAnimaisErrantes()) {
@@ -733,9 +735,9 @@ public class Jumanji {
         }
 
         if (animaisMortosNumPeriodo.isEmpty()) {
-            System.out.println("Nenhum animal morreu neste período contabilístico");
+            System.out.println("\nNenhum animal morreu neste período contabilístico");
         } else {
-            System.out.println("Os seguintes animais morreram neste período contabilístico:");
+            System.out.println("\nOs seguintes animais morreram neste período contabilístico:");
             for (Animal animal : animaisMortosNumPeriodo) {
                 System.out.println(animal);
             }
@@ -825,6 +827,7 @@ public class Jumanji {
                 System.out.println(a);
             }
         }
+
         for (Animal[] animais : zoo.getRecintos().values()) {
             for (Animal animal : animais) {
                 int num = rand.nextInt(101);
@@ -904,13 +907,75 @@ public class Jumanji {
                     System.out.println(a);
                 }
             }
-            for (Animal animal : ani) {
-                zoo.setAnimaisErrantes(animal);
+        }
+
+        for (Animal animal : ani) {
+            zoo.setAnimaisErrantes(animal);
+        }
+
+        // em caso de prejuizo pode-se perder animais
+        if (proveitos < zoo.calculaDespesas()) {
+            for (Animal[] animais : zoo.getRecintos().values()) {
+                for (int i = 0; i < animais.length; i++) {
+                    if (animais[i] != null) {
+                        int num = rand.nextInt(101);
+                        if (num <= 30) {
+                            zoo.setAnimaisPerdidos(animais[i]);
+                            animais[i] = null;
+                        }
+                    }
+                }
             }
+            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
+                if (zoo.getAnimaisErrantes().get(i) != null) {
+                    int num = rand.nextInt(101);
+                    if (num <= 30) {
+                        zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(i);
+                    }
+                }
+            }
+        }
+    }
 
-            // em caso de prejuizo pode-se perder animais
-            if (proveitos < zoo.calculaDespesas()) {
-
+    public static void jumanji(Zoo zoo) {
+        Random rand = new Random();
+        for (Animal[] animais : zoo.getRecintos().values()) {
+            for (int i = 0; i < animais.length; i++) {
+                if (animais[i] != null) {
+                    int num = rand.nextInt(101);
+                    if (num <= 40) {
+                        zoo.setAnimaisPerdidos(animais[i]);
+                        animais[i] = null;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
+            if (zoo.getAnimaisErrantes().get(i) != null) {
+                int num = rand.nextInt(101);
+                if (num <= 30) {
+                    zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
+                    zoo.getAnimaisErrantes().remove(i);
+                }
+            }
+        }
+        for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
+            if (zoo.getRecintos().size() > 0) {
+                int idDoRecintoAle = rand.nextInt(zoo.getRecintos().size()) + 1;
+                for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
+                    Recinto rec = recintos.getKey();
+                    Animal[] animais = recintos.getValue();
+                    if (rec.getIdRecinto() == idDoRecintoAle) {
+                        int num = rand.nextInt(rec.getCapacidade());
+                        Animal a = animais[num];
+                        animais[num] = zoo.getAnimaisErrantes().get(i);
+                        zoo.getAnimaisErrantes().remove(i);
+                        if (a != null) {
+                            zoo.setAnimaisErrantes(a);
+                        }
+                    }
+                }
             }
         }
     }

@@ -52,8 +52,8 @@ public class Zoo {
         return animaisPerdidos;
     }
 
-    public void setAnimaisPerdidos(List<Animal> animaisPerdidos) {
-        this.animaisPerdidos = animaisPerdidos;
+    public void setAnimaisPerdidos(Animal ani) {
+        animaisPerdidos.add(ani);
     }
 
     public List<Animal> getAnimaisErrantes() {
@@ -85,7 +85,8 @@ public class Zoo {
         total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
         // isto é necessário (o ciclo for?) não está so a multiplicar a capacidade do
         // recinto mesmo não tendo animais?
-        for (Recinto rec : recintos.keySet()) {
+        for (Map.Entry<Recinto, Animal[]> instalacoes : recintos.entrySet()) {
+            Recinto rec = instalacoes.getKey();
             total += (rec.getOcupacao() * MANUTENCAO);
         }
         total += getRecintos().size() * MANUTENCAO;
