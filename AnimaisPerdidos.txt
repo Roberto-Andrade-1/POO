@@ -1,0 +1,13 @@
+-------------
+Animais Perdidos:
+25
+Artur
+10
+0
+0
+1
+1
+0
+Macho
+--------
+Animais em Recintos:
