@@ -1,9 +1,11 @@
 21
-Linda
 4
-1
-1
-0
-0
-0
+Linda
 Femea
+1
+1
+0
+0
+0
+Cavalo
+--

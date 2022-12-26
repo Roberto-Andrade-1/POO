@@ -1,6 +1,7 @@
 package com.mycompany.jumanji_poo;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.print.DocFlavor.STRING;
 
 public class Jumanji {
 
@@ -1275,11 +1278,46 @@ public class Jumanji {
 
     // -------leitura de ficheiros---------
 
+    public void uploadRecintos(Zoo zoo) throws IOException {
+        String linha;
+        int idRecinto = 0, capacidade = 0;
+        Recinto rec = null;
+        FileReader inStrem = new FileReader("Recintos.txt");
+        BufferedReader lerDados = new BufferedReader(inStrem);
+        try {
+            int numDaLinha = 1;
+            linha = lerDados.readLine();
+            while (linha != null) {
+                switch (numDaLinha) {
+                    case 1:
+                        idRecinto = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 2:
+                        capacidade = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 3:
+                        rec = new Recinto(idRecinto, capacidade);
+                        zoo.setRecintos(rec);
+                        numDaLinha = 1;
+                        break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Não foi encontrado o ficheiro");
+        } finally {
+            lerDados.close();
+        }
+    }
+
     public void uploadAnimaisEmRecintos(Zoo zoo) throws IOException {
-        String linha, nomeAnimal, sexoAnimal;
-        boolean vitiligoAnimal, heterocromiaAnimal, albinismoAnimal, melanismoAnimal, siamesAnimal;
-        Animal a;
-        int recintoId, idAnimal, idadeAnimal;
+        String linha;
+        String nomeAnimal = new String(), sexoAnimal = new String();
+        boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
+                siamesAnimal = false;
+        Animal a = null;
+        int recintoId = 0, idAnimal = 0, idadeAnimal = 0;
         FileReader inStream = new FileReader("AnimaisEmRecintos.txt");
         BufferedReader lerDados = new BufferedReader(inStream);
         try {
@@ -1330,74 +1368,566 @@ public class Jumanji {
                     case 11:
                         switch (linha) {
                             case "Boi":
-                                a = new Boi(0);
+                                a = new Boi(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Cao":
-                                a = new Cao(0);
+                                a = new Cao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Carneiro":
-                                a = new Carneiro(0);
+                                a = new Carneiro(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Cavalo":
-                                a = new Cavalo(0);
+                                a = new Cavalo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Chita":
-                                a = new Chita(0);
+                                a = new Chita(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Coelho":
-                                a = new Coelho(0);
+                                a = new Coelho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Dragao":
-                                a = new Dragao(0);
+                                a = new Dragao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Galo":
-                                a = new Galo(0);
+                                a = new Galo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Leao":
-                                a = new Leao(0);
+                                a = new Leao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "LinceIberico":
-                                a = new LinceIberico(0);
+                                a = new LinceIberico(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Lobo":
-                                a = new Lobo(0);
+                                a = new Lobo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Macaco":
-                                a = new Macaco(0);
+                                a = new Macaco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Panda":
-                                a = new Panda(0);
+                                a = new Panda(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Porco":
-                                a = new Porco(0);
+                                a = new Porco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Raposa":
-                                a = new Raposa(0);
+                                a = new Raposa(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Rato":
-                                a = new Rato(0);
+                                a = new Rato(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Serpente":
-                                a = new Serpente(0);
+                                a = new Serpente(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "Tigre":
-                                a = new Tigre(0);
+                                a = new Tigre(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "UrsoCastanho":
-                                a = new UrsoCastanho(0);
+                                a = new UrsoCastanho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "UrsoPolar":
-                                a = new UrsoPolar(0);
+                                a = new UrsoPolar(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                             case "UrsoPreto":
-                                a = new UrsoPreto(0);
+                                a = new UrsoPreto(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                         }
                         numDaLinha++;
                         break;
-
+                    case 12:
+                        for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
+                            Recinto rec = recintos.getKey();
+                            Animal[] animais = recintos.getValue();
+                            if (rec.getIdRecinto() == recintoId) {
+                                for (int i = 0; i < animais.length; i++) {
+                                    if (animais[i] == null) {
+                                        animais[i] = a;
+                                    }
+                                }
+                            }
+                        }
+                        numDaLinha = 1;
+                        break;
                 }
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("Não foi encontrado o ficheiro");
+        } finally {
+            lerDados.close();
+        }
+    }
+
+    public void uploadAnimaisErrantes(Zoo zoo) throws IOException {
+        String linha;
+        String nomeAnimal = new String(), sexoAnimal = new String();
+        boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
+                siamesAnimal = false;
+        Animal a = null;
+        int idAnimal = 0, idadeAnimal = 0;
+        FileReader inStream = new FileReader("AnimaisErrantes.txt");
+        BufferedReader lerDados = new BufferedReader(inStream);
+        try {
+            int numDaLinha = 1;
+            linha = lerDados.readLine();
+            while (linha != null) {
+                switch (numDaLinha) {
+                    case 1:
+                        idAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 2:
+                        idadeAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 3:
+                        nomeAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 4:
+                        sexoAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 5:
+                        albinismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 6:
+                        heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 7:
+                        melanismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 8:
+                        vitiligoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 9:
+                        siamesAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 10:
+                        switch (linha) {
+                            case "Boi":
+                                a = new Boi(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Cao":
+                                a = new Cao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Carneiro":
+                                a = new Carneiro(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Cavalo":
+                                a = new Cavalo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Chita":
+                                a = new Chita(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Coelho":
+                                a = new Coelho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Dragao":
+                                a = new Dragao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Galo":
+                                a = new Galo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Leao":
+                                a = new Leao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "LinceIberico":
+                                a = new LinceIberico(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Lobo":
+                                a = new Lobo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Macaco":
+                                a = new Macaco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Panda":
+                                a = new Panda(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Porco":
+                                a = new Porco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Raposa":
+                                a = new Raposa(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Rato":
+                                a = new Rato(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Serpente":
+                                a = new Serpente(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Tigre":
+                                a = new Tigre(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoCastanho":
+                                a = new UrsoCastanho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoPolar":
+                                a = new UrsoPolar(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoPreto":
+                                a = new UrsoPreto(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                        }
+                        numDaLinha++;
+                        break;
+                    case 11:
+                        zoo.setAnimaisErrantes(a);
+                        numDaLinha = 1;
+                        break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Não foi encontrado o ficheiro");
+        } finally {
+            lerDados.close();
+        }
+    }
+
+    public void uploadAnimaisMortos(Zoo zoo) throws IOException {
+        String linha;
+        String nomeAnimal = new String(), sexoAnimal = new String();
+        boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
+                siamesAnimal = false;
+        Animal a = null;
+        int idAnimal = 0, idadeAnimal = 0;
+        FileReader inStream = new FileReader("AnimaisMortos.txt");
+        BufferedReader lerDados = new BufferedReader(inStream);
+        try {
+            int numDaLinha = 1;
+            linha = lerDados.readLine();
+            while (linha != null) {
+                switch (numDaLinha) {
+                    case 1:
+                        idAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 2:
+                        idadeAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 3:
+                        nomeAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 4:
+                        sexoAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 5:
+                        albinismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 6:
+                        heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 7:
+                        melanismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 8:
+                        vitiligoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 9:
+                        siamesAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 10:
+                        switch (linha) {
+                            case "Boi":
+                                a = new Boi(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Cao":
+                                a = new Cao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Carneiro":
+                                a = new Carneiro(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Cavalo":
+                                a = new Cavalo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Chita":
+                                a = new Chita(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Coelho":
+                                a = new Coelho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Dragao":
+                                a = new Dragao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Galo":
+                                a = new Galo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Leao":
+                                a = new Leao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "LinceIberico":
+                                a = new LinceIberico(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Lobo":
+                                a = new Lobo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Macaco":
+                                a = new Macaco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Panda":
+                                a = new Panda(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Porco":
+                                a = new Porco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Raposa":
+                                a = new Raposa(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Rato":
+                                a = new Rato(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Serpente":
+                                a = new Serpente(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Tigre":
+                                a = new Tigre(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoCastanho":
+                                a = new UrsoCastanho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoPolar":
+                                a = new UrsoPolar(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoPreto":
+                                a = new UrsoPreto(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                        }
+                        numDaLinha++;
+                        break;
+                    case 11:
+                        zoo.setAnimaisMortos(a);
+                        numDaLinha = 1;
+                        break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Não foi encontrado o ficheiro");
+        } finally {
+            lerDados.close();
+        }
+    }
+
+    public void uploadAnimaisPerdidos(Zoo zoo) throws IOException {
+        String linha;
+        String nomeAnimal = new String(), sexoAnimal = new String();
+        boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
+                siamesAnimal = false;
+        Animal a = null;
+        int idAnimal = 0, idadeAnimal = 0;
+        FileReader inStream = new FileReader("AnimaisPerdidos.txt");
+        BufferedReader lerDados = new BufferedReader(inStream);
+        try {
+            int numDaLinha = 1;
+            linha = lerDados.readLine();
+            while (linha != null) {
+                switch (numDaLinha) {
+                    case 1:
+                        idAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 2:
+                        idadeAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 3:
+                        nomeAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 4:
+                        sexoAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 5:
+                        albinismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 6:
+                        heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 7:
+                        melanismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 8:
+                        vitiligoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 9:
+                        siamesAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 10:
+                        switch (linha) {
+                            case "Boi":
+                                a = new Boi(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Cao":
+                                a = new Cao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Carneiro":
+                                a = new Carneiro(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Cavalo":
+                                a = new Cavalo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Chita":
+                                a = new Chita(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Coelho":
+                                a = new Coelho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Dragao":
+                                a = new Dragao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Galo":
+                                a = new Galo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Leao":
+                                a = new Leao(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "LinceIberico":
+                                a = new LinceIberico(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Lobo":
+                                a = new Lobo(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Macaco":
+                                a = new Macaco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Panda":
+                                a = new Panda(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Porco":
+                                a = new Porco(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Raposa":
+                                a = new Raposa(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Rato":
+                                a = new Rato(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Serpente":
+                                a = new Serpente(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "Tigre":
+                                a = new Tigre(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoCastanho":
+                                a = new UrsoCastanho(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoPolar":
+                                a = new UrsoPolar(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                            case "UrsoPreto":
+                                a = new UrsoPreto(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
+                                        vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
+                                break;
+                        }
+                        numDaLinha++;
+                        break;
+                    case 11:
+                        zoo.setAnimaisPerdidos(a);
+                        numDaLinha = 1;
+                        break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Não foi encontrado o ficheiro");
         } finally {
             lerDados.close();
         }
