@@ -82,15 +82,19 @@ public class Zoo {
 
     public int calculaDespesas() {
         int total = 0;
+        int animaisRecinto = 0;
         total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
-        // isto é necessário (o ciclo for?) não está so a multiplicar a capacidade do
-        // recinto mesmo não tendo animais?
-        for (Map.Entry<Recinto, Animal[]> instalacoes : recintos.entrySet()) {
-            Recinto rec = instalacoes.getKey();
-            total += (rec.getOcupacao() * MANUTENCAO);
+        for (Animal[] ani : recintos.values()) {
+            for (Animal animal : ani) {
+                if (animal != null) {
+                    animais++;
+                }
+            }
         }
+        total += animaisRecinto * PAGAMENTO_RACAO;
         total += getRecintos().size() * MANUTENCAO;
         total += animaisErrantes.size() * PAGAMENTO_RACAO;
+        setSaldo(getSaldo() - total);
         return total;
     }
 

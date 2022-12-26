@@ -622,7 +622,7 @@ public class Jumanji {
     public static void periodoContabilistico(Zoo zoo) {
         // calcular primeiro os custos totais do zoo
         // zoo.calculaDespesas();
-        zoo.setSaldo(zoo.getSaldo() - zoo.calculaDespesas());
+        System.out.println("Despesas: " + zoo.calculaDespesas());
 
         // calcula os proveitos totais do zoo
         int proveitos = 0;
@@ -938,6 +938,7 @@ public class Jumanji {
         }
     }
 
+    //14. Jumanji
     public static void jumanji(Zoo zoo) {
         Random rand = new Random();
         for (Animal[] animais : zoo.getRecintos().values()) {
