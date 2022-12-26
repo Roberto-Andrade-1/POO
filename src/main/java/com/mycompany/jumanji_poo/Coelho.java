@@ -7,6 +7,14 @@ public class Coelho extends Animal {
     private static final int ESPERANCA_VIDA = 8;
     private static final int APETITE_REPRODUTIVO = 70;
 
+    public Coelho(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(500);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Coelho(String nome) {
         super(nome);
         setAtratividadeBase(500);

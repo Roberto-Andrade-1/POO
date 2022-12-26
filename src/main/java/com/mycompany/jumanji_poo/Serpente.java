@@ -7,6 +7,14 @@ public class Serpente extends Animal implements Naja {
     private static final int ESPERANCA_VIDA = 23;
     private static final int APETITE_REPRODUTIVO = 28;
 
+    public Serpente(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(4000);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(true);
+    }
+
     public Serpente(String nome) {
         super(nome);
         setAtratividadeBase(4000);

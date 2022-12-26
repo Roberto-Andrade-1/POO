@@ -14,6 +14,14 @@ public class Carneiro extends Animal implements Ovis {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
+    public Carneiro(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(3100);
+        setViasExtincao(true);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
     public Carneiro() {
         setAtratividadeBase(3100);
         setViasExtincao(true);

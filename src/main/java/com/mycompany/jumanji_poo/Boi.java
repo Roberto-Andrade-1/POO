@@ -7,6 +7,15 @@ public class Boi extends Animal {
     private static final int ESPERANCA_VIDA = 17;
     private static final int APETITE_REPRODUTIVO = 50;
 
+    public Boi(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(1000);
+        // num aleatorio de 0 a 17
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Boi(String nome) {
         super(nome);
         setAtratividadeBase(1000);

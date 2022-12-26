@@ -7,6 +7,14 @@ public class Galo extends Animal {
     private static final int ESPERANCA_VIDA = 9;
     private static final int APETITE_REPRODUTIVO = 65;
 
+    public Galo(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(900);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Galo(String nome) {
         super(nome);
         setAtratividadeBase(900);

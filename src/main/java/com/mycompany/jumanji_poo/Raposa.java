@@ -7,6 +7,14 @@ public class Raposa extends Animal implements Canis {
     private static final int ESPERANCA_VIDA = 15;
     private static final int APETITE_REPRODUTIVO = 41;
 
+    public Raposa(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(3000);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Raposa(String nome) {
         super(nome);
         setAtratividadeBase(3000);

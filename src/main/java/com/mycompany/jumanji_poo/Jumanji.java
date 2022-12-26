@@ -1,5 +1,8 @@
 package com.mycompany.jumanji_poo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -1272,17 +1275,131 @@ public class Jumanji {
 
     // -------leitura de ficheiros---------
 
-    public void uploadAnimaisEmRecintos() throws IOException {
-        int recintoOcupacao, recintoId;
-        String nomeAnimal;
-        String linha;
+    public void uploadAnimaisEmRecintos(Zoo zoo) throws IOException {
+        String linha, nomeAnimal, sexoAnimal;
+        boolean vitiligoAnimal, heterocromiaAnimal, albinismoAnimal, melanismoAnimal, siamesAnimal;
+        Animal a;
+        int recintoId, idAnimal, idadeAnimal;
         FileReader inStream = new FileReader("AnimaisEmRecintos.txt");
         BufferedReader lerDados = new BufferedReader(inStream);
-        linha = lerDados.readLine();
-        while (linha != null) {
-            switch (linha) {
+        try {
+            int numDaLinha = 1;
+            linha = lerDados.readLine();
+            while (linha != null) {
+                switch (numDaLinha) {
+                    case 1:
+                        recintoId = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 2:
+                        idAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 3:
+                        idadeAnimal = Integer.parseInt(linha);
+                        numDaLinha++;
+                        break;
+                    case 4:
+                        nomeAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 5:
+                        sexoAnimal = linha;
+                        numDaLinha++;
+                        break;
+                    case 6:
+                        albinismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 7:
+                        heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 8:
+                        melanismoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 9:
+                        vitiligoAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 10:
+                        siamesAnimal = Boolean.parseBoolean(linha);
+                        numDaLinha++;
+                        break;
+                    case 11:
+                        switch (linha) {
+                            case "Boi":
+                                a = new Boi(0);
+                                break;
+                            case "Cao":
+                                a = new Cao(0);
+                                break;
+                            case "Carneiro":
+                                a = new Carneiro(0);
+                                break;
+                            case "Cavalo":
+                                a = new Cavalo(0);
+                                break;
+                            case "Chita":
+                                a = new Chita(0);
+                                break;
+                            case "Coelho":
+                                a = new Coelho(0);
+                                break;
+                            case "Dragao":
+                                a = new Dragao(0);
+                                break;
+                            case "Galo":
+                                a = new Galo(0);
+                                break;
+                            case "Leao":
+                                a = new Leao(0);
+                                break;
+                            case "LinceIberico":
+                                a = new LinceIberico(0);
+                                break;
+                            case "Lobo":
+                                a = new Lobo(0);
+                                break;
+                            case "Macaco":
+                                a = new Macaco(0);
+                                break;
+                            case "Panda":
+                                a = new Panda(0);
+                                break;
+                            case "Porco":
+                                a = new Porco(0);
+                                break;
+                            case "Raposa":
+                                a = new Raposa(0);
+                                break;
+                            case "Rato":
+                                a = new Rato(0);
+                                break;
+                            case "Serpente":
+                                a = new Serpente(0);
+                                break;
+                            case "Tigre":
+                                a = new Tigre(0);
+                                break;
+                            case "UrsoCastanho":
+                                a = new UrsoCastanho(0);
+                                break;
+                            case "UrsoPolar":
+                                a = new UrsoPolar(0);
+                                break;
+                            case "UrsoPreto":
+                                a = new UrsoPreto(0);
+                                break;
+                        }
+                        numDaLinha++;
+                        break;
 
+                }
             }
+        } finally {
+            lerDados.close();
         }
     }
 }

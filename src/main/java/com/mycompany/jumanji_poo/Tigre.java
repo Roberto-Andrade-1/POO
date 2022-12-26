@@ -7,6 +7,14 @@ public class Tigre extends Animal implements Panthera {
     private static final int ESPERANCA_VIDA = 10;
     private static final int APETITE_REPRODUTIVO = 43;
 
+    public Tigre(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(5000);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        viasExtincao = true;
+    }
+
     public Tigre(String nome) {
         super(nome);
         setAtratividadeBase(5000);

@@ -7,6 +7,14 @@ public class Dragao extends Animal {
     private static final int ESPERANCA_VIDA = 30;
     private static final int APETITE_REPRODUTIVO = 30;
 
+    public Dragao(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(3500);
+        setViasExtincao(true);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
     public Dragao(String nome) {
         super(nome);
         setAtratividadeBase(3500);

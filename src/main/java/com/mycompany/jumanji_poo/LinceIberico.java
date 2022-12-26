@@ -20,6 +20,14 @@ public class LinceIberico extends Animal {
         setViasExtincao(true);
     }
 
+    public LinceIberico(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(5500);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(true);
+    }
+
     public LinceIberico(int idade) {
         setAtratividadeBase(5500);
         // num aleatorio de 0 a 13

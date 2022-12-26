@@ -7,6 +7,14 @@ public class UrsoPreto extends Animal implements Ursus {
     private static final int ESPERANCA_VIDA = 25;
     private static final int APETITE_REPRODUTIVO = 25;
 
+    public UrsoPreto(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(3500);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        viasExtincao = false;
+    }
+
     public UrsoPreto(String nome) {
         super(nome);
         setAtratividadeBase(3500);

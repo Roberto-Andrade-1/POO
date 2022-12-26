@@ -18,6 +18,19 @@ public abstract class Animal implements Mutacoes {
     private final String SEXO;
     private final boolean ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES;
 
+    public Animal(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        this.idAnimal = idAnimal;
+        this.idade = idade;
+        this.nome = nome;
+        this.SEXO = SEXO;
+        this.ALBINISMO = ALBINISMO;
+        this.HETEROCROMIA = HETEROCROMIA;
+        this.VITILIGO = VITILIGO;
+        this.MELANISMO = MELANISMO;
+        this.SIAMES = SIAMES;
+    }
+
     public Animal(String nome) {
         idAnimal = 0;
         this.nome = nome;
@@ -110,7 +123,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public int numAleatorioObjHash() {
-        int num = Objects.hash(idAnimal, nome, retornaViasExtincao(), idade, NOMES_ALEATORIOS, idAnimalAtualizado);
+        int num = Objects.hash(idAnimal, nome, idade, NOMES_ALEATORIOS, idAnimalAtualizado);
         if (num < 0) {
             num = num * (-1);
         }

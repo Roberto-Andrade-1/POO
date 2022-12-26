@@ -7,6 +7,14 @@ public class Porco extends Animal {
     private static final int ESPERANCA_VIDA = 14;
     private static final int APETITE_REPRODUTIVO = 58;
 
+    public Porco(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(200);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Porco(String nome) {
         super(nome);
         setAtratividadeBase(200);

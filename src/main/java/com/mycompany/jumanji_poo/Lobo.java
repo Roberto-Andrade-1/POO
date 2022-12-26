@@ -14,6 +14,14 @@ public class Lobo extends Animal implements Canis {
         setViasExtincao(false);
     }
 
+    public Lobo(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(3000);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Lobo() {
         setAtratividadeBase(3000);
         setIdade(numAleatorioArray(getEsperancaVida()));

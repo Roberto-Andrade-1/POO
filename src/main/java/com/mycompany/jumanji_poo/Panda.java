@@ -7,6 +7,14 @@ public class Panda extends Animal implements Ursus {
     private static final int ESPERANCA_VIDA = 20;
     private static final int APETITE_REPRODUTIVO = 5;
 
+    public Panda(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(10000);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(true);
+    }
+
     public Panda(String nome) {
         super(nome);
         setAtratividadeBase(10000);

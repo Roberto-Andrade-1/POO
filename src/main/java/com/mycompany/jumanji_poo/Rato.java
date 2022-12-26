@@ -7,6 +7,14 @@ public class Rato extends Animal {
     private static final int ESPERANCA_VIDA = 2;
     private static final int APETITE_REPRODUTIVO = 39;
 
+    public Rato(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(2000);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+        setViasExtincao(false);
+    }
+
     public Rato(String nome) {
         super(nome);
         setAtratividadeBase(2000);

@@ -14,6 +14,14 @@ public class Cao extends Animal implements Canis {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
+    public Cao(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
+            boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
+        super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
+        setAtratividadeBase(1500);
+        setViasExtincao(false);
+        setIdade(numAleatorioArray(getEsperancaVida()));
+    }
+
     public Cao() {
         setAtratividadeBase(1500);
         setViasExtincao(false);
