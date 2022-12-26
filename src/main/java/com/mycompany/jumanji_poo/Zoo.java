@@ -84,12 +84,15 @@ public class Zoo {
         int total = 0;
         int animaisRecinto = 0;
         total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
-        for (Animal[] ani : recintos.values()) {
-            for (Animal animal : ani) {
-                if (animal != null) {
-                    animais++;
-                }
-            }
+        // for (Animal[] ani : recintos.values()) {
+        // for (Animal animal : ani) {
+        // if (animal != null) {
+        // animaisRecinto++;
+        // }
+        // }
+        // }
+        for (Recinto rec : getRecintos().keySet()) {
+            animaisRecinto += rec.getOcupacao();
         }
         total += animaisRecinto * PAGAMENTO_RACAO;
         total += getRecintos().size() * MANUTENCAO;
@@ -113,7 +116,6 @@ public class Zoo {
 
     public void listarRecintos() {
         verificaOcupacaoRec();
-        System.out.println("\nRECINTOS");
         for (Recinto i : getRecintos().keySet()) {
             System.out.println(i);
         }
@@ -136,14 +138,13 @@ public class Zoo {
     }
 
     public void listarAnimais() {
-        System.out.println("\nAnimais errantes:");
+        // System.out.println("\nAnimais errantes:");
         listarAnimaisErrantes();
-        System.out.println("\nAnimais em recintos");
+        // System.out.println("\nAnimais em recintos");
         listarAnimaisRecintos();
     }
 
     public void listarAnimaisMortos() {
-        System.out.println("Animais mortos:");
         for (Animal animal : animaisMortos) {
             System.out.println(animal);
         }

@@ -61,11 +61,14 @@ public class Recinto {
     @Override
     public String toString() {
         String texto = new String();
-        texto = "ID: " + getIdRecinto();
-        texto += " | capacidade: " + getCapacidade();
-        texto += " | Ocupação: " + getOcupacao();
-        if (idRecinto == 0)
+        if (idRecinto == 0) {
+            texto += "capacidade: " + getCapacidade();
             texto += " | custo: " + getCusto() + "€";
+        } else {
+            texto = "ID: " + getIdRecinto();
+            texto += " | capacidade: " + getCapacidade();
+            texto += " | Ocupação: " + getOcupacao();
+        }
         return texto;
     }
 

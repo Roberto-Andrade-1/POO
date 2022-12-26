@@ -12,9 +12,12 @@ public class Jumanji {
 
     public static void main(String[] args) {
         scan = new Scanner(System.in);
+
         boolean sair = false;
         Zoo zoo = new Zoo(300000);
+        List<String> historico = new ArrayList<String>();
 
+        historico.add("------INÍCIO------");
         while (!sair) {
             System.out.println("""
 
@@ -39,16 +42,16 @@ public class Jumanji {
             int escolha = scan.nextInt();
             switch (escolha) {
                 case 1:
-                    adquirirAnimaisAleatorios(zoo);
+                    adquirirAnimaisAleatorios(zoo, historico);
                     break;
                 case 2:
-                    animalCaracAlea(zoo);
+                    animalCaracAlea(zoo, historico);
                     break;
                 case 3:
-                    recintosAleatorio(zoo);
+                    recintosAleatorio(zoo, historico);
                     break;
                 case 4:
-                    adicionarInstalacao(zoo);
+                    adicionarInstalacao(zoo, historico);
                     break;
                 case 5:
                     calendarioChines();
@@ -63,21 +66,27 @@ public class Jumanji {
                     listarDadaMutacao(zoo);
                     break;
                 case 9:
+                    System.out.println("\nRECINTOS");
                     zoo.listarRecintos();
                     break;
                 case 10:
+                    retratoFamiliar(zoo, historico);
                     break;
                 case 11:
+                    System.out.println("Animais mortos:");
                     zoo.listarAnimaisMortos();
                     break;
                 case 12:
+                    for (int i = 0; i < historico.size(); i++) {
+                        System.out.println(historico.get(i));
+                    }
                     break;
                 case 13:
-                    periodoContabilistico(zoo);
+                    periodoContabilistico(zoo, historico);
                     System.out.println("Saldo atualmente disponivel: " + zoo.getSaldo());
                     break;
                 case 14:
-                    jumanji(zoo);
+                    jumanji(zoo, historico);
                     break;
                 case 15:
                     sair = true;
@@ -165,8 +174,9 @@ public class Jumanji {
     }
 
     // 1.adquirir um animal aleatório
-    public static void adquirirAnimaisAleatorios(Zoo zoo) /* throws IOException */ {
+    public static void adquirirAnimaisAleatorios(Zoo zoo, List<String> hist) {
         // scan = new Scanner(System.in);
+        Animal a = null;
 
         Animal[] treAnimaisAleat = new Animal[3];
         // cria 3 animais
@@ -186,31 +196,31 @@ public class Jumanji {
         int numAnimal = scan.nextInt();
         switch (numAnimal) {
             case 1:
-                Animal.setIdAnimalAtualizado();
-                treAnimaisAleat[0].setIdAnimal(Animal.getIdAnimalAtualizado());
-                zoo.setAnimaisErrantes(treAnimaisAleat[0]);
-                zoo.setSaldo(zoo.getSaldo() - treAnimaisAleat[0].retornaCusto());
+                a = treAnimaisAleat[0];
                 break;
             case 2:
-                Animal.setIdAnimalAtualizado();
-                treAnimaisAleat[1].setIdAnimal(Animal.getIdAnimalAtualizado());
-                zoo.setAnimaisErrantes(treAnimaisAleat[1]);
-                zoo.setSaldo(zoo.getSaldo() - treAnimaisAleat[1].retornaCusto());
+                a = treAnimaisAleat[1];
                 break;
             case 3:
-                Animal.setIdAnimalAtualizado();
-                treAnimaisAleat[2].setIdAnimal(Animal.getIdAnimalAtualizado());
-                zoo.setAnimaisErrantes(treAnimaisAleat[2]);
-                zoo.setSaldo(zoo.getSaldo() - treAnimaisAleat[2].retornaCusto());
+                a = treAnimaisAleat[2];
                 break;
             default:
                 System.out.println("Valor inválido");
         }
+        if (a != null) {
+            Animal.setIdAnimalAtualizado();
+            a.setIdAnimal(Animal.getIdAnimalAtualizado());
+            zoo.setAnimaisErrantes(a);
+            zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());
 
+            String texto = new String();
+            texto = "\nO seguinte animal gerado aleatoriamente foi adicioando ao zoo como animal errante:\n     " + a;
+            hist.add(texto);
+        }
     }
 
     // 2.Adquirir animal com característica genética
-    public static void animalCaracAlea(Zoo zoo) {
+    public static void animalCaracAlea(Zoo zoo, List<String> hist) {
         // Scanner scan = new Scanner(System.in);
 
         System.out.println("""
@@ -224,12 +234,12 @@ public class Jumanji {
                 6.Ursus
                 """);
 
-        int escolha = scan.nextInt();
+        String escolha = scan.next();
         Animal a = animaisAleatorios();
         boolean inserir = false;
         // isAssignableFrom verifica se a classe implementa a interface
         switch (escolha) {
-            case 1:
+            case "Canis":
                 if (Canis.class.isAssignableFrom(a.getClass())) {
                     inserir = true;
                 } else {
@@ -239,7 +249,7 @@ public class Jumanji {
                     inserir = true;
                 }
                 break;
-            case 2:
+            case "Equus":
                 if (Equus.class.isAssignableFrom(a.getClass())) {
                     inserir = true;
                 } else {
@@ -249,7 +259,7 @@ public class Jumanji {
                     inserir = true;
                 }
                 break;
-            case 3:
+            case "Naja":
                 if (Naja.class.isAssignableFrom(a.getClass())) {
                     inserir = true;
                 } else {
@@ -259,7 +269,7 @@ public class Jumanji {
                     inserir = true;
                 }
                 break;
-            case 4:
+            case "Ovis":
                 if (Ovis.class.isAssignableFrom(a.getClass())) {
                     inserir = true;
                 } else {
@@ -269,7 +279,7 @@ public class Jumanji {
                     inserir = true;
                 }
                 break;
-            case 5:
+            case "Panthera":
                 if (Panthera.class.isAssignableFrom(a.getClass())) {
                     inserir = true;
                 } else {
@@ -279,7 +289,7 @@ public class Jumanji {
                     inserir = true;
                 }
                 break;
-            case 6:
+            case "Ursus":
                 if (Ursus.class.isAssignableFrom(a.getClass())) {
                     inserir = true;
                 } else {
@@ -290,7 +300,7 @@ public class Jumanji {
                 }
                 break;
             default:
-                System.out.println("Numero invalido");
+                System.out.println("Opção inválida");
                 break;
         }
         if (inserir) {
@@ -298,23 +308,31 @@ public class Jumanji {
             Animal.setIdAnimalAtualizado();
             a.setIdAnimal(Animal.getIdAnimalAtualizado());
             zoo.setAnimaisErrantes(a);
+            String texto = new String();
+            texto = "\nO seguinte animal foi comprado através de uma pesquisa pela caracteristica genética " + escolha
+                    + " e inserido no zoo como animal errante "
+                    + ":\n      " + a;
+            hist.add(texto);
             zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());
         }
     }
 
     // 3.Recintos Aleatorios
-    public static void recintosAleatorio(Zoo zoo) {
+    public static void recintosAleatorio(Zoo zoo, List<String> hist) {
         // Scanner scan = new Scanner(System.in);
 
+        Recinto escolhido = null;
+
         // cria 3 recintos
-        Recinto rec1 = new Recinto();
-        Recinto rec2 = new Recinto();
-        Recinto rec3 = new Recinto();
+        Recinto[] recintosAle = new Recinto[3];
+        for (int i = 0; i < recintosAle.length; i++) {
+            recintosAle[i] = new Recinto();
+        }
 
         System.out.println("\nRECINTOS DISPONÍVEIS:");
-        System.out.println("Candidato 1: capacidade: " + rec1.getCapacidade() + " | Custo: " + rec1.getCusto() + "€");
-        System.out.println("Candidato 2: capacidade: " + rec2.getCapacidade() + " | Custo: " + rec2.getCusto() + "€");
-        System.out.println("Candidato 3: capacidade: " + rec3.getCapacidade() + " | Custo: " + rec3.getCusto() + "€\n");
+        for (int i = 0; i < recintosAle.length; i++) {
+            System.out.println("Candidato " + (i + 1) + ": " + recintosAle[i]);
+        }
 
         System.out.println("Qual dos seguintes recintos pretende escolher?(se não pretender nenhum insira 0)");
         int escolhaRecinto = scan.nextInt();
@@ -322,21 +340,20 @@ public class Jumanji {
             Recinto.setIdRecintoAtualizado();
         switch (escolhaRecinto) {
             case 0:
+                System.out.println("Não foi escolhido nenhum recinto");
                 break;
             case 1:
-                rec1.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setRecintos(rec1);
-                zoo.setSaldo(zoo.getSaldo() - rec1.getCusto());
-                break;
             case 2:
-                rec2.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setRecintos(rec2);
-                zoo.setSaldo(zoo.getSaldo() - rec2.getCusto());
-                break;
             case 3:
-                rec3.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setRecintos(rec3);
-                zoo.setSaldo(zoo.getSaldo() - rec3.getCusto());
+                escolhido = recintosAle[escolhaRecinto - 1];
+                String texto = new String();
+                texto = "O utilizador escolheu o seguinte recinto do candidato " + escolhaRecinto + ":\n      "
+                        + escolhido;
+                hist.add(texto);
+
+                escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());
+                zoo.setRecintos(escolhido);
+                zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());
                 break;
             default:
                 System.out.println("Número inválido");
@@ -345,8 +362,10 @@ public class Jumanji {
     }
 
     // 4.Adicionar animal nas instalações
-    public static void adicionarInstalacao(Zoo zoo) {
+    public static void adicionarInstalacao(Zoo zoo, List<String> hist) {
         // Scanner scan = new Scanner(System.in);
+
+        String texto = new String();
 
         System.out.println("\nQual animal deseja adicionar? (ID)");
         zoo.listarAnimaisErrantes();
@@ -363,11 +382,15 @@ public class Jumanji {
                 for (int j = 0; j < zoo.getAnimaisErrantes().size(); j++) {// percorrer lista animais errantes
                     Animal ani = zoo.getAnimaisErrantes().get(j);
                     if (ani.getIdAnimal() == idAnimal) {// se o id for igual ao qur o utilizador escolheu
+
+                        texto = "\nInseriu o seguinte animal no recinto com id " + idRecinto;
+
                         if (rec.getCapacidade() != rec.getOcupacao()) {// se ainda houver lugares disponiveis no recinto
                             for (int i = 0; i < animais.length; i++) {// adiciona na Hashmap numa posição nula
                                 if (animais[i] == null) {
                                     animais[i] = ani;
-                                    break;
+                                    texto += "\n    " + ani;
+                                    break; // nao repetir o animal até ocupar a capacidade do recinto
                                 }
                             }
                             zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira da lista de
@@ -380,8 +403,14 @@ public class Jumanji {
                             animais[num] = ani;// adiciona hashmap o animal errante
                             zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira hashmap
                             zoo.setAnimaisErrantes(a);// insere o animal antigo da hashmap na lista de animais
+
+                            texto += "\n    " + ani;
+                            texto += "\n    ->Como o recinto estava cheio o seguinte animal tornou-se errante\n    "
+                                    + a;
+
                         }
                         System.out.println("\nAnimal inserido com sucesso");
+                        hist.add(texto);
                     }
                 }
             }
@@ -448,9 +477,9 @@ public class Jumanji {
                 6.Ursus
 
                 """);
-        int escolha = scan.nextInt();
+        String escolha = scan.next();
         switch (escolha) {
-            case 1:
+            case "Canis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Canis.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -464,7 +493,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 2:
+            case "Equus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Equus.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -478,7 +507,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 3:
+            case "Naja":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Naja.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -492,7 +521,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 4:
+            case "Ovis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ovis.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -506,7 +535,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 5:
+            case "Panthera":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Panthera.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -520,7 +549,97 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 6:
+            case "Ursus":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Ursus.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Ursus.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+    // Overload
+    public static void listarAnimaisCarGenetica(Zoo zoo, String escolha) {
+        switch (escolha) {
+            case "Canis":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Canis.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Canis.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "Equus":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Equus.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Equus.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "Naja":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Naja.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Naja.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "Ovis":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Ovis.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Ovis.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "Panthera":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (Panthera.class.isAssignableFrom(animal.getClass())) {
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {
+                    for (Animal animal : ani) {
+                        if (animal != null && Panthera.class.isAssignableFrom(animal.getClass())) {
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "Ursus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ursus.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -550,9 +669,9 @@ public class Jumanji {
                 5.Vitiligo
 
                 """);
-        int escolha = scan.nextInt();
+        String escolha = scan.next();
         switch (escolha) {
-            case 1:
+            case "Albino":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isAlbinismo())
                         System.out.println(animal);
@@ -564,7 +683,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 2:
+            case "Heterocromia":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isHeterocromia())
                         System.out.println(animal);
@@ -576,7 +695,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 3:
+            case "Melanismo":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isMelanismo())
                         System.out.println(animal);
@@ -588,7 +707,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 4:
+            case "Siames":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isSiames())
                         System.out.println(animal);
@@ -600,7 +719,76 @@ public class Jumanji {
                     }
                 }
                 break;
-            case 5:
+            case "Vitiligo":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isVitiligo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani != null && ani.isVitiligo())
+                            System.out.println(ani);
+                    }
+                }
+                break;
+            default:
+                System.out.println("Valor inválido");
+                break;
+        }
+    }
+
+    // Overload
+    public static void listarDadaMutacao(Zoo zoo, String escolha) {
+        switch (escolha) {
+            case "Albino":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isAlbinismo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani != null && ani.isAlbinismo())
+                            System.out.println(ani);
+                    }
+                }
+                break;
+            case "Heterocromia":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isHeterocromia())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani != null && ani.isHeterocromia())
+                            System.out.println(ani);
+                    }
+                }
+                break;
+            case "Melanismo":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isMelanismo())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani != null && ani.isMelanismo())
+                            System.out.println(ani);
+                    }
+                }
+                break;
+            case "Siames":
+                for (Animal animal : zoo.getAnimaisErrantes()) {
+                    if (animal.isSiames())
+                        System.out.println(animal);
+                }
+                for (Animal[] animal : zoo.getRecintos().values()) {
+                    for (Animal ani : animal) {
+                        if (ani != null && ani.isSiames())
+                            System.out.println(ani);
+                    }
+                }
+                break;
+            case "Vitiligo":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isVitiligo())
                         System.out.println(animal);
@@ -619,10 +807,16 @@ public class Jumanji {
     }
 
     // 13.Periodo contabilistico
-    public static void periodoContabilistico(Zoo zoo) {
+    public static void periodoContabilistico(Zoo zoo, List<String> hist) {
         // calcular primeiro os custos totais do zoo
         // zoo.calculaDespesas();
+        Random rand = new Random();
+        String texto = new String();
+
+        texto += "\n------Período Contabilistico------\n";
+
         System.out.println("Despesas: " + zoo.calculaDespesas());
+        texto += "\n->As suas despesas foram as seguintes: " + zoo.calculaDespesas() + "€\n";
 
         // calcula os proveitos totais do zoo
         int proveitos = 0;
@@ -635,7 +829,43 @@ public class Jumanji {
             }
         }
         System.out.println("Proveitos: " + proveitos);
-        System.out.println("Despesa: " + zoo.calculaDespesas());// só para ver
+        texto += "\n->Os seus proveitos foram os seguintes: " + proveitos + "€\n";
+
+        if (proveitos < zoo.calculaDespesas()) {
+            List<Animal> animaisPerdidosAgora = new ArrayList<Animal>();
+            texto += "\nHouve prejuizo no seu zoo neste periodo contabilistico:";
+
+            for (Animal[] animais : zoo.getRecintos().values()) {
+                for (int i = 0; i < animais.length; i++) {
+                    if (animais[i] != null) {
+                        int num = rand.nextInt(101);
+                        if (num <= 30) {
+                            animaisPerdidosAgora.add(animais[i]);
+                            zoo.setAnimaisPerdidos(animais[i]);
+                            animais[i] = null;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
+                if (zoo.getAnimaisErrantes().get(i) != null) {
+                    int num = rand.nextInt(101);
+                    if (num <= 30) {
+                        animaisPerdidosAgora.add(zoo.getAnimaisErrantes().get(i));
+                        zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
+                        zoo.getAnimaisErrantes().remove(i);
+                    }
+                }
+            }
+            if (animaisPerdidosAgora.isEmpty()) {
+                texto += "\n->Não foram perdidos animais por prejuízo\n";
+            } else {
+                texto += "\n->Os seguintes animais foram perdidos neste período contabilístico";
+                for (Animal animal : animaisPerdidosAgora) {
+                    texto += "\n " + animal;
+                }
+            }
+        }
 
         // aumenta idade dos animais
         for (Animal animal : zoo.getAnimaisErrantes()) {
@@ -649,8 +879,8 @@ public class Jumanji {
         }
 
         // Probabilidade de morrer
-        ArrayList<Animal> animaisMortosNumPeriodo = new ArrayList<Animal>();
-        Random rand = new Random();
+        System.out.println("\nMortes:");
+        List<Animal> animaisMortosNumPeriodo = new ArrayList<Animal>();
         for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
             int num = rand.nextInt(101);
             if (zoo.getAnimaisErrantes().get(i) != null) {
@@ -735,11 +965,14 @@ public class Jumanji {
         }
 
         if (animaisMortosNumPeriodo.isEmpty()) {
-            System.out.println("\nNenhum animal morreu neste período contabilístico");
+            System.out.println("Nenhum animal morreu neste período contabilístico");
+            texto += "\n\nNão morreram animais neste período contabilístico";
         } else {
-            System.out.println("\nOs seguintes animais morreram neste período contabilístico:");
+            System.out.println("Os seguintes animais morreram neste período contabilístico:");
+            texto += "\n\nOs seguintes animais morreram neste período contabilístico";
             for (Animal animal : animaisMortosNumPeriodo) {
                 System.out.println(animal);
+                texto += "\n" + animal;
             }
         }
 
@@ -748,7 +981,7 @@ public class Jumanji {
 
         // nascimentos
         System.out.println("\nNasimentos: ");
-        List<Animal> ani = new ArrayList<Animal>();
+        List<Animal> nascimentosNestePeriodo = new ArrayList<Animal>();
         for (Animal animal : zoo.getAnimaisErrantes()) {
             int num = rand.nextInt(101);
             Animal a = null;
@@ -823,8 +1056,7 @@ public class Jumanji {
                 }
                 Animal.setIdAnimalAtualizado();
                 a.setIdAnimal(Animal.getIdAnimalAtualizado());
-                ani.add(a);
-                System.out.println(a);
+                nascimentosNestePeriodo.add(a);
             }
         }
 
@@ -903,64 +1135,58 @@ public class Jumanji {
                     }
                     Animal.setIdAnimalAtualizado();
                     a.setIdAnimal(Animal.getIdAnimalAtualizado());
-                    ani.add(a);
-                    System.out.println(a);
+                    nascimentosNestePeriodo.add(a);
                 }
             }
         }
 
-        for (Animal animal : ani) {
-            zoo.setAnimaisErrantes(animal);
+        if (nascimentosNestePeriodo.isEmpty()) {
+            System.out.println("Nenhum animal nasceu neste período contabilístico");
+            texto += "\n\nNenhum animal nasceu neste período contabilístico";
+        } else {
+            System.out.println("Os seguintes animais nasceram");
+            texto += "\n\n0s seguintes animais nasceram neste período contabilístico: ";
+            for (Animal animal : nascimentosNestePeriodo) {
+                System.out.println(animal);
+                texto += "\n" + animal;
+            }
         }
 
-        // em caso de prejuizo pode-se perder animais
-        if (proveitos < zoo.calculaDespesas()) {
-            for (Animal[] animais : zoo.getRecintos().values()) {
-                for (int i = 0; i < animais.length; i++) {
-                    if (animais[i] != null) {
-                        int num = rand.nextInt(101);
-                        if (num <= 30) {
-                            zoo.setAnimaisPerdidos(animais[i]);
-                            animais[i] = null;
-                        }
-                    }
-                }
-            }
-            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
-                if (zoo.getAnimaisErrantes().get(i) != null) {
-                    int num = rand.nextInt(101);
-                    if (num <= 30) {
-                        zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
-                        zoo.getAnimaisErrantes().remove(i);
-                    }
-                }
-            }
-        }
+        hist.add(texto);
     }
 
-    //14. Jumanji
-    public static void jumanji(Zoo zoo) {
+    // 14. Jumanji
+    public static void jumanji(Zoo zoo, List<String> hist) {
         Random rand = new Random();
+        String texto = new String();
+
+        texto += "\n------Jumanji------\n";
+        List<Animal> animaisPerdidos = new ArrayList<Animal>();
+
         for (Animal[] animais : zoo.getRecintos().values()) {
             for (int i = 0; i < animais.length; i++) {
                 if (animais[i] != null) {
                     int num = rand.nextInt(101);
-                    if (num <= 40) {
+                    if (num <= 30) {
+                        animaisPerdidos.add(animais[i]);
                         zoo.setAnimaisPerdidos(animais[i]);
                         animais[i] = null;
                     }
                 }
             }
         }
+
         for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
             if (zoo.getAnimaisErrantes().get(i) != null) {
                 int num = rand.nextInt(101);
                 if (num <= 30) {
+                    animaisPerdidos.add(zoo.getAnimaisErrantes().get(i));
                     zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
                     zoo.getAnimaisErrantes().remove(i);
                 }
             }
         }
+
         for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
             if (zoo.getRecintos().size() > 0) {
                 int idDoRecintoAle = rand.nextInt(zoo.getRecintos().size()) + 1;
@@ -972,12 +1198,91 @@ public class Jumanji {
                         Animal a = animais[num];
                         animais[num] = zoo.getAnimaisErrantes().get(i);
                         zoo.getAnimaisErrantes().remove(i);
+                        texto += "\nO seguinte animal errante foi para o recinto com o id " + idDoRecintoAle;
+                        texto += "\n    " + animais[num];
                         if (a != null) {
                             zoo.setAnimaisErrantes(a);
+                            texto += "\nO seguinte animal tornou-se errante:\n  " + a;
                         }
                     }
                 }
             }
         }
+
+        if (animaisPerdidos.isEmpty()) {
+            texto += "\nNão foram perdidos animais pelo jumanji";
+        } else {
+            texto += "\nOs seguintes animais foram perdidos pela função jumanji:";
+            for (Animal animal : animaisPerdidos) {
+                texto += "\n" + animal;
+            }
+        }
+
+        hist.add(texto);
     }
+
+    public static void retratoFamiliar(Zoo zoo, List<String> his) {
+
+        System.out.println("\n-------Histórico-------\n");
+        for (int i = 0; i < his.size(); i++) {
+            System.out.println(his.get(i));
+        }
+
+        System.out.println("\n-------Caracteristicas Geneticas-------");
+
+        String[] caractGen = { "Canis", "Equus", "Naja", "Ovis", "Panthera", "Ursus" };
+        for (int index = 0; index < caractGen.length; index++) {
+            System.out.println("------" + caractGen[index] + "------");
+            listarAnimaisCarGenetica(zoo, caractGen[index]);
+        }
+
+        System.out.println("\n-------Mutações-------");
+        String[] mutacoes = { "Albino", "Heterocromia", "Melanismo", "Siames", "Vitiligo" };
+        for (int i = 0; i < mutacoes.length; i++) {
+            System.out.println("------" + mutacoes[i] + "------");
+            listarDadaMutacao(zoo, mutacoes[i]);
+        }
+
+        System.out.println("\n-------Animais Perdidos-------");
+        for (Animal animal : zoo.getAnimaisPerdidos()) {
+            System.out.println(animal);
+        }
+
+        System.out.println("\n-------Animais Mortos-------");
+        zoo.listarAnimaisMortos();
+
+        System.out.println("\n-------Animais Errantes-------");
+        zoo.listarAnimaisErrantes();
+
+        System.out.println("\n-------Recintos-------");
+        zoo.listarRecintos();
+
+        System.out.println("\n-------Animais em Recintos-------");
+        for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
+            Recinto rec = recintos.getKey();
+            Animal[] animais = recintos.getValue();
+            System.out.println(rec);
+            for (Animal animal : animais) {
+                if (animal != null) {
+                    System.out.println("    " + animal);
+                }
+            }
+        }
+    }
+
+    // -------leitura de ficheiros---------
+
+    // public void uploadAnimaisEmRecintos() throws IOException {
+    // int recintoOcupacao, recintoId;
+    // String nomeAnimal;
+    // String linha;
+    // FileReader inStream = new FileReader("AnimaisEmRecintos.txt");
+    // BufferedReader lerDados = new BufferedReader(inStream);
+    // linha = lerDados.readLine();
+    // while (linha != null) {
+    // switch (linha) {
+
+    // }
+    // }
+    // }
 }
