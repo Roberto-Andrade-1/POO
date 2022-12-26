@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Dragao extends Animal {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 30;
     private static final int APETITE_REPRODUTIVO = 30;
 
@@ -23,7 +24,7 @@ public class Dragao extends Animal {
         setAtratividadeBase(3500);
         // num aleatorio de 0 a 30
         setIdade(idade);
-        setViasExtincao(false);
+        setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
@@ -106,6 +107,18 @@ public class Dragao extends Animal {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Dragao.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

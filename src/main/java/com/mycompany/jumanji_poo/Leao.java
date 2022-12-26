@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Leao extends Animal implements Panthera {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 10;
     private static final int APETITE_REPRODUTIVO = 58;
 
@@ -23,7 +24,7 @@ public class Leao extends Animal implements Panthera {
         setAtratividadeBase(5000);
         // num aleatorio de 0 a 10
         setIdade(idade);
-        setViasExtincao(false);
+        setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
@@ -111,6 +112,18 @@ public class Leao extends Animal implements Panthera {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Leao.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

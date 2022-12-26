@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class UrsoCastanho extends Animal implements Ursus {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 25;
     private static final int APETITE_REPRODUTIVO = 28;
 
@@ -10,20 +11,20 @@ public class UrsoCastanho extends Animal implements Ursus {
         super(nome);
         setAtratividadeBase(3500);
         setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
+        viasExtincao = false;
     }
 
     public UrsoCastanho() {
         setAtratividadeBase(3500);
         setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
+        viasExtincao = false;
     }
 
     public UrsoCastanho(int idade) {
         setAtratividadeBase(3500);
         // num aleatorio de 0 a 25
         setIdade(idade);
-        setViasExtincao(false);
+        viasExtincao = false;
     }
 
     public int getEsperancaVida() {
@@ -47,7 +48,7 @@ public class UrsoCastanho extends Animal implements Ursus {
     public double retornaAtratividade() {
         double total = getAtratividadeBase();
 
-        if (isViasExtincao()) {
+        if (viasExtincao) {
             total += getAtratividadeBase() * 0.5;
         }
 
@@ -111,6 +112,18 @@ public class UrsoCastanho extends Animal implements Ursus {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        UrsoCastanho.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

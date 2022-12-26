@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Serpente extends Animal implements Naja {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 23;
     private static final int APETITE_REPRODUTIVO = 28;
 
@@ -23,7 +24,7 @@ public class Serpente extends Animal implements Naja {
         setAtratividadeBase(4000);
         // num aleatorio de 0 a 23
         setIdade(idade);
-        setViasExtincao(false);
+        setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
@@ -116,6 +117,18 @@ public class Serpente extends Animal implements Naja {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Serpente.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Galo extends Animal {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 9;
     private static final int APETITE_REPRODUTIVO = 65;
 
@@ -106,6 +107,18 @@ public class Galo extends Animal {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Galo.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

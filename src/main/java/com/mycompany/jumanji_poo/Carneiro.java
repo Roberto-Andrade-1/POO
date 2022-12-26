@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Carneiro extends Animal implements Ovis {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 10;
     private static final int APETITE_REPRODUTIVO = 43;
 
@@ -111,6 +112,18 @@ public class Carneiro extends Animal implements Ovis {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Carneiro.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

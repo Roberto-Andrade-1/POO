@@ -1272,17 +1272,17 @@ public class Jumanji {
 
     // -------leitura de ficheiros---------
 
-    // public void uploadAnimaisEmRecintos() throws IOException {
-    // int recintoOcupacao, recintoId;
-    // String nomeAnimal;
-    // String linha;
-    // FileReader inStream = new FileReader("AnimaisEmRecintos.txt");
-    // BufferedReader lerDados = new BufferedReader(inStream);
-    // linha = lerDados.readLine();
-    // while (linha != null) {
-    // switch (linha) {
+    public void uploadAnimaisEmRecintos() throws IOException {
+        int recintoOcupacao, recintoId;
+        String nomeAnimal;
+        String linha;
+        FileReader inStream = new FileReader("AnimaisEmRecintos.txt");
+        BufferedReader lerDados = new BufferedReader(inStream);
+        linha = lerDados.readLine();
+        while (linha != null) {
+            switch (linha) {
 
-    // }
-    // }
-    // }
+            }
+        }
+    }
 }

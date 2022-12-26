@@ -131,9 +131,7 @@ public class Zoo {
     }
 
     public void listarAnimais() {
-        // System.out.println("\nAnimais errantes:");
         listarAnimaisErrantes();
-        // System.out.println("\nAnimais em recintos");
         listarAnimaisRecintos();
     }
 

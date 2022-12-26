@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Cao extends Animal implements Canis {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 15;
     private static final int APETITE_REPRODUTIVO = 60;
 
@@ -111,6 +112,18 @@ public class Cao extends Animal implements Canis {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Cao.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

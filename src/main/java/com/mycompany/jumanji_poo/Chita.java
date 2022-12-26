@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Chita extends Animal {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 12;
     private static final int APETITE_REPRODUTIVO = 50;
 
@@ -23,7 +24,7 @@ public class Chita extends Animal {
         setAtratividadeBase(5000);
         // num aleatorio de 0 a 12
         setIdade(idade);
-        setViasExtincao(false);
+        setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
@@ -106,6 +107,18 @@ public class Chita extends Animal {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Chita.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

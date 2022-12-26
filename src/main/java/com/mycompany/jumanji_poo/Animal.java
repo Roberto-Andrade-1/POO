@@ -15,7 +15,6 @@ public abstract class Animal implements Mutacoes {
     private static int idAnimalAtualizado;
     private int idAnimal, idade;
     private String nome;
-    private boolean viasExtincao;
     private final String SEXO;
     private final boolean ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES;
 
@@ -86,16 +85,8 @@ public abstract class Animal implements Mutacoes {
         this.idade = idade;
     }
 
-    public boolean isViasExtincao() {
-        return viasExtincao;
-    }
-
     public static String[] getNOMES_ALEATORIOS() {
         return NOMES_ALEATORIOS;
-    }
-
-    public void setViasExtincao(boolean viasExtincao) {
-        this.viasExtincao = viasExtincao;
     }
 
     public boolean isAlbinismo() {
@@ -119,7 +110,7 @@ public abstract class Animal implements Mutacoes {
     }
 
     public int numAleatorioObjHash() {
-        int num = Objects.hash(idAnimal, nome, viasExtincao, idade, NOMES_ALEATORIOS, idAnimalAtualizado);
+        int num = Objects.hash(idAnimal, nome, retornaViasExtincao(), idade, NOMES_ALEATORIOS, idAnimalAtualizado);
         if (num < 0) {
             num = num * (-1);
         }
@@ -216,5 +207,7 @@ public abstract class Animal implements Mutacoes {
         else
             return "Macho";
     }
+
+    // public abstract boolean retornaViasExtincao();
 
 }

@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class Panda extends Animal implements Ursus {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 20;
     private static final int APETITE_REPRODUTIVO = 5;
 
@@ -23,7 +24,7 @@ public class Panda extends Animal implements Ursus {
         setAtratividadeBase(10000);
         // num aleatorio de 0 a 20
         setIdade(idade);
-        setViasExtincao(false);
+        setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
@@ -111,6 +112,18 @@ public class Panda extends Animal implements Ursus {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        Panda.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }

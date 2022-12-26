@@ -3,6 +3,7 @@ package com.mycompany.jumanji_poo;
 public class LinceIberico extends Animal {
 
     private static double atratividadeBase;
+    private static boolean viasExtincao;
     private static final int ESPERANCA_VIDA = 13;
     private static final int APETITE_REPRODUTIVO = 46;
 
@@ -23,7 +24,7 @@ public class LinceIberico extends Animal {
         setAtratividadeBase(5500);
         // num aleatorio de 0 a 13
         setIdade(idade);
-        setViasExtincao(false);
+        setViasExtincao(true);
     }
 
     public int getEsperancaVida() {
@@ -106,6 +107,18 @@ public class LinceIberico extends Animal {
 
     @Override
     public int retornaApetiteReprodutivo() {
+        return APETITE_REPRODUTIVO;
+    }
+
+    public static boolean isViasExtincao() {
+        return viasExtincao;
+    }
+
+    public static void setViasExtincao(boolean viasExtincao) {
+        LinceIberico.viasExtincao = viasExtincao;
+    }
+
+    public static int getApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;
     }
 }
