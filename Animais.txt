@@ -22,7 +22,8 @@ Femea
 Animais Mortos:
 
 -------------
-Animais em Recintos:
+Animais Perdidos:
 
 --------
-Animais Perdidos:
+Animais em Recintos:
+
