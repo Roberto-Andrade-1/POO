@@ -1,0 +1,20 @@
+-------------
+Animais Errantes:
+1
+Sandro
+2
+0
+1
+0
+1
+0
+Macho
+2
+Madalena
+4
+0
+0
+0
+0
+1
+Femea

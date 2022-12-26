@@ -84,13 +84,6 @@ public class Zoo {
         int total = 0;
         int animaisRecinto = 0;
         total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
-        // for (Animal[] ani : recintos.values()) {
-        // for (Animal animal : ani) {
-        // if (animal != null) {
-        // animaisRecinto++;
-        // }
-        // }
-        // }
         for (Recinto rec : getRecintos().keySet()) {
             animaisRecinto += rec.getOcupacao();
         }
