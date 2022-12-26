@@ -10,13 +10,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.print.DocFlavor.STRING;
-
 public class Jumanji {
 
     private static Scanner scan;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         scan = new Scanner(System.in);
 
         boolean sair = false;
@@ -42,7 +40,8 @@ public class Jumanji {
                     12.Histórico
                     13.Período contabilístico
                     14.Jumanji
-                    15.Sair da aplicação
+                    15.Inseir a partir de ficheiros
+                    16.Sair da aplicação
                     """);
             System.out.println("Escolha uma opção: ");
             int escolha = scan.nextInt();
@@ -95,6 +94,13 @@ public class Jumanji {
                     jumanji(zoo, historico);
                     break;
                 case 15:
+                    uploadRecintos(zoo);
+                    uploadAnimaisEmRecintos(zoo);
+                    uploadAnimaisErrantes(zoo);
+                    uploadAnimaisMortos(zoo);
+                    uploadAnimaisPerdidos(zoo);
+                    break;
+                case 16:
                     sair = true;
                     break;
                 default:
@@ -1276,9 +1282,9 @@ public class Jumanji {
         }
     }
 
-    // -------leitura de ficheiros---------
+    // -------leitura de ficheiros---------//
 
-    public void uploadRecintos(Zoo zoo) throws IOException {
+    public static void uploadRecintos(Zoo zoo) throws IOException {
         String linha;
         int idRecinto = 0, capacidade = 0;
         Recinto rec = null;
@@ -1311,7 +1317,7 @@ public class Jumanji {
         }
     }
 
-    public void uploadAnimaisEmRecintos(Zoo zoo) throws IOException {
+    public static void uploadAnimaisEmRecintos(Zoo zoo) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -1477,7 +1483,7 @@ public class Jumanji {
         }
     }
 
-    public void uploadAnimaisErrantes(Zoo zoo) throws IOException {
+    public static void uploadAnimaisErrantes(Zoo zoo) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -1629,7 +1635,7 @@ public class Jumanji {
         }
     }
 
-    public void uploadAnimaisMortos(Zoo zoo) throws IOException {
+    public static void uploadAnimaisMortos(Zoo zoo) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -1781,7 +1787,7 @@ public class Jumanji {
         }
     }
 
-    public void uploadAnimaisPerdidos(Zoo zoo) throws IOException {
+    public static void uploadAnimaisPerdidos(Zoo zoo) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
