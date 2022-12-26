@@ -1,0 +1,11 @@
+--------
+Animais em Recintos:
+3
+Joaquim
+6
+0
+0
+0
+0
+0
+Macho
