@@ -20,9 +20,25 @@ Madalena
 Femea
 -------------
 Animais Mortos:
-
+21
+Linda
+4
+1
+1
+0
+0
+0
+Femea
 -------------
 Animais Perdidos:
-
+25
+Artur
+10
+0
+0
+1
+1
+0
+Macho
 --------
 Animais em Recintos:
