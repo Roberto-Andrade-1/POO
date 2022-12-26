@@ -87,7 +87,7 @@ public class Zoo {
         for (Animal[] ani : recintos.values()) {
             for (Animal animal : ani) {
                 if (animal != null) {
-                    animais++;
+                    animaisRecinto++;
                 }
             }
         }
