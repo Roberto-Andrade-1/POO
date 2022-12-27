@@ -1,11 +1,5 @@
 package com.mycompany.jumanji_poo;
 
-import Genoma.Naja;
-import Genoma.Panthera;
-import Genoma.Ursus;
-import Genoma.Ovis;
-import Genoma.Equus;
-import Genoma.Canis;
 import Ocorrencias.Adicionar;
 import Ocorrencias.Morte;
 import Ocorrencias.OcorrenciaPeriodo;
@@ -31,6 +25,12 @@ import Animais.Porco;
 import Animais.Coelho;
 import Animais.Panda;
 import Animais.UrsoPreto;
+import Genoma.Canis;
+import Genoma.Equus;
+import Genoma.Naja;
+import Genoma.Ovis;
+import Genoma.Panthera;
+import Genoma.Ursus;
 import Animais.Cao;
 import Animais.UrsoPolar;
 import Animais.Chita;
