@@ -1,4 +1,7 @@
-package com.mycompany.jumanji_poo;
+package Animais;
+
+import Animais.Animal;
+import Genoma.Ursus;
 
 public class UrsoPolar extends Animal implements Ursus {
 

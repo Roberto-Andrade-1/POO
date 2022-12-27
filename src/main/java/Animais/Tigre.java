@@ -1,4 +1,7 @@
-package com.mycompany.jumanji_poo;
+package Animais;
+
+import Animais.Animal;
+import Genoma.Panthera;
 
 public class Tigre extends Animal implements Panthera {
 

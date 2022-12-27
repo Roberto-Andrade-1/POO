@@ -1,5 +1,6 @@
-package com.mycompany.jumanji_poo;
+package Ocorrencias;
 
+import Animais.Animal;
 import java.util.List;
 
 public class Fugir {

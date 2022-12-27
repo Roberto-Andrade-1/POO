@@ -1,5 +1,6 @@
-package com.mycompany.jumanji_poo;
+package Animais;
 
+import Mutacoes.Mutacoes;
 import java.util.Objects;
 import java.util.Random;
 

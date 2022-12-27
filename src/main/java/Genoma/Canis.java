@@ -1,4 +1,4 @@
-package com.mycompany.jumanji_poo;
+package Genoma;
 
 public interface Canis {
     double CUSTO_CANIS = 1300;

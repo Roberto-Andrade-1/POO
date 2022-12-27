@@ -1,4 +1,6 @@
-package com.mycompany.jumanji_poo;
+package Ocorrencias;
+
+import com.mycompany.jumanji_poo.Recinto;
 
 public class ComprarRecinto {
     private Recinto rec;

@@ -1,4 +1,4 @@
-package com.mycompany.jumanji_poo;
+package Genoma;
 
 public interface Naja {
     double CUSTO_NAJA = 2000;

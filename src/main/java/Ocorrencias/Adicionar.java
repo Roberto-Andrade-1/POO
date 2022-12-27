@@ -1,4 +1,6 @@
-package com.mycompany.jumanji_poo;
+package Ocorrencias;
+
+import Animais.Animal;
 
 public class Adicionar {
     private Animal ani;

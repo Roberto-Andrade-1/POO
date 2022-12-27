@@ -1,4 +1,4 @@
-package com.mycompany.jumanji_poo;
+package Ocorrencias;
 
 import java.util.ArrayList;
 import java.util.List;

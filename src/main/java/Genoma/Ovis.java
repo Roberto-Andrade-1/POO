@@ -1,4 +1,4 @@
-package com.mycompany.jumanji_poo;
+package Genoma;
 
 public interface Ovis {
     double CUSTO_OVIS = 1500;

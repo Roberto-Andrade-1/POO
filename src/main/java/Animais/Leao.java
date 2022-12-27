@@ -1,4 +1,7 @@
-package com.mycompany.jumanji_poo;
+package Animais;
+
+import Animais.Animal;
+import Genoma.Panthera;
 
 public class Leao extends Animal implements Panthera {
 

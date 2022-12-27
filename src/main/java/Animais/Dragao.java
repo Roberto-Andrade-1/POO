@@ -1,4 +1,6 @@
-package com.mycompany.jumanji_poo;
+package Animais;
+
+import Animais.Animal;
 
 public class Dragao extends Animal {
 

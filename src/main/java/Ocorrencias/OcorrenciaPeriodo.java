@@ -1,4 +1,4 @@
-package com.mycompany.jumanji_poo;
+package Ocorrencias;
 
 public class OcorrenciaPeriodo {
     private int despesas, proveitos;

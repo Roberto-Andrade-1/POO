@@ -1,4 +1,4 @@
-package com.mycompany.jumanji_poo;
+package Mutacoes;
 
 public interface Mutacoes {
     public boolean detetaHeterocromia();

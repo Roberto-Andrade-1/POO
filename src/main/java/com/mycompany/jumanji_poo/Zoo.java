@@ -1,5 +1,6 @@
 package com.mycompany.jumanji_poo;
 
+import Animais.Animal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
