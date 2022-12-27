@@ -4,7 +4,7 @@ import Ocorrencias.Adicionar;
 import Ocorrencias.Morte;
 import Ocorrencias.OcorrenciaPeriodo;
 import Ocorrencias.Nascimento;
-import Ocorrencias.InserirRecinto;
+import Ocorrencias.InserirAnimalNoRecinto;
 import Ocorrencias.Fugir;
 import Ocorrencias.Ocorrencia;
 import Ocorrencias.ComprarRecinto;
@@ -70,7 +70,7 @@ public class Jumanji {
                     // historico.add("\nFoi adicionado dados a partir de ficheiros por escolha do
                     // utilizador");
                     uploadRecintos(zoo);
-                    uploadAnimaisEmRecintos(zoo);
+                    uploadAnimaisEmRecintos(zoo, ocorrencias);
                     uploadAnimaisErrantes(zoo);
                     uploadAnimaisMortos(zoo);
                     uploadAnimaisPerdidos(zoo);
@@ -483,7 +483,7 @@ public class Jumanji {
                                 if (animais[i] == null) {
                                     animais[i] = ani;
                                     // texto += "\n " + ani;
-                                    InserirRecinto insRec = new InserirRecinto(ani, idRecinto);
+                                    InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(ani, idRecinto);
                                     ocor.setHistorico(insRec.toString());
                                     break; // nao repetir o animal até ocupar a capacidade do recinto
                                 }
@@ -503,7 +503,7 @@ public class Jumanji {
                             // texto += "\n ->Como o recinto estava cheio o seguinte animal tornou-se
                             // errante\n "
                             // + a;
-                            InserirRecinto insRec = new InserirRecinto(ani, idRecinto, a);
+                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(ani, idRecinto, a);
                             ocor.setHistorico(insRec.toString());
 
                         }
@@ -1325,10 +1325,10 @@ public class Jumanji {
                         if (a != null) {
                             zoo.setAnimaisErrantes(a);
                             // texto += "\nO seguinte animal tornou-se errante:\n " + a;
-                            InserirRecinto insRec = new InserirRecinto(animais[num], idDoRecintoAle, a);
+                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idDoRecintoAle, a);
                             ocor.setHistorico(insRec.toString());
                         } else {
-                            InserirRecinto insRec = new InserirRecinto(animais[num], idDoRecintoAle);
+                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idDoRecintoAle);
                             ocor.setHistorico(insRec.toString());
                         }
                     }
@@ -1431,6 +1431,7 @@ public class Jumanji {
                         zoo.setRecintos(rec);
                         linha = lerDados.readLine();
                         numDaLinha = 1;
+
                         break;
                 }
             }
@@ -1441,7 +1442,7 @@ public class Jumanji {
         }
     }
 
-    public static void uploadAnimaisEmRecintos(Zoo zoo) throws IOException {
+    public static void uploadAnimaisEmRecintos(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -1604,6 +1605,10 @@ public class Jumanji {
                                     if (animais[i] == null) {
                                         Animal.setIdAnimalAtualizado();
                                         animais[i] = a;
+
+                                        InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(a, recintoId);
+                                        ocor.setHistorico(insRec.toString());
+
                                         break;
                                     }
                                 }

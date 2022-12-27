@@ -2,19 +2,19 @@ package Ocorrencias;
 
 import Animais.Animal;
 
-public class InserirRecinto {
+public class InserirAnimalNoRecinto {
     private Animal ani, aniMover;
     private int idRecinto;
     private boolean necessarioMover;
 
-    public InserirRecinto(Animal ani, int idRecinto) {
+    public InserirAnimalNoRecinto(Animal ani, int idRecinto) {
         this.ani = ani;
         this.idRecinto = idRecinto;
         necessarioMover = false;
         this.aniMover = null;
     }
 
-    public InserirRecinto(Animal ani, int idRecinto, Animal aniMover) {
+    public InserirAnimalNoRecinto(Animal ani, int idRecinto, Animal aniMover) {
         this.ani = ani;
         this.idRecinto = idRecinto;
         this.necessarioMover = true;
