@@ -71,8 +71,14 @@ public abstract class Animal implements Mutacoes {
         return idAnimalAtualizado;
     }
 
-    public static void setIdAnimalAtualizado() {
+    public static void incrementaIdAnimalAtualizado() {
         idAnimalAtualizado++;
+    }
+
+    public static void setIdAnimalAtualizado(int idAnimalAtualizado) {
+        if (Animal.idAnimalAtualizado < idAnimalAtualizado) {
+            Animal.idAnimalAtualizado = idAnimalAtualizado;
+        }
     }
 
     public int getIdAnimal() {
