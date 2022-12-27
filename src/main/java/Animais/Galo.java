@@ -1,7 +1,5 @@
 package Animais;
 
-import Animais.Animal;
-
 public class Galo extends Animal {
 
     private static double atratividadeBase;

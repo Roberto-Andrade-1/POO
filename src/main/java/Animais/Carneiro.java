@@ -1,6 +1,5 @@
 package Animais;
 
-import Animais.Animal;
 import Genoma.Ovis;
 
 public class Carneiro extends Animal implements Ovis {

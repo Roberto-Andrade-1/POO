@@ -1,6 +1,5 @@
 package Animais;
 
-import Animais.Animal;
 import Genoma.Canis;
 
 public class Lobo extends Animal implements Canis {

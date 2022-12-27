@@ -1,6 +1,5 @@
 package Animais;
 
-import Animais.Animal;
 import Genoma.Ursus;
 
 public class UrsoPolar extends Animal implements Ursus {

@@ -1,6 +1,5 @@
 package Animais;
 
-import Animais.Animal;
 import Genoma.Canis;
 
 public class Cao extends Animal implements Canis {
