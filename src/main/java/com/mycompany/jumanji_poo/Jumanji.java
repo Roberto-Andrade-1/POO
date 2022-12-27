@@ -24,8 +24,9 @@ public class Jumanji {
         historico.add("------INÍCIO------");
 
         while (primeiraVez) {
-            System.out.println("Deseja inserir alguns animais e recintos guardados em ficheiros?(sim/não)");
+            System.out.println("Deseja inserir alguns animais e recintos guardados em ficheiros?(sim/nao)");
             String escolhaPrimeira = scan.next();
+            escolhaPrimeira = escolhaPrimeira.trim();
             escolhaPrimeira = escolhaPrimeira.toLowerCase();
             switch (escolhaPrimeira) {
                 case "sim":
@@ -37,12 +38,11 @@ public class Jumanji {
                     uploadAnimaisPerdidos(zoo);
                     primeiraVez = false;
                     break;
-                case "não":
                 case "nao":
                     primeiraVez = false;
                     break;
                 default:
-                    System.out.println("escolha sim ou não!\n");
+                    System.out.println("escolha sim ou nao!\n");
                     break;
 
             }
@@ -236,7 +236,7 @@ public class Jumanji {
             default:
                 System.out.println("Valor inválido");
         }
-        if (a != null) {
+        if ((zoo.getSaldo() - a.retornaCusto()) >= 0) {
             Animal.setIdAnimalAtualizado();
             a.setIdAnimal(Animal.getIdAnimalAtualizado());
             zoo.setAnimaisErrantes(a);
@@ -245,7 +245,8 @@ public class Jumanji {
             String texto = new String();
             texto = "\nO seguinte animal gerado aleatoriamente foi adicioando ao zoo como animal errante:\n     " + a;
             hist.add(texto);
-        }
+        } else
+            System.out.println("Não tem dinheiro para comprar o animal");
     }
 
     // 2.Adquirir animal com característica genética
@@ -332,7 +333,7 @@ public class Jumanji {
                 System.out.println("Opção inválida");
                 break;
         }
-        if (inserir) {
+        if (inserir && (zoo.getSaldo() - a.retornaCusto()) >= 0) {
             System.out.println(a);
             Animal.setIdAnimalAtualizado();
             a.setIdAnimal(Animal.getIdAnimalAtualizado());
@@ -343,6 +344,9 @@ public class Jumanji {
                     + ":\n      " + a;
             hist.add(texto);
             zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());
+        } else {
+            System.out.println("Não tem dinheiro para comprar o seguinte animal");
+            System.out.println(a);
         }
     }
 
@@ -375,14 +379,18 @@ public class Jumanji {
             case 2:
             case 3:
                 escolhido = recintosAle[escolhaRecinto - 1];
-                String texto = new String();
-                texto = "O utilizador escolheu o seguinte recinto do candidato " + escolhaRecinto + ":\n      "
-                        + escolhido;
-                hist.add(texto);
+                if ((zoo.getSaldo() - escolhido.getCusto()) > 0) {
+                    String texto = new String();
+                    texto = "O utilizador escolheu o seguinte recinto do candidato " + escolhaRecinto + ":\n      "
+                            + escolhido;
+                    hist.add(texto);
 
-                escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                zoo.setRecintos(escolhido);
-                zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());
+                    escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());
+                    zoo.setRecintos(escolhido);
+                    zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());
+                } else {
+                    System.out.println("Não tem dinheiro para comprar o recinto");
+                }
                 break;
             default:
                 System.out.println("Número inválido");
@@ -502,13 +510,16 @@ public class Jumanji {
                 2.Equus
                 3.Naja
                 4.Ovis
-                5.Phantera
+                5.Panthera
                 6.Ursus
 
                 """);
         String escolha = scan.next();
+        escolha = escolha.trim();
+        escolha = escolha.toLowerCase();
         switch (escolha) {
-            case "Canis":
+            case "1":
+            case "canis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Canis.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -522,7 +533,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Equus":
+            case "2":
+            case "equus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Equus.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -536,7 +548,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Naja":
+            case "3":
+            case "naja":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Naja.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -550,7 +563,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Ovis":
+            case "4":
+            case "ovis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ovis.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -564,7 +578,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Panthera":
+            case "5":
+            case "panthera":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Panthera.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -578,7 +593,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Ursus":
+            case "6":
+            case "ursus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ursus.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -597,8 +613,10 @@ public class Jumanji {
 
     // Overload
     public static void listarAnimaisCarGenetica(Zoo zoo, String escolha) {
+        escolha = escolha.trim();
+        escolha = escolha.toLowerCase();
         switch (escolha) {
-            case "Canis":
+            case "canis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Canis.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -612,7 +630,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Equus":
+            case "equus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Equus.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -626,7 +644,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Naja":
+            case "naja":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Naja.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -640,7 +658,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Ovis":
+            case "ovis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ovis.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -654,7 +672,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Panthera":
+            case "panthera":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Panthera.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -668,7 +686,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Ursus":
+            case "ursus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ursus.class.isAssignableFrom(animal.getClass())) {
                         System.out.println(animal);
@@ -699,8 +717,11 @@ public class Jumanji {
 
                 """);
         String escolha = scan.next();
+        escolha = escolha.toLowerCase();
+        escolha = escolha.trim();
         switch (escolha) {
-            case "Albino":
+            case "1":
+            case "albino":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isAlbinismo())
                         System.out.println(animal);
@@ -712,7 +733,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Heterocromia":
+            case "2":
+            case "heterocromia":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isHeterocromia())
                         System.out.println(animal);
@@ -724,7 +746,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Melanismo":
+            case "3":
+            case "melanismo":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isMelanismo())
                         System.out.println(animal);
@@ -736,7 +759,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Siames":
+            case "4":
+            case "siames":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isSiames())
                         System.out.println(animal);
@@ -748,7 +772,8 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Vitiligo":
+            case "5":
+            case "vitiligo":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isVitiligo())
                         System.out.println(animal);
@@ -768,8 +793,10 @@ public class Jumanji {
 
     // Overload
     public static void listarDadaMutacao(Zoo zoo, String escolha) {
+        escolha = escolha.toLowerCase();
+        escolha = escolha.trim();
         switch (escolha) {
-            case "Albino":
+            case "albino":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isAlbinismo())
                         System.out.println(animal);
@@ -781,7 +808,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Heterocromia":
+            case "heterocromia":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isHeterocromia())
                         System.out.println(animal);
@@ -793,7 +820,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Melanismo":
+            case "melanismo":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isMelanismo())
                         System.out.println(animal);
@@ -805,7 +832,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Siames":
+            case "siames":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isSiames())
                         System.out.println(animal);
@@ -817,7 +844,7 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "Vitiligo":
+            case "vitiligo":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (animal.isVitiligo())
                         System.out.println(animal);
@@ -1252,6 +1279,7 @@ public class Jumanji {
         hist.add(texto);
     }
 
+    // 10. Retrato Familiar
     public static void retratoFamiliar(Zoo zoo, List<String> his) {
 
         System.out.println("\n-------Histórico-------\n");
@@ -1263,14 +1291,14 @@ public class Jumanji {
 
         String[] caractGen = { "Canis", "Equus", "Naja", "Ovis", "Panthera", "Ursus" };
         for (int index = 0; index < caractGen.length; index++) {
-            System.out.println("------" + caractGen[index] + "------");
+            System.out.println("\n------" + caractGen[index] + "------");
             listarAnimaisCarGenetica(zoo, caractGen[index]);
         }
 
         System.out.println("\n-------Mutações-------");
         String[] mutacoes = { "Albino", "Heterocromia", "Melanismo", "Siames", "Vitiligo" };
         for (int i = 0; i < mutacoes.length; i++) {
-            System.out.println("------" + mutacoes[i] + "------");
+            System.out.println("\n------" + mutacoes[i] + "------");
             listarDadaMutacao(zoo, mutacoes[i]);
         }
 
