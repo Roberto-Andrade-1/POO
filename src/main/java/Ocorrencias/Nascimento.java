@@ -24,8 +24,8 @@ public class Nascimento {
     public String toString() {
         String texto = new String();
         if (!lista) {
-            texto += "Nasceu o seguinte animal:\n   ";
-            texto += ani;
+            texto += "\nNasceu o seguinte animal:\n   ";
+            texto += ani + "\n";
         } else {
             if (animaisNascidos.isEmpty())
                 texto += "\nnNenhum animal nasceu";
@@ -33,7 +33,7 @@ public class Nascimento {
                 texto += "\n0s seguintes animais nasceram : ";
                 for (Animal animal : animaisNascidos) {
                     System.out.println(animal);
-                    texto += "\n" + animal;
+                    texto += "\n" + animal + "\n";
                 }
             }
         }

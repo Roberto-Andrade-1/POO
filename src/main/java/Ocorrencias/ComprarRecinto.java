@@ -15,7 +15,7 @@ public class ComprarRecinto {
     public String toString() {
         String texto = new String();
         texto = "\nO utilizador escolheu o seguinte recinto do candidato " + numCandidato + ":\n    ";
-        texto += rec;
+        texto += rec + "\n";
         return texto;
     }
 }

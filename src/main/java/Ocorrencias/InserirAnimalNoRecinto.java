@@ -26,14 +26,13 @@ public class InserirAnimalNoRecinto {
         String texto = new String();
         if (!necessarioMover) {
             texto += "\nO seguinte animal foi adicionado no recinto com id " + idRecinto + ":\n     ";
-            texto += ani;
-            return texto;
+            texto += ani + "\n";
         } else {
             texto += "\nO seguinte animal foi adicionado no recinto com id " + idRecinto + ":\n    ";
             texto += ani;
             texto += "\n-->Para este entrar o seguinte animal teve que sair, assim sendo o animal tornou-se errante:\n    ";
-            texto += aniMover;
-            return texto;
+            texto += aniMover + "\n";
         }
+        return texto;
     }
 }

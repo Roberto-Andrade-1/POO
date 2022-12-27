@@ -24,8 +24,8 @@ public class Morte {
     public String toString() {
         String texto = new String();
         if (!lista) {
-            texto += "Morreu o seguinte animal:\n   ";
-            texto += ani;
+            texto += "\nMorreu o seguinte animal:\n   ";
+            texto += ani + "\n";
         } else {
             if (animaisMortos.isEmpty())
                 texto += "\nNão morreram animais";
@@ -33,7 +33,7 @@ public class Morte {
                 texto += "\nOs seguintes animais morreram";
                 for (Animal animal : animaisMortos) {
                     System.out.println(animal);
-                    texto += "\n" + animal;
+                    texto += "\n" + animal + "\n";
                 }
             }
         }

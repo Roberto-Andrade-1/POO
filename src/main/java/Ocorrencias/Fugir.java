@@ -25,7 +25,7 @@ public class Fugir {
         String texto = new String();
         if (!lista) {
             texto += "\nO seguinte animal fugiu do recinto:\n    ";
-            texto += ani;
+            texto += ani + "\n";
         } else {
             if (animaisPerdidos.isEmpty()) {
                 texto += "\n->Nenhum animal fugiu\n";

@@ -23,12 +23,12 @@ public class Adicionar {
     public String toString() {
         String texto = new String();
         if (!carGent) {
-            texto += "\nO seguinte animal gerado aleatoriamente foi adicioando ao zoo como animal errante\n     ";
-            texto += ani;
+            texto += "\nO seguinte animal foi adicioando ao zoo como animal errante\n     ";
+            texto += ani + "\n";
         } else {
             texto += "\nO seguinte animal foi comprado através de uma pesquisa pela caracteristica genética " + escolha
                     + " e inserido no zoo como animal errante:\n    ";
-            texto += ani;
+            texto += ani + "\n";
         }
         return texto;
     }

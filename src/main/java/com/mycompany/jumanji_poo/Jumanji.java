@@ -5,6 +5,7 @@ import Ocorrencias.Morte;
 import Ocorrencias.OcorrenciaPeriodo;
 import Ocorrencias.Nascimento;
 import Ocorrencias.InserirAnimalNoRecinto;
+import Ocorrencias.InserirRecinto;
 import Ocorrencias.Fugir;
 import Ocorrencias.Ocorrencia;
 import Ocorrencias.ComprarRecinto;
@@ -69,11 +70,11 @@ public class Jumanji {
                 case "sim":
                     // historico.add("\nFoi adicionado dados a partir de ficheiros por escolha do
                     // utilizador");
-                    uploadRecintos(zoo);
+                    uploadRecintos(zoo, ocorrencias);
                     uploadAnimaisEmRecintos(zoo, ocorrencias);
-                    uploadAnimaisErrantes(zoo);
-                    uploadAnimaisMortos(zoo);
-                    uploadAnimaisPerdidos(zoo);
+                    uploadAnimaisErrantes(zoo, ocorrencias);
+                    uploadAnimaisMortos(zoo, ocorrencias);
+                    uploadAnimaisPerdidos(zoo, ocorrencias);
                     primeiraVez = false;
                     break;
                 case "nao":
@@ -1404,7 +1405,7 @@ public class Jumanji {
 
     // -------leitura de ficheiros---------//
 
-    public static void uploadRecintos(Zoo zoo) throws IOException {
+    public static void uploadRecintos(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         int idRecinto = 0, capacidade = 0;
         Recinto rec = null;
@@ -1431,6 +1432,9 @@ public class Jumanji {
                         zoo.setRecintos(rec);
                         linha = lerDados.readLine();
                         numDaLinha = 1;
+
+                        InserirRecinto insRec = new InserirRecinto(rec);
+                        ocor.setHistorico(insRec.toString());
 
                         break;
                 }
@@ -1626,7 +1630,7 @@ public class Jumanji {
         }
     }
 
-    public static void uploadAnimaisErrantes(Zoo zoo) throws IOException {
+    public static void uploadAnimaisErrantes(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -1780,6 +1784,10 @@ public class Jumanji {
                         Animal.setIdAnimalAtualizado();
                         linha = lerDados.readLine();
                         numDaLinha = 1;
+
+                        Adicionar adAni = new Adicionar(a);
+                        ocor.setHistorico(adAni.toString());
+
                         break;
                 }
             }
@@ -1790,7 +1798,7 @@ public class Jumanji {
         }
     }
 
-    public static void uploadAnimaisMortos(Zoo zoo) throws IOException {
+    public static void uploadAnimaisMortos(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -1944,6 +1952,9 @@ public class Jumanji {
                         Animal.setIdAnimalAtualizado();
                         linha = lerDados.readLine();
                         numDaLinha = 1;
+
+                        Morte aniMorto = new Morte(a);
+                        ocor.setHistorico(aniMorto.toString());
                         break;
                 }
             }
@@ -1954,7 +1965,7 @@ public class Jumanji {
         }
     }
 
-    public static void uploadAnimaisPerdidos(Zoo zoo) throws IOException {
+    public static void uploadAnimaisPerdidos(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
@@ -2108,6 +2119,8 @@ public class Jumanji {
                         Animal.setIdAnimalAtualizado();
                         linha = lerDados.readLine();
                         numDaLinha = 1;
+                        Fugir aniFugiu = new Fugir(a);
+                        ocor.setHistorico(aniFugiu.toString());
                         break;
                 }
             }
