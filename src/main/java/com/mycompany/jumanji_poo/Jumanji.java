@@ -1297,15 +1297,18 @@ public class Jumanji {
                 switch (numDaLinha) {
                     case 1:
                         idRecinto = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 2:
                         capacidade = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 3:
                         rec = new Recinto(idRecinto, capacidade);
                         zoo.setRecintos(rec);
+                        linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
                 }
@@ -1333,42 +1336,52 @@ public class Jumanji {
                 switch (numDaLinha) {
                     case 1:
                         recintoId = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 2:
                         idAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 3:
                         idadeAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 4:
                         nomeAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 5:
                         sexoAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 6:
                         albinismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 7:
                         heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 8:
                         melanismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 9:
                         vitiligoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 10:
                         siamesAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 11:
@@ -1458,6 +1471,7 @@ public class Jumanji {
                                         vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                         }
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 12:
@@ -1468,10 +1482,12 @@ public class Jumanji {
                                 for (int i = 0; i < animais.length; i++) {
                                     if (animais[i] == null) {
                                         animais[i] = a;
+                                        break;
                                     }
                                 }
                             }
                         }
+                        linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
                 }
@@ -1499,38 +1515,47 @@ public class Jumanji {
                 switch (numDaLinha) {
                     case 1:
                         idAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 2:
                         idadeAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 3:
                         nomeAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 4:
                         sexoAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 5:
                         albinismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 6:
                         heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 7:
                         melanismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 8:
                         vitiligoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 9:
                         siamesAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 10:
@@ -1620,10 +1645,12 @@ public class Jumanji {
                                         vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                         }
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 11:
                         zoo.setAnimaisErrantes(a);
+                        linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
                 }
@@ -1651,38 +1678,47 @@ public class Jumanji {
                 switch (numDaLinha) {
                     case 1:
                         idAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 2:
                         idadeAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 3:
                         nomeAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 4:
                         sexoAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 5:
                         albinismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 6:
                         heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 7:
                         melanismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 8:
                         vitiligoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 9:
                         siamesAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 10:
@@ -1772,10 +1808,12 @@ public class Jumanji {
                                         vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                         }
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 11:
                         zoo.setAnimaisMortos(a);
+                        linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
                 }
@@ -1803,38 +1841,47 @@ public class Jumanji {
                 switch (numDaLinha) {
                     case 1:
                         idAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 2:
                         idadeAnimal = Integer.parseInt(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 3:
                         nomeAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 4:
                         sexoAnimal = linha;
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 5:
                         albinismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 6:
                         heterocromiaAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 7:
                         melanismoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 8:
                         vitiligoAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 9:
                         siamesAnimal = Boolean.parseBoolean(linha);
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 10:
@@ -1924,10 +1971,12 @@ public class Jumanji {
                                         vitiligoAnimal, melanismoAnimal, heterocromiaAnimal, siamesAnimal);
                                 break;
                         }
+                        linha = lerDados.readLine();
                         numDaLinha++;
                         break;
                     case 11:
                         zoo.setAnimaisPerdidos(a);
+                        linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
                 }
