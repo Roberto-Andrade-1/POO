@@ -5,14 +5,14 @@ import java.util.Random;
 public class Recinto {
 
     private static int idRecintoAtualizado;
-    private final int custo;
+    private final int CUSTO;
     private int capacidade;
     private int ocupacao;
     private int idRecinto;
 
     public Recinto() {
         this.capacidade = capacidadeAleatoria();
-        this.custo = custoAleatorio();
+        this.CUSTO = custoAleatorio();
         idRecinto = 0;
         this.ocupacao = 0;
     }
@@ -20,7 +20,7 @@ public class Recinto {
     public Recinto(int idRecinto, int capacidade) {
         this.capacidade = capacidade;
         this.idRecinto = idRecinto;
-        this.custo = custoAleatorio();
+        this.CUSTO = custoAleatorio();
         this.ocupacao = 0;
     }
 
@@ -51,7 +51,7 @@ public class Recinto {
     }
 
     public int getCusto() {
-        return custo;
+        return CUSTO;
     }
 
     public int getIdRecinto() {

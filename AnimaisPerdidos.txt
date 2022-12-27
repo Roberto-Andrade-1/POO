@@ -2,10 +2,10 @@
 10
 Artur
 Macho
-0
-0
-0
-1
-1
+false
+false
+false
+true
+true
 Boi
 --

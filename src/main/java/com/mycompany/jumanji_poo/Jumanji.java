@@ -16,12 +16,37 @@ public class Jumanji {
 
     public static void main(String[] args) throws IOException {
         scan = new Scanner(System.in);
-
+        boolean primeiraVez = true;
         boolean sair = false;
         Zoo zoo = new Zoo(300000);
         List<String> historico = new ArrayList<String>();
 
         historico.add("------INÍCIO------");
+
+        while (primeiraVez) {
+            System.out.println("Deseja inserir alguns animais e recintos guardados em ficheiros?(sim/não)");
+            String escolhaPrimeira = scan.next();
+            escolhaPrimeira = escolhaPrimeira.toLowerCase();
+            switch (escolhaPrimeira) {
+                case "sim":
+                    historico.add("\nFoi adicionado dados a partir de ficheiros por escolha do utilizador");
+                    uploadRecintos(zoo);
+                    uploadAnimaisEmRecintos(zoo);
+                    uploadAnimaisErrantes(zoo);
+                    uploadAnimaisMortos(zoo);
+                    uploadAnimaisPerdidos(zoo);
+                    primeiraVez = false;
+                    break;
+                case "não":
+                case "nao":
+                    primeiraVez = false;
+                    break;
+                default:
+                    System.out.println("escolha sim ou não!\n");
+                    break;
+
+            }
+        }
         while (!sair) {
             System.out.println("""
 
@@ -40,8 +65,7 @@ public class Jumanji {
                     12.Histórico
                     13.Período contabilístico
                     14.Jumanji
-                    15.Inseir a partir de ficheiros
-                    16.Sair da aplicação
+                    15.Sair da aplicação
                     """);
             System.out.println("Escolha uma opção: ");
             int escolha = scan.nextInt();
@@ -94,13 +118,6 @@ public class Jumanji {
                     jumanji(zoo, historico);
                     break;
                 case 15:
-                    uploadRecintos(zoo);
-                    uploadAnimaisEmRecintos(zoo);
-                    uploadAnimaisErrantes(zoo);
-                    uploadAnimaisMortos(zoo);
-                    uploadAnimaisPerdidos(zoo);
-                    break;
-                case 16:
                     sair = true;
                     break;
                 default:
@@ -991,15 +1008,16 @@ public class Jumanji {
         // retira do saldo do zoo os custos (ja ta feito no metodo calculaDespesas no
         // zoo)
 
-        // nascimentos
+        // Nascimentos
         System.out.println("\nNasimentos: ");
         List<Animal> nascimentosNestePeriodo = new ArrayList<Animal>();
-        for (Animal animal : zoo.getAnimaisErrantes()) {
+        for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
             int num = rand.nextInt(101);
             Animal a = null;
-            if (animal.retornaApetiteReprodutivo() >= num
-                    && animal.getIdade() >= Math.round((0.25) * animal.retornaEsperancaVida())) {
-                switch (animal.getClass().getSimpleName()) {
+            if (zoo.getAnimaisErrantes().get(i).retornaApetiteReprodutivo() >= num
+                    && zoo.getAnimaisErrantes().get(i).getIdade() >= Math
+                            .round((0.25) * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida())) {
+                switch (zoo.getAnimaisErrantes().get(i).getClass().getSimpleName()) {
                     case "Boi":
                         a = new Boi(0);
                         break;
@@ -1069,6 +1087,7 @@ public class Jumanji {
                 Animal.setIdAnimalAtualizado();
                 a.setIdAnimal(Animal.getIdAnimalAtualizado());
                 nascimentosNestePeriodo.add(a);
+                zoo.setAnimaisErrantes(a);
             }
         }
 
@@ -1307,6 +1326,7 @@ public class Jumanji {
                         break;
                     case 3:
                         rec = new Recinto(idRecinto, capacidade);
+                        Recinto.setIdRecintoAtualizado();
                         zoo.setRecintos(rec);
                         linha = lerDados.readLine();
                         numDaLinha = 1;
@@ -1481,6 +1501,7 @@ public class Jumanji {
                             if (rec.getIdRecinto() == recintoId) {
                                 for (int i = 0; i < animais.length; i++) {
                                     if (animais[i] == null) {
+                                        Animal.setIdAnimalAtualizado();
                                         animais[i] = a;
                                         break;
                                     }
@@ -1650,6 +1671,7 @@ public class Jumanji {
                         break;
                     case 11:
                         zoo.setAnimaisErrantes(a);
+                        Animal.setIdAnimalAtualizado();
                         linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
@@ -1813,6 +1835,7 @@ public class Jumanji {
                         break;
                     case 11:
                         zoo.setAnimaisMortos(a);
+                        Animal.setIdAnimalAtualizado();
                         linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
@@ -1976,6 +1999,7 @@ public class Jumanji {
                         break;
                     case 11:
                         zoo.setAnimaisPerdidos(a);
+                        Animal.setIdAnimalAtualizado();
                         linha = lerDados.readLine();
                         numDaLinha = 1;
                         break;
