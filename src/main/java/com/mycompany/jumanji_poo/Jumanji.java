@@ -26,6 +26,7 @@ import Animais.Porco;
 import Animais.Coelho;
 import Animais.Panda;
 import Animais.UrsoPreto;
+import Excecoes.ExcecaoIdIncorreto;
 import Genoma.Canis;
 import Genoma.Equus;
 import Genoma.Naja;
@@ -51,15 +52,12 @@ public class Jumanji {
 
     private static Scanner scan;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ExcecaoIdIncorreto {
         scan = new Scanner(System.in);
         boolean primeiraVez = true;
         boolean sair = false;
         Zoo zoo = new Zoo(300000);
-        // List<String> historico = new ArrayList<String>();
         Ocorrencia ocorrencias = new Ocorrencia();
-
-        // historico.add("------INÍCIO------");
 
         while (primeiraVez) {
             System.out.println("Deseja inserir alguns animais e recintos guardados em ficheiros?(sim/nao)");
@@ -81,7 +79,6 @@ public class Jumanji {
                 default:
                     System.out.println("escolha sim ou nao!\n");
                     break;
-
             }
         }
         while (!sair) {
@@ -117,7 +114,7 @@ public class Jumanji {
                     recintosAleatorio(zoo, ocorrencias);
                     break;
                 case 4:
-                    adicionarInstalacao(zoo, ocorrencias);
+                    adicionarInstalaca(zoo, ocorrencias);
                     break;
                 case 5:
                     calendarioChines();
@@ -453,62 +450,57 @@ public class Jumanji {
     }
 
     // 4.Adicionar animal nas instalações
-    public static void adicionarInstalacao(Zoo zoo, Ocorrencia ocor) {
-        // Scanner scan = new Scanner(System.in);
-
-        // String texto = new String();
-
+    public static void adicionarInstalaca(Zoo zoo, Ocorrencia ocor) throws ExcecaoIdIncorreto {
         System.out.println("\nQual animal deseja adicionar? (ID)");
         zoo.listarAnimaisErrantes();
         int idAnimal = scan.nextInt();
+        if (zoo.verificaIdAnimal(idAnimal)) {// verifica se existe algum animal na lista de animais errantes com o id
+                                             // inserido
+            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {// percorre lista de animais errantes
+                if (idAnimal == zoo.getAnimaisErrantes().get(i).getIdAnimal()) {// encontra o animal com o id inserido
+                    System.out.println("\nQual o recinto que pretende inserir o Animal? (ID)");
+                    zoo.listarRecintos();
+                    int idRecinto = scan.nextInt();
+                    if (zoo.verificaIdRecinto(idRecinto)) {// verifica se o id inserido corresponde com algum existente
+                                                           // no zoo
+                        for (Recinto rec : zoo.getRecintos().keySet()) {// percorre os recintos
+                            if (idRecinto == rec.getIdRecinto()) {// encontra o recinto com o id pedido
+                                Animal[] animais = zoo.getRecintos().get(rec);// chama o array de animais do respetivo
+                                                                              // recinto
+                                zoo.verificaOcupacaoRec();
+                                if (rec.getCapacidade() != rec.getOcupacao()) {// verifica se tem lugares vagos no
+                                                                               // recinto
+                                    for (int j = 0; j < animais.length; j++) {
+                                        if (animais[j] == null) {
+                                            animais[j] = zoo.getAnimaisErrantes().get(i);// insere o animal no recinto
+                                            zoo.getAnimaisErrantes().remove(i);// retira-o dos animais errantes
+                                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[j],
+                                                    idRecinto);
+                                            ocor.setHistorico(insRec.toString());// insere dados no histórico
+                                            break;
+                                        }
+                                    }
+                                } else {// se o recinto que pretende estiver lotado
+                                    Random rand = new Random();
+                                    int num = rand.nextInt(rec.getCapacidade());// é gerado um número aleatorio
+                                    Animal a = animais[num];// variavel para guardar animal do recinto
+                                    animais[num] = zoo.getAnimaisErrantes().get(i);// adiciona hashmap o animal errante
+                                    zoo.getAnimaisErrantes().remove(i);// retira porque agora está num recinto
+                                    zoo.setAnimaisErrantes(a);// animal que estava no recinto torna-se errante
 
-        System.out.println("\nQual o recinto que pretende inserir o Animal? (ID)");
-        zoo.listarRecintos();
-        int idRecinto = scan.nextInt();
-
-        for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
-            Recinto rec = recintos.getKey();
-            Animal[] animais = recintos.getValue();
-            if (rec.getIdRecinto() == idRecinto) {// verifica o id do recinto
-                for (int j = 0; j < zoo.getAnimaisErrantes().size(); j++) {// percorrer lista animais errantes
-                    Animal ani = zoo.getAnimaisErrantes().get(j);
-                    if (ani.getIdAnimal() == idAnimal) {// se o id for igual ao qur o utilizador escolheu
-
-                        if (rec.getCapacidade() != rec.getOcupacao()) {// se ainda houver lugares disponiveis no recinto
-                            for (int i = 0; i < animais.length; i++) {// adiciona na Hashmap numa posição nula
-                                if (animais[i] == null) {
-                                    animais[i] = ani;
-                                    // texto += "\n " + ani;
-                                    InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(ani, idRecinto);
-                                    ocor.setHistorico(insRec.toString());
-                                    break; // nao repetir o animal até ocupar a capacidade do recinto
+                                    InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idRecinto,
+                                            a);
+                                    ocor.setHistorico(insRec.toString());// insere dado no histórico
                                 }
+                                System.out.println("\nAnimal inserido com sucesso");
                             }
-                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira da lista de
-                                                                                             // aniamis errantes
-                        } else {// caso esteja cheio o recinto
-                            Random rand = new Random();
-                            int num = rand.nextInt(rec.getCapacidade());// é gerado um número aleatorio para escolher
-                                                                        // qual animal (posição) irá sair
-                            Animal a = animais[num];// variavel para guardar aniaml do recinto
-                            animais[num] = ani;// adiciona hashmap o animal errante
-                            zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(j));// retira hashmap
-                            zoo.setAnimaisErrantes(a);// insere o animal antigo da hashmap na lista de animais
-
-                            // texto += "\n " + ani;
-                            // texto += "\n ->Como o recinto estava cheio o seguinte animal tornou-se
-                            // errante\n "
-                            // + a;
-                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(ani, idRecinto, a);
-                            ocor.setHistorico(insRec.toString());
-
                         }
-                        System.out.println("\nAnimal inserido com sucesso");
-
-                    }
+                    } else
+                        throw new ExcecaoIdIncorreto(idRecinto, "recinto");
                 }
             }
-        }
+        } else
+            throw new ExcecaoIdIncorreto(idAnimal, "animal");
     }
 
     // 5.Calendario Chines
@@ -1362,13 +1354,8 @@ public class Jumanji {
                         Animal a = animais[num];
                         animais[num] = zoo.getAnimaisErrantes().get(i);
                         zoo.getAnimaisErrantes().remove(i);
-                        // InserirRecinto insRec=new InserirRecinto(a, idDoRecintoAle, a)
-                        // texto += "\nO seguinte animal errante foi para o recinto com o id " +
-                        // idDoRecintoAle;
-                        // texto += "\n " + animais[num];
                         if (a != null) {
                             zoo.setAnimaisErrantes(a);
-                            // texto += "\nO seguinte animal tornou-se errante:\n " + a;
                             InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idDoRecintoAle, a);
                             ocor.setHistorico(insRec.toString());
                         } else {

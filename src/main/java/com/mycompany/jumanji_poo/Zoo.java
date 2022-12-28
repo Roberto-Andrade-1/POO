@@ -143,4 +143,22 @@ public class Zoo {
 
     }
 
+    public boolean verificaIdAnimal(int id) {
+        boolean verr = false;
+        for (Animal animal : getAnimaisErrantes()) {
+            if (animal.getIdAnimal() == id)
+                verr = true;
+        }
+        return verr;
+    }
+
+    public boolean verificaIdRecinto(int id) {
+        boolean verr = false;
+        for (Recinto rec : getRecintos().keySet()) {
+            if (rec.getIdRecinto() == id)
+                verr = true;
+        }
+        return verr;
+    }
+
 }
