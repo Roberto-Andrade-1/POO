@@ -24,15 +24,15 @@ public class Fugir {
     public String toString() {
         String texto = new String();
         if (!lista) {
-            texto += "\nO seguinte animal fugiu do recinto:\n    ";
+            texto += "\nO seguinte animal fugiu do recinto:\n     ";
             texto += ani + "\n";
         } else {
             if (animaisPerdidos.isEmpty()) {
                 texto += "\n->Nenhum animal fugiu\n";
             } else {
-                texto += "\n->Os seguintes animais fugiram do zoo";
+                texto += "\n->Os seguintes animais fugiram do zoo\n     ";
                 for (Animal animal : animaisPerdidos) {
-                    texto += "\n " + animal;
+                    texto += animal + "\n     ";
                 }
             }
         }

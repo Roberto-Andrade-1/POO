@@ -1343,8 +1343,11 @@ public class Jumanji {
             }
         }
 
-        for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
-            if (zoo.getRecintos().size() > 0) {
+        Fugir aniFug = new Fugir(animaisPerdidos);
+        ocor.setHistorico(aniFug.toString());
+
+        if (zoo.getRecintos().size() > 0) {
+            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
                 int idDoRecintoAle = rand.nextInt(zoo.getRecintos().size()) + 1;
                 for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
                     Recinto rec = recintos.getKey();
@@ -1366,18 +1369,6 @@ public class Jumanji {
                 }
             }
         }
-
-        // if (animaisPerdidos.isEmpty()) {
-        // texto += "\nNão foram perdidos animais pelo jumanji";
-        // } else {
-        // texto += "\nOs seguintes animais foram perdidos pela função jumanji:";
-        // for (Animal animal : animaisPerdidos) {
-        // texto += "\n" + animal;
-        // }
-        // }
-
-        Fugir aniFug = new Fugir(animaisPerdidos);
-        ocor.setHistorico(aniFug.toString());
 
         // hist.add(texto);
     }
