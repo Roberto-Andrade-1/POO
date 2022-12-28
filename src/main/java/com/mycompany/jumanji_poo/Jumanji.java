@@ -27,6 +27,7 @@ import Animais.Coelho;
 import Animais.Panda;
 import Animais.UrsoPreto;
 import Excecoes.ExcecaoIdIncorreto;
+import Excecoes.ExcecaoInputInvalido;
 import Genoma.Canis;
 import Genoma.Equus;
 import Genoma.Naja;
@@ -52,7 +53,7 @@ public class Jumanji {
 
     private static Scanner scan;
 
-    public static void main(String[] args) throws IOException, ExcecaoIdIncorreto {
+    public static void main(String[] args) throws IOException, ExcecaoIdIncorreto, ExcecaoInputInvalido {
         scan = new Scanner(System.in);
         boolean primeiraVez = true;
         boolean sair = false;
@@ -102,59 +103,63 @@ public class Jumanji {
                     15.Sair da aplicação
                     """);
             System.out.println("Escolha uma opção: ");
-            int escolha = scan.nextInt();
-            switch (escolha) {
-                case 1:
-                    adquirirAnimaisAleatorios(zoo, ocorrencias);
-                    break;
-                case 2:
-                    animalCaracAlea(zoo, ocorrencias);
-                    break;
-                case 3:
-                    recintosAleatorio(zoo, ocorrencias);
-                    break;
-                case 4:
-                    adicionarInstalaca(zoo, ocorrencias);
-                    break;
-                case 5:
-                    calendarioChines();
-                    break;
-                case 6:
-                    zoo.listarAnimais();
-                    break;
-                case 7:
-                    listarAnimaisCarGenetica(zoo);
-                    break;
-                case 8:
-                    listarDadaMutacao(zoo);
-                    break;
-                case 9:
-                    System.out.println("\nRECINTOS");
-                    zoo.listarRecintos();
-                    break;
-                case 10:
-                    retratoFamiliar(zoo, ocorrencias);
-                    break;
-                case 11:
-                    System.out.println("Animais mortos:");
-                    zoo.listarAnimaisMortos();
-                    break;
-                case 12:
-                    System.out.println(ocorrencias);
-                    break;
-                case 13:
-                    periodoContabilistico(zoo, ocorrencias);
-                    System.out.println("Saldo atualmente disponivel: " + zoo.getSaldo());
-                    break;
-                case 14:
-                    jumanji(zoo, ocorrencias);
-                    break;
-                case 15:
-                    sair = true;
-                    break;
-                default:
-                    System.out.println("Número inválido");
-                    break;
+            if (scan.hasNextInt()) {
+                int escolha = scan.nextInt();
+                switch (escolha) {
+                    case 1:
+                        adquirirAnimaisAleatorios(zoo, ocorrencias);
+                        break;
+                    case 2:
+                        animalCaracAlea(zoo, ocorrencias);
+                        break;
+                    case 3:
+                        recintosAleatorio(zoo, ocorrencias);
+                        break;
+                    case 4:
+                        adicionarInstalaca(zoo, ocorrencias);
+                        break;
+                    case 5:
+                        calendarioChines();
+                        break;
+                    case 6:
+                        zoo.listarAnimais();
+                        break;
+                    case 7:
+                        listarAnimaisCarGenetica(zoo);
+                        break;
+                    case 8:
+                        listarDadaMutacao(zoo);
+                        break;
+                    case 9:
+                        System.out.println("\nRECINTOS");
+                        zoo.listarRecintos();
+                        break;
+                    case 10:
+                        retratoFamiliar(zoo, ocorrencias);
+                        break;
+                    case 11:
+                        System.out.println("Animais mortos:");
+                        zoo.listarAnimaisMortos();
+                        break;
+                    case 12:
+                        System.out.println(ocorrencias);
+                        break;
+                    case 13:
+                        periodoContabilistico(zoo, ocorrencias);
+                        System.out.println("Saldo atualmente disponivel: " + zoo.getSaldo());
+                        break;
+                    case 14:
+                        jumanji(zoo, ocorrencias);
+                        break;
+                    case 15:
+                        sair = true;
+                        break;
+                    default:
+                        System.out.println("Número inválido");
+                        break;
+                }
+            } else {
+                throw new ExcecaoInputInvalido();
             }
         }
     }
@@ -1369,8 +1374,6 @@ public class Jumanji {
                 }
             }
         }
-
-        // hist.add(texto);
     }
 
     // -------leitura de ficheiros---------//

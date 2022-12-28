@@ -56,12 +56,12 @@ public class Rato extends Animal {
         }
 
         // bebe
-        if (getIdade() <= Math.round(getEsperancaVida() / 5)) {
+        if (getIdade() == 0) {
             total += getAtratividadeBase() * 0.5;
         }
 
         // velho
-        else if (getIdade() > Math.round(getEsperancaVida() * (3 / 4))) {
+        else if (getIdade() >= 2) {
             total -= getAtratividadeBase() - (getAtratividadeBase() * 0.25);
         }
 
