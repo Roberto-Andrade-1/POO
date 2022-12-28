@@ -561,7 +561,7 @@ public class Jumanji {
     public static void listarAnimaisCarGenetica(Zoo zoo) {
         System.out.println("""
 
-                Qual a característica genetica que pretende?
+                Qual a característica genetica que pretende?(Insira o número ou o seu nome)
                 1.Canis
                 2.Equus
                 3.Naja
@@ -767,7 +767,7 @@ public class Jumanji {
         scan = new Scanner(System.in);
         System.out.println("""
 
-                Qual a mutação pretende?
+                Qual a mutação pretende?(Insira o número ou o seu nome)
                 1.Albino
                 2.Heterocromia
                 3.Melanismo
