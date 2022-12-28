@@ -28,7 +28,7 @@ public class Nascimento {
             texto += ani + "\n";
         } else {
             if (animaisNascidos.isEmpty())
-                texto += "\nnNenhum animal nasceu";
+                texto += "\n->Nenhum animal nasceu";
             else {
                 texto += "\n0s seguintes animais nasceram : ";
                 for (Animal animal : animaisNascidos) {

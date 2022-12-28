@@ -28,7 +28,7 @@ public class Morte {
             texto += ani + "\n";
         } else {
             if (animaisMortos.isEmpty())
-                texto += "\nNão morreram animais";
+                texto += "\n->Não morreram animais";
             else {
                 texto += "\nOs seguintes animais morreram";
                 for (Animal animal : animaisMortos) {

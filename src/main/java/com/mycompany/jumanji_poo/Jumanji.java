@@ -1125,14 +1125,8 @@ public class Jumanji {
 
         if (animaisMortosNumPeriodo.isEmpty()) {
             System.out.println("Nenhum animal morreu neste período contabilístico");
-            // texto += "\n\nNão morreram animais neste período contabilístico";
         } else {
             System.out.println("Os seguintes animais morreram neste período contabilístico:");
-            // texto += "\n\nOs seguintes animais morreram neste período contabilístico";
-            // for (Animal animal : animaisMortosNumPeriodo) {
-            // System.out.println(animal);
-            // texto += "\n" + animal;
-            // }
         }
         Morte morteAni = new Morte(animaisMortosNumPeriodo);
         ocor.setHistorico(morteAni.toString());
