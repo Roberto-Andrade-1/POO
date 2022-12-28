@@ -27,7 +27,7 @@ import Animais.Coelho;
 import Animais.Panda;
 import Animais.UrsoPreto;
 import Excecoes.ExcecaoIdIncorreto;
-import Excecoes.ExcecaoInputInvalido;
+import Excecoes.ExcecaoNumMenuInvalido;
 import Genoma.Canis;
 import Genoma.Equus;
 import Genoma.Naja;
@@ -53,7 +53,7 @@ public class Jumanji {
 
     private static Scanner scan;
 
-    public static void main(String[] args) throws IOException, ExcecaoIdIncorreto, ExcecaoInputInvalido {
+    public static void main(String[] args) throws IOException, ExcecaoIdIncorreto, ExcecaoNumMenuInvalido {
         scan = new Scanner(System.in);
         boolean primeiraVez = true;
         boolean sair = false;
@@ -159,7 +159,7 @@ public class Jumanji {
                         break;
                 }
             } else {
-                throw new ExcecaoInputInvalido();
+                throw new ExcecaoNumMenuInvalido();
             }
         }
     }
@@ -420,37 +420,38 @@ public class Jumanji {
         }
 
         System.out.println("Qual dos seguintes recintos pretende escolher?(se não pretender nenhum insira 0)");
-        int escolhaRecinto = scan.nextInt();
-        if (escolhaRecinto > 0 && escolhaRecinto <= 3)
-            Recinto.setIdRecintoAtualizado();
-        switch (escolhaRecinto) {
-            case 0:
-                System.out.println("Não foi escolhido nenhum recinto");
-                break;
-            case 1:
-            case 2:
-            case 3:
-                escolhido = recintosAle[escolhaRecinto - 1];
-                if ((zoo.getSaldo() - escolhido.getCusto()) > 0) {
-                    // String texto = new String();
-                    // texto = "O utilizador escolheu o seguinte recinto do candidato " +
-                    // escolhaRecinto + ":\n "
-                    // + escolhido;
-                    // hist.add(texto);
+        if (scan.hasNextInt()) {
+            int escolhaRecinto = scan.nextInt();
+            switch (escolhaRecinto) {
+                case 0:
+                    System.out.println("Não foi escolhido nenhum recinto");
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                    escolhido = recintosAle[escolhaRecinto - 1];
+                    if ((zoo.getSaldo() - escolhido.getCusto()) > 0) {
+                        // String texto = new String();
+                        // texto = "O utilizador escolheu o seguinte recinto do candidato " +
+                        // escolhaRecinto + ":\n "
+                        // + escolhido;
+                        // hist.add(texto);
 
-                    escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                    zoo.setRecintos(escolhido);
-                    zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());
+                        Recinto.setIdRecintoAtualizado();
+                        escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());
+                        zoo.setRecintos(escolhido);
+                        zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());
 
-                    ComprarRecinto comRec = new ComprarRecinto(escolhido, escolhaRecinto);
-                    ocor.setHistorico(comRec.toString());
-                } else {
-                    System.out.println("Não tem dinheiro para comprar o recinto");
-                }
-                break;
-            default:
-                System.out.println("Número inválido");
-                break;
+                        ComprarRecinto comRec = new ComprarRecinto(escolhido, escolhaRecinto);
+                        ocor.setHistorico(comRec.toString());
+                    } else {
+                        System.out.println("Não tem dinheiro para comprar o recinto");
+                    }
+                    break;
+                default:
+                    System.out.println("Número inválido");
+                    break;
+            }
         }
     }
 
