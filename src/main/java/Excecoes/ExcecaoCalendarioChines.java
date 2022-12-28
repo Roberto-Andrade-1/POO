@@ -2,6 +2,6 @@ package Excecoes;
 
 public class ExcecaoCalendarioChines extends Exception {
    public ExcecaoCalendarioChines() {
-      super("Tem que inserir um ano a partir de 2000");
+      super("Tem que inserir um ano válido, ano 0 para cima");
    }
 }

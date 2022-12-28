@@ -27,6 +27,7 @@ import Animais.Coelho;
 import Animais.Panda;
 import Animais.UrsoPreto;
 import Excecoes.ExcecaoCalendarioChines;
+import Excecoes.ExcecaoComprarAnimal;
 import Excecoes.ExcecaoIdIncorreto;
 import Excecoes.ExcecaoNumMenuInvalido;
 import Excecoes.ExecaoNumIncorretoRecinto;
@@ -57,36 +58,49 @@ public class Jumanji {
 
     public static void main(String[] args)
             throws IOException, ExcecaoIdIncorreto, ExcecaoNumMenuInvalido, ExecaoNumIncorretoRecinto,
-            ExcecaoCalendarioChines {
+            ExcecaoComprarAnimal, ExcecaoCalendarioChines {
+
+        // Variaveis locais
         scan = new Scanner(System.in);
         boolean primeiraVez = true;
         boolean sair = false;
         Zoo zoo = new Zoo(300000);
-        Ocorrencia ocorrencias = new Ocorrencia();
+        Ocorrencia ocorrencias = new Ocorrencia();// historico
 
-        while (primeiraVez) {
+        while (primeiraVez) {// Caso o utilizador queira pode no inicio inserir dados do zoo guardados em
+                             // ficheiros
+
             System.out.println("Deseja inserir alguns animais e recintos guardados em ficheiros?(sim/nao)");
             String escolhaPrimeira = scan.next();
-            escolhaPrimeira = escolhaPrimeira.trim();
-            escolhaPrimeira = escolhaPrimeira.toLowerCase();
+            escolhaPrimeira = escolhaPrimeira.trim(); // retira os espaços no final e no começo do input
+            escolhaPrimeira = escolhaPrimeira.toLowerCase(); // todos os caracteres passam para minúsculas
             switch (escolhaPrimeira) {
                 case "sim":
-                    uploadRecintos(zoo, ocorrencias);
-                    uploadAnimaisEmRecintos(zoo, ocorrencias);
-                    uploadAnimaisErrantes(zoo, ocorrencias);
-                    uploadAnimaisMortos(zoo, ocorrencias);
-                    uploadAnimaisPerdidos(zoo, ocorrencias);
-                    primeiraVez = false;
+                    uploadRecintos(zoo, ocorrencias); // le o ficheiro Recintos.txt e insere os dados do mesmo
+
+                    uploadAnimaisEmRecintos(zoo, ocorrencias);// le o ficheiro AnimaisEmRecintos.txt e insere os dados
+                                                              // do mesmo
+
+                    uploadAnimaisErrantes(zoo, ocorrencias);// le o ficheiro AnimaisErrantes.txt e insere os dados do
+                                                            // mesmo
+
+                    uploadAnimaisMortos(zoo, ocorrencias);// le o ficheiro AnimaisMortos.txt e insere os dados do mesmo
+
+                    uploadAnimaisPerdidos(zoo, ocorrencias);// le o ficheiro AnimaisPerdidos.txt e insere os dados do
+                                                            // mesmo
+
+                    primeiraVez = false;// passa para o menu
                     break;
                 case "nao":
-                    primeiraVez = false;
+                    primeiraVez = false;// passa para o menu
                     break;
                 default:
-                    System.out.println("escolha sim ou nao!\n");
+                    System.out.println("Escolha sim ou nao!\n");// volta a perguntar ao utilizador pois a resposta não
+                                                                // foi adequada
                     break;
             }
         }
-        while (!sair) {
+        while (!sair) { // enquanto o utilizador não escolher a opção 15(sair) irá funcionar o menu
             System.out.println("""
 
                     MENU:
@@ -107,7 +121,7 @@ public class Jumanji {
                     15.Sair da aplicação
                     """);
             System.out.println("Escolha uma opção: ");
-            if (scan.hasNextInt()) {
+            if (scan.hasNextInt()) {// vericia se o input é o pretendido(int) se não for levanta uma exceção
                 int escolha = scan.nextInt();
                 switch (escolha) {
                     case 1:
@@ -170,10 +184,10 @@ public class Jumanji {
 
     public static Animal animaisAleatorios() {
         Random rand = new Random();
-        int totalAnimais = 21;
-        int numAleatorio = rand.nextInt(totalAnimais);
+        int totalAnimais = 21;// total de animais disponíveis
+        int numAleatorio = rand.nextInt(totalAnimais);// gera um número aleatório
 
-        Animal a = null;
+        Animal a = null;// variável local, inicializa a classe Animal a null
 
         switch (numAleatorio) {
             case 0:
@@ -240,15 +254,16 @@ public class Jumanji {
                 a = new UrsoPreto();
                 break;
         }
-        return a;
+        return a; // retorna um animal de uma específica espécie dependendo do número aleatório
     }
 
     // 1.adquirir um animal aleatório
-    public static void adquirirAnimaisAleatorios(Zoo zoo, Ocorrencia ocor) {
-        // scan = new Scanner(System.in);
-        Animal a = null;
+    public static void adquirirAnimaisAleatorios(Zoo zoo, Ocorrencia ocor) throws ExcecaoComprarAnimal {
 
+        // variáveis locais
+        Animal a = null;
         Animal[] treAnimaisAleat = new Animal[3];
+
         // cria 3 animais
         for (int i = 0; i < treAnimaisAleat.length; i++) {
             treAnimaisAleat[i] = animaisAleatorios();
@@ -263,43 +278,49 @@ public class Jumanji {
         }
 
         System.out.println("\n\nQual animal deseja comprar (1, 2 ou 3): ");
-        int numAnimal = scan.nextInt();
-        switch (numAnimal) {
-            case 1:
-                a = treAnimaisAleat[0];
-                break;
-            case 2:
-                a = treAnimaisAleat[1];
-                break;
-            case 3:
-                a = treAnimaisAleat[2];
-                break;
-            default:
-                System.out.println("Valor inválido");
-        }
-        if ((zoo.getSaldo() - a.retornaCusto()) >= 0) {
-            Animal.incrementaIdAnimalAtualizado();
-            a.setIdAnimal(Animal.getIdAnimalAtualizado());
-            zoo.setAnimaisErrantes(a);
-            zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());
+        if (scan.hasNextInt()) {
+            int numAnimal = scan.nextInt();
+            switch (numAnimal) {
+                case 1:
+                    a = treAnimaisAleat[0];
+                    break;
+                case 2:
+                    a = treAnimaisAleat[1];
+                    break;
+                case 3:
+                    a = treAnimaisAleat[2];
+                    break;
+                default:
+                    System.out.println("Valor inválido");
+            }
+            if (a != null) {
+                if ((zoo.getSaldo() - a.retornaCusto()) >= 0) {// se o zoo não tiver dinheiro este não pode comprar o
+                                                               // animal
 
-            Adicionar adic = new Adicionar(a);
-            ocor.setHistorico(adic.toString());
-            // String texto = new String();
-            // texto = "\nO seguinte animal gerado aleatoriamente foi adicioando ao zoo como
-            // animal errante:\n " + a;
-            // hist.add(texto);
+                    Animal.incrementaIdAnimalAtualizado();// atualiza o id global dos animais
+                    a.setIdAnimal(Animal.getIdAnimalAtualizado());// define o id do animal para o id mais atualizado
+                    zoo.setAnimaisErrantes(a);// o animal não tem um recinto por isso é um animal errante
+                    zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());// atualiza o saldo do zoo ao comprar o animal
+
+                    Adicionar adic = new Adicionar(a);// classe dinamica para o histórico(ocorrencias) do zoo
+                    ocor.setHistorico(adic.toString());// faz o toString da classe para guardar a informação(String) no
+                                                       // histórico
+                } else
+                    System.out.println("Não tem dinheiro para comprar o animal");// se o zoo nao tiver o saldo
+                                                                                 // necessário aparece esta mensagem
+            } else
+                throw new ExcecaoComprarAnimal();// exceção se o utilizador não escolher uma das 3 opções
         } else
-            System.out.println("Não tem dinheiro para comprar o animal");
+            throw new ExcecaoComprarAnimal();// exceção se o utilizador não escolher uma das 3 opções
     }
 
     // 2.Adquirir animal com característica genética
-    public static void animalCaracAlea(Zoo zoo, Ocorrencia ocor) {
-        // Scanner scan = new Scanner(System.in);
+    public static void animalCaracAlea(Zoo zoo, Ocorrencia ocor) throws ExcecaoComprarAnimal {
 
         System.out.println("""
 
-                Escolha uma das seguintes caracteristicas genéticas:
+                Escolha uma das seguintes caracteristicas genéticas
+                (Insira o número ou o seu nome):
                 1.Canis
                 2.Equus
                 3.Naja
@@ -311,8 +332,9 @@ public class Jumanji {
         String escolha = scan.next();
         Animal a = animaisAleatorios();
         boolean inserir = false;
-        escolha = escolha.toLowerCase();
-        escolha = escolha.trim();
+        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
+        escolha = escolha.trim(); // retira os espaços no final e no começo do input
+
         // isAssignableFrom verifica se a classe implementa a interface
         switch (escolha) {
             case "1":
@@ -385,31 +407,32 @@ public class Jumanji {
                 System.out.println("Opção inválida");
                 break;
         }
-        if (inserir && (zoo.getSaldo() - a.retornaCusto()) >= 0) {
-            System.out.println(a);
-            Animal.incrementaIdAnimalAtualizado();
-            a.setIdAnimal(Animal.getIdAnimalAtualizado());
-            zoo.setAnimaisErrantes(a);
-            // String texto = new String();
-            // texto = "\nO seguinte animal foi comprado através de uma pesquisa pela
-            // caracteristica genética " + escolha
-            // + " e inserido no zoo como animal errante "
-            // + ":\n " + a;
-            // hist.add(texto);
-            zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());
+        if (inserir) { // se a escolha for uma das 6 possiveis
+            if (zoo.getSaldo() - a.retornaCusto() >= 0) { // verificca se o zoo tem saldo para comprar o animal
+                System.out.println(a);// imprime uma mensagem atraves do overide do toString na superclasse Animal
+                Animal.incrementaIdAnimalAtualizado();// atualiza o id global dos animais
+                a.setIdAnimal(Animal.getIdAnimalAtualizado());// define o id deste animal para o amis atualizado
+                zoo.setAnimaisErrantes(a);// como este animal não tem recinto é considerado um animal errante
+                zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());// atualiza o saldo do zoo retirando o custo do animal
+                                                                // comprado
 
-            Adicionar adic = new Adicionar(a, escolha);
-            ocor.setHistorico(adic.toString());
-        } else {
-            System.out.println("Não tem dinheiro para comprar o seguinte animal");
-            System.out.println(a);
-        }
+                Adicionar adic = new Adicionar(a, escolha);// classe dinamica para o histórico(ocorrencias) do zoo
+                ocor.setHistorico(adic.toString());// faz o toString da classe para guardar a informação(String) no
+                // histórico
+
+            } else {// se o zoo não tiver saldo disponivel para comprar o animal
+                System.out.println("Não tem dinheiro para comprar o seguinte animal");
+                System.out.println(a);
+            }
+        } else // se a escolha não seja uma das 6 possiveis lança uma exceção
+            throw new ExcecaoComprarAnimal();
     }
 
     // 3.Recintos Aleatorios
     public static void recintosAleatorio(Zoo zoo, Ocorrencia ocor) throws ExecaoNumIncorretoRecinto {
-        // Scanner scan = new Scanner(System.in);
 
+        // variaveis locais
+        boolean verificação = false;
         Recinto escolhido = null;
 
         // cria 3 recintos
@@ -423,34 +446,44 @@ public class Jumanji {
             System.out.println("Candidato " + (i + 1) + ": " + recintosAle[i]);
         }
 
-        System.out.println("Qual dos seguintes recintos pretende escolher?(se não pretender nenhum insira 0)");
-        if (scan.hasNextInt()) {
+        System.out.println("\nQual dos seguintes recintos pretende escolher?\n" +
+                "(se não pretender nenhum insira 0, se quiser insira o número do candidato)\n");
+
+        if (scan.hasNextInt()) {// verifica se a esolha é um número inteiro
             int escolhaRecinto = scan.nextInt();
             switch (escolhaRecinto) {
-                case 0:
-                    System.out.println("Não foi escolhido nenhum recinto");
+                case 0:// caso o utilizador não queira o zoo
+                    verificação = true;
+                    System.out.println("Não foi escolhido nenhum recinto\n");
                     break;
                 case 1:
                 case 2:
                 case 3:
+                    verificação = true;
                     escolhido = recintosAle[escolhaRecinto - 1];
-                    if ((zoo.getSaldo() - escolhido.getCusto()) > 0) {
-                        Recinto.setIdRecintoAtualizado();
-                        escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());
-                        zoo.setRecintos(escolhido);
-                        zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());
-
-                        ComprarRecinto comRec = new ComprarRecinto(escolhido, escolhaRecinto);
-                        ocor.setHistorico(comRec.toString());
-                    } else {
-                        System.out.println("Não tem dinheiro para comprar o recinto");
-                    }
-                    break;
-                default:
-                    System.out.println("Número inválido");
                     break;
             }
-        } else
+            if (verificação) {
+                if (escolhido != null && (zoo.getSaldo() - escolhido.getCusto()) > 0) {// se o recinto escolhido tiver
+                                                                                       // saldo sufeciente para comprar
+                                                                                       // o recinto
+                    Recinto.setIdRecintoAtualizado();// atualiza o id global(atualizado) dos recintos
+                    escolhido.setIdRecinto(Recinto.getIdRecintoAtualizado());// define o id deste recinto como o mais
+                                                                             // recente
+                    zoo.setRecintos(escolhido);// insere o recinto no zoo(hashmap)
+                    zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());// atualiza o saldo do zoo retirando o custo do
+                                                                        // recinto
+
+                    ComprarRecinto comRec = new ComprarRecinto(escolhido, escolhaRecinto);// classe dinamica para o
+                                                                                          // histórico(ocorrencias) do
+                                                                                          // zoo ao comprar o recinto
+                    ocor.setHistorico(comRec.toString());// adiciona a ocorrencia oa histórico
+                } else {
+                    System.out.println("Não tem dinheiro para comprar o recinto");
+                }
+            } else // se não inserir um valor correto para escolher o recinto
+                throw new ExecaoNumIncorretoRecinto();
+        } else // se não inserir um valor correto para escolher o recinto
             throw new ExecaoNumIncorretoRecinto();
     }
 
@@ -500,11 +533,11 @@ public class Jumanji {
                                 System.out.println("\nAnimal inserido com sucesso");
                             }
                         }
-                    } else
+                    } else // levante exceção caso não haja o id do recinto na hashmap do zoo
                         throw new ExcecaoIdIncorreto(idRecinto, "recinto");
                 }
             }
-        } else
+        } else// levante exceção caso não haja o id do animal na lista de animais errantes
             throw new ExcecaoIdIncorreto(idAnimal, "animal");
     }
 
@@ -514,45 +547,44 @@ public class Jumanji {
         System.out.println("Escolha um ano: ");
         if (scan.hasNextInt()) {
             int year = scan.nextInt();
-            if (year < 2000)
-                System.out.println("Tem de inserir um ano a partir de 2000");
-            else if ((year - 2000) % 12 == 0) {
+            if (year % 12 == 8) {
                 Dragao.setAtratividadeBase(Dragao.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Dragão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if ((year - 2000) % 12 == 1) {
+            } else if (year % 12 == 9) {
                 Serpente.setAtratividadeBase(Serpente.getAtratividadeBase() * 1.50);
                 System.out.println("Ano da Serpente, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if ((year - 2000) % 12 == 2) {
+            } else if (year % 12 == 10) {
                 Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Cavalo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if ((year - 2000) % 12 == 3) {
+            } else if (year % 12 == 11) {
                 Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Carneiro, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if ((year - 2000) % 12 == 4) {
+            } else if (year % 12 == 0) {
                 Macaco.setAtratividadeBase(Macaco.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Macaco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if ((year - 2000) % 12 == 5) {
+            } else if (year % 12 == 1) {
                 Galo.setAtratividadeBase(Galo.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Galo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if ((year - 2000) % 12 == 6) {
+            } else if (year % 12 == 2) {
                 Cao.setAtratividadeBase(Cao.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Cão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if ((year - 2000) % 12 == 7) {
+            } else if (year % 12 == 3) {
                 Porco.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Porco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if ((year - 2000) % 12 == 8) {
+            } else if (year % 12 == 4) {
                 Rato.setAtratividadeBase(Rato.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Rato, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if ((year - 2000) % 12 == 9) {
+            } else if (year % 12 == 5) {
                 Boi.setAtratividadeBase(Boi.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Boi, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if ((year - 2000) % 12 == 10) {
+            } else if (year % 12 == 6) {
                 Tigre.setAtratividadeBase(Tigre.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Tigre, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else {
+            } else if (year % 12 == 7) {
                 Coelho.setAtratividadeBase(Coelho.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Coelho, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            }
+            } else
+                throw new ExcecaoCalendarioChines();
         } else
             throw new ExcecaoCalendarioChines();
     }
@@ -571,8 +603,8 @@ public class Jumanji {
 
                 """);
         String escolha = scan.next();
-        escolha = escolha.trim();
-        escolha = escolha.toLowerCase();
+        escolha = escolha.trim(); // retira os espaços no final e no começo do input
+        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
         switch (escolha) {
             case "1":
             case "canis":
@@ -672,8 +704,8 @@ public class Jumanji {
 
     // 7.Overload
     public static void listarAnimaisCarGenetica(Zoo zoo, String escolha) {
-        escolha = escolha.trim();
-        escolha = escolha.toLowerCase();
+        escolha = escolha.trim(); // retira os espaços no final e no começo do input
+        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
         switch (escolha) {
             case "canis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
@@ -776,8 +808,8 @@ public class Jumanji {
 
                 """);
         String escolha = scan.next();
-        escolha = escolha.toLowerCase();
-        escolha = escolha.trim();
+        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
+        escolha = escolha.trim(); // retira os espaços no final e no começo do input
         switch (escolha) {
             case "1":
             case "albino":
@@ -852,8 +884,8 @@ public class Jumanji {
 
     // 8.Overload
     public static void listarDadaMutacao(Zoo zoo, String escolha) {
-        escolha = escolha.toLowerCase();
-        escolha = escolha.trim();
+        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
+        escolha = escolha.trim(); // retira os espaços no final e no começo do input
         switch (escolha) {
             case "albino":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
