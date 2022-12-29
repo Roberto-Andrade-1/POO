@@ -1014,12 +1014,13 @@ public class Jumanji {
         System.out.println("\n-------Histórico-------\n");
         System.out.println(ocor);
 
-        System.out.println("\n-------Caracteristicas Geneticas-------");
+        System.out.println("\n-------Caracteristicas Genéticas-------");
 
         String[] caractGen = { "Canis", "Equus", "Naja", "Ovis", "Panthera", "Ursus" };
         for (int index = 0; index < caractGen.length; index++) {
             System.out.println("\n------" + caractGen[index] + "------");
             listarAnimaisCarGenetica(zoo, caractGen[index]);
+            // para cada característica genética serão listados os animais que as têm
         }
 
         System.out.println("\n-------Mutações-------");
@@ -1027,30 +1028,36 @@ public class Jumanji {
         for (int i = 0; i < mutacoes.length; i++) {
             System.out.println("\n------" + mutacoes[i] + "------");
             listarDadaMutacao(zoo, mutacoes[i]);
+            // para cada mutação serão listados os animais que as têm
         }
 
         System.out.println("\n-------Animais Perdidos-------");
         for (Animal animal : zoo.getAnimaisPerdidos()) {
             System.out.println(animal);
+            // será mostrado os animais perdidos
         }
 
-        System.out.println("\n-------Animais Mortos-------");
+        System.out.println("\n-------Animais Mortos-------"); // será mostrado os animais que já morreram
         zoo.listarAnimaisMortos();
 
-        System.out.println("\n-------Animais Errantes-------");
+        System.out.println("\n-------Animais Errantes-------");// será mostrado os animais errantes
         zoo.listarAnimaisErrantes();
 
-        System.out.println("\n-------Recintos-------");
+        System.out.println("\n-------Recintos-------");// será mostrado todos os recintos do zoo
         zoo.listarRecintos();
 
         System.out.println("\n-------Animais em Recintos-------");
-        for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
+        for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {// percorre a hashmap
             Recinto rec = recintos.getKey();
             Animal[] animais = recintos.getValue();
-            System.out.println(rec);
-            for (Animal animal : animais) {
-                if (animal != null) {
-                    System.out.println("    " + animal);
+            System.out.println("\nRecinto: " + rec);// imprime o recinto
+            if (rec.getOcupacao() == 0) {// caso não haja animais no recinto
+                System.out.println("    ->Não existe animais colocados neste recinto");
+            } else {// caso haja
+                for (Animal animal : animais) {// percorre o array de animais
+                    if (animal != null) {// se o animal for diferente de null este imprime o animal
+                        System.out.println("    " + animal);
+                    }
                 }
             }
         }
