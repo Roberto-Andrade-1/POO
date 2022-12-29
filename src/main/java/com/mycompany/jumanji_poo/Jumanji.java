@@ -1066,15 +1066,10 @@ public class Jumanji {
     // 13.Periodo contabilistico
     public static void periodoContabilistico(Zoo zoo, Ocorrencia ocor) {
         // calcular primeiro os custos totais do zoo
-        // zoo.calculaDespesas();
         Random rand = new Random();
-        // String texto = new String();
 
-        // texto += "\n------Período Contabilistico------\n";
-
+        // despesas
         System.out.println("Despesas: " + zoo.calculaDespesas());
-        // texto += "\n->As suas despesas foram as seguintes: " + zoo.calculaDespesas()
-        // + "€\n";
 
         // calcula os proveitos totais do zoo
         int proveitos = 0;
@@ -1087,27 +1082,35 @@ public class Jumanji {
             }
         }
         System.out.println("Proveitos: " + proveitos);
-        // texto += "\n->Os seus proveitos foram os seguintes: " + proveitos + "€\n";
 
         OcorrenciaPeriodo ocoPer = new OcorrenciaPeriodo(zoo.calculaDespesas(), proveitos);
         ocor.setHistorico(ocoPer.toString());
 
-        if (proveitos < zoo.calculaDespesas()) {
-            List<Animal> animaisPerdidosAgora = new ArrayList<Animal>();
-            for (Animal[] animais : zoo.getRecintos().values()) {
+        if (proveitos < zoo.calculaDespesas()) {// caso haja prejuízo
+
+            List<Animal> animaisPerdidosAgora = new ArrayList<Animal>();// variavel local para guardar os animais
+                                                                        // perdidos neste período contabilístico
+
+            for (Animal[] animais : zoo.getRecintos().values()) {// percorre os valores da hashmap
+
                 for (int i = 0; i < animais.length; i++) {
-                    if (animais[i] != null) {
-                        int num = rand.nextInt(101);
-                        if (num <= 30) {
-                            animaisPerdidosAgora.add(animais[i]);
-                            zoo.setAnimaisPerdidos(animais[i]);
-                            animais[i] = null;
+                    if (animais[i] != null) {// verifica se ele é diferente de null
+
+                        int num = rand.nextInt(101);// gera um número aleatório entre 0 e 100
+
+                        if (num <= 30) {// probabilidade de 30% do animal escapar
+
+                            animaisPerdidosAgora.add(animais[i]);// é adicionado à lista de animais perdidos neste
+                                                                 // perdido contabilístico
+
+                            zoo.setAnimaisPerdidos(animais[i]);// é adicionado à lista de animais perdidos do zoo
+                            animais[i] = null;// retira o animal do recinto
                         }
                     }
                 }
             }
-            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
-                if (zoo.getAnimaisErrantes().get(i) != null) {
+            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {// percorre a lista de animais errantes do zoo
+                if (zoo.getAnimaisErrantes().get(i) != null) {//
                     int num = rand.nextInt(101);
                     if (num <= 30) {
                         animaisPerdidosAgora.add(zoo.getAnimaisErrantes().get(i));
