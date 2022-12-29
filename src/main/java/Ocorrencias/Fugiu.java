@@ -3,18 +3,18 @@ package Ocorrencias;
 import Animais.Animal;
 import java.util.List;
 
-public class Fugir {
+public class Fugiu {
     private Animal ani;
     private List<Animal> animaisPerdidos;
     private boolean lista;
 
-    public Fugir(Animal ani) {
+    public Fugiu(Animal ani) {
         this.ani = ani;
         this.animaisPerdidos = null;
         lista = false;
     }
 
-    public Fugir(List<Animal> animaisPerdidos) {
+    public Fugiu(List<Animal> animaisPerdidos) {
         this.animaisPerdidos = animaisPerdidos;
         ani = null;
         lista = true;

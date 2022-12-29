@@ -2,10 +2,10 @@ package Ocorrencias;
 
 import com.mycompany.jumanji_poo.Recinto;
 
-public class InserirRecinto {
+public class InseriuRecinto {
     private Recinto rec;
 
-    public InserirRecinto(Recinto rec) {
+    public InseriuRecinto(Recinto rec) {
         this.rec = rec;
     }
 

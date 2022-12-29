@@ -33,7 +33,7 @@ public class Nascimento {
                 texto += "\n0s seguintes animais nasceram : ";
                 for (Animal animal : animaisNascidos) {
                     System.out.println(animal);
-                    texto += "\n" + animal + "\n";
+                    texto += "\n" + animal;
                 }
             }
         }

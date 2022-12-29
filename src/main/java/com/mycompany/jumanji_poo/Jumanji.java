@@ -1,14 +1,14 @@
 package com.mycompany.jumanji_poo;
 
-import Ocorrencias.Adicionar;
+import Ocorrencias.Adiciona;
 import Ocorrencias.Morte;
 import Ocorrencias.OcorrenciaPeriodo;
 import Ocorrencias.Nascimento;
-import Ocorrencias.InserirAnimalNoRecinto;
-import Ocorrencias.InserirRecinto;
-import Ocorrencias.Fugir;
+import Ocorrencias.InseriuAnimalNoRecinto;
+import Ocorrencias.InseriuRecinto;
+import Ocorrencias.Fugiu;
 import Ocorrencias.Ocorrencia;
-import Ocorrencias.ComprarRecinto;
+import Ocorrencias.CompraRecinto;
 import Animais.Dragao;
 import Animais.Carneiro;
 import Animais.Macaco;
@@ -304,7 +304,7 @@ public class Jumanji {
                     zoo.setAnimaisErrantes(a);// o animal não tem um recinto por isso é um animal errante
                     zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());// atualiza o saldo do zoo ao comprar o animal
 
-                    Adicionar adic = new Adicionar(a);// classe dinamica para o histórico(ocorrencias) do zoo
+                    Adiciona adic = new Adiciona(a);// classe dinamica para o histórico(ocorrencias) do zoo
                     ocor.setHistorico(adic.toString());// faz o toString da classe para guardar a informação(String) no
                                                        // histórico
                 } else
@@ -406,8 +406,7 @@ public class Jumanji {
                 }
                 break;
             default:
-                System.out.println("Opção inválida");
-                break;
+                throw new ExcecaoComprarAnimal();
         }
         if (inserir) { // se a escolha for uma das 6 possiveis
             if (zoo.getSaldo() - a.retornaCusto() >= 0) { // verificca se o zoo tem saldo para comprar o animal
@@ -418,9 +417,9 @@ public class Jumanji {
                 zoo.setSaldo(zoo.getSaldo() - a.retornaCusto());// atualiza o saldo do zoo retirando o custo do animal
                                                                 // comprado
 
-                Adicionar adic = new Adicionar(a, escolha);// classe dinamica para o histórico(ocorrencias) do zoo
+                Adiciona adic = new Adiciona(a, escolha);// classe dinamica para o histórico(ocorrencias) do zoo
                 ocor.setHistorico(adic.toString());// faz o toString da classe para guardar a informação(String) no
-                // histórico
+                                                   // histórico
 
             } else {// se o zoo não tiver saldo disponivel para comprar o animal
                 System.out.println("Não tem dinheiro para comprar o seguinte animal");
@@ -476,7 +475,7 @@ public class Jumanji {
                     zoo.setSaldo(zoo.getSaldo() - escolhido.getCusto());// atualiza o saldo do zoo retirando o custo do
                                                                         // recinto
 
-                    ComprarRecinto comRec = new ComprarRecinto(escolhido, escolhaRecinto);// classe dinamica para o
+                    CompraRecinto comRec = new CompraRecinto(escolhido, escolhaRecinto);// classe dinamica para o
                                                                                           // histórico(ocorrencias) do
                                                                                           // zoo ao comprar o recinto
                     ocor.setHistorico(comRec.toString());// adiciona a ocorrencia oa histórico
@@ -514,7 +513,7 @@ public class Jumanji {
                                         if (animais[j] == null) {
                                             animais[j] = zoo.getAnimaisErrantes().get(i);// insere o animal no recinto
                                             zoo.getAnimaisErrantes().remove(i);// retira-o dos animais errantes
-                                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[j],
+                                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[j],
                                                     idRecinto);
                                             ocor.setHistorico(insRec.toString());// insere dados no histórico
                                             break;
@@ -528,7 +527,7 @@ public class Jumanji {
                                     zoo.getAnimaisErrantes().remove(i);// retira porque agora está num recinto
                                     zoo.setAnimaisErrantes(a);// animal que estava no recinto torna-se errante
 
-                                    InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idRecinto,
+                                    InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idRecinto,
                                             a);
                                     ocor.setHistorico(insRec.toString());// insere dado no histórico
                                 }
@@ -1110,17 +1109,28 @@ public class Jumanji {
                 }
             }
             for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {// percorre a lista de animais errantes do zoo
-                if (zoo.getAnimaisErrantes().get(i) != null) {//
-                    int num = rand.nextInt(101);
-                    if (num <= 30) {
-                        animaisPerdidosAgora.add(zoo.getAnimaisErrantes().get(i));
-                        zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
-                        zoo.getAnimaisErrantes().remove(i);
+
+                if (zoo.getAnimaisErrantes().get(i) != null) {// verifica se o animal não é null
+
+                    int num = rand.nextInt(101);// cria um número aleatorio entre 0 a 100
+
+                    if (num <= 30) {// probabilidade de 30% do animal se perder
+
+                        animaisPerdidosAgora.add(zoo.getAnimaisErrantes().get(i));// adiciona o animal à lista de
+                                                                                  // animais
+                                                                                  // perdidos neste período
+                                                                                  // contabilístico
+
+                        zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));// adiciona o animal à lista de animais
+                                                                                // perdidos do zoo
+
+                        zoo.getAnimaisErrantes().remove(i);// retira o animal da lista de animais errantes
                     }
                 }
             }
-            Fugir aniFug = new Fugir(animaisPerdidosAgora);
-            ocor.setHistorico(aniFug.toString());
+            Fugiu aniFug = new Fugiu(animaisPerdidosAgora);// cria um nova classe
+            ocor.setHistorico(aniFug.toString());// adiciona um texto na lista do historico evocando o metodo toString
+                                                 // da classe gerada anteriormente
         }
 
         // aumenta idade dos animais
@@ -1136,39 +1146,47 @@ public class Jumanji {
 
         // Probabilidade de morrer
         System.out.println("\nMortes:");
+
+        // variavel local para guardar animais mortos neste período contabilísstico
         List<Animal> animaisMortosNumPeriodo = new ArrayList<Animal>();
+
+        // animais errantes
         for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
-            int num = rand.nextInt(101);
-            if (zoo.getAnimaisErrantes().get(i) != null) {
+
+            int num = rand.nextInt(101);// numero aleatório entre 0 e 100
+            if (zoo.getAnimaisErrantes().get(i) != null) {// se o animal for diferente de null
                 if (zoo.getAnimaisErrantes().get(i).getIdade() >= zoo.getAnimaisErrantes().get(i)
-                        .retornaEsperancaVida()) { // 90% do animal morrer
+                        .retornaEsperancaVida()) { // 90% do animal morrer face à sua esperança de vida
                     if (num < 90) {
                         animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
                         zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
                         zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
                     }
                 } else if (zoo.getAnimaisErrantes().get(i).getIdade() >= 0.8
-                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 75% do animal morrer
+                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 75% do animal face à sua esperança
+                                                                                   // de vida
                     if (num < 75) {
                         animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
                         zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
                         zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
                     }
                 } else if (zoo.getAnimaisErrantes().get(i).getIdade() >= 0.6
-                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 40% do animal morrer
+                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 40% do animal morrer face à sua
+                                                                                   // esperança de vida
                     if (num < 40) {
                         animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
                         zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
                         zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
                     }
                 } else if (zoo.getAnimaisErrantes().get(i).getIdade() >= 0.4
-                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 10% do animal morrer
+                        * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida()) {// 10% do animal morrer face à sua
+                                                                                   // esperança de vida
                     if (num < 10) {
                         animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
                         zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
                         zoo.getAnimaisErrantes().remove(zoo.getAnimaisErrantes().get(i));
                     }
-                } else { // 3% do animal morrer
+                } else { // 3% do animal morrer face à sua esperança de vida
                     if (num < 3) {
                         animaisMortosNumPeriodo.add(zoo.getAnimaisErrantes().get(i));
                         zoo.setAnimaisMortos(zoo.getAnimaisErrantes().get(i));
@@ -1178,32 +1196,37 @@ public class Jumanji {
             }
         }
 
+        // animais em recintos
         for (Animal[] animais : zoo.getRecintos().values()) {
             int num = rand.nextInt(101);
             for (int i = 0; i < animais.length; i++) {
                 if (animais[i] != null) {
-                    if (animais[i].getIdade() >= animais[i].retornaEsperancaVida()) { // 90% de o animal morrer
+                    if (animais[i].getIdade() >= animais[i].retornaEsperancaVida()) { // 90% de o animal morrer face à
+                                                                                      // sua esperança de vida
                         if (num < 90) {
                             animaisMortosNumPeriodo.add(animais[i]);
                             zoo.setAnimaisMortos(animais[i]);
                             animais[i] = null;
                         }
                     } else if (animais[i].getIdade() >= 0.8 * animais[i].retornaEsperancaVida()) {// 75$ do animal
-                                                                                                  // morrer
+                                                                                                  // morrer face à sua
+                                                                                                  // esperança de vida
                         if (num < 75) {
                             animaisMortosNumPeriodo.add(animais[i]);
                             zoo.setAnimaisMortos(animais[i]);
                             animais[i] = null;
                         }
                     } else if (animais[i].getIdade() >= 0.6 * animais[i].retornaEsperancaVida()) {// 40% do animal
-                                                                                                  // morrer
+                                                                                                  // morrer face à sua
+                                                                                                  // esperança de vida
                         if (num < 40) {
                             animaisMortosNumPeriodo.add(animais[i]);
                             zoo.setAnimaisMortos(animais[i]);
                             animais[i] = null;
                         }
                     } else if (animais[i].getIdade() >= 0.4 * animais[i].retornaEsperancaVida()) {// 10% do animal
-                                                                                                  // morrer
+                                                                                                  // morrer face à sua
+                                                                                                  // esperança de vida
                         if (num < 10) {
                             animaisMortosNumPeriodo.add(animais[i]);
                             zoo.setAnimaisMortos(animais[i]);
@@ -1221,9 +1244,9 @@ public class Jumanji {
         }
 
         if (animaisMortosNumPeriodo.isEmpty()) {
-            System.out.println("Nenhum animal morreu neste período contabilístico");
+            System.out.println("\nNenhum animal morreu neste período contabilístico");
         } else {
-            System.out.println("Os seguintes animais morreram neste período contabilístico:");
+            System.out.println("\nOs seguintes animais morreram neste período contabilístico:");
         }
         Morte morteAni = new Morte(animaisMortosNumPeriodo);
         ocor.setHistorico(morteAni.toString());
@@ -1233,14 +1256,28 @@ public class Jumanji {
 
         // Nascimentos
         System.out.println("\nNasimentos: ");
+
+        // variavel local que guarda os animais que nasceram neste período
+        // contabilístico
         List<Animal> nascimentosNestePeriodo = new ArrayList<Animal>();
+
+        // para animais errantes
         for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
-            int num = rand.nextInt(101);
+            int num = rand.nextInt(101);// gera um número de 0 a 100
             Animal a = null;
-            if (zoo.getAnimaisErrantes().get(i).retornaApetiteReprodutivo() >= num
+            if (zoo.getAnimaisErrantes().get(i).retornaApetiteReprodutivo() >= num // caso o número gerado for menor ou
+                                                                                   // igual que
+                                                                                   // o apetite
+                                                                                   // reprodutivo(probabilidade)
                     && zoo.getAnimaisErrantes().get(i).getIdade() >= Math
-                            .round((0.25) * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida())) {
-                switch (zoo.getAnimaisErrantes().get(i).getClass().getSimpleName()) {
+                            .round((0.25) * zoo.getAnimaisErrantes().get(i).retornaEsperancaVida())) {// E se o animal
+                                                                                                      // tiver 1/4 da
+                                                                                                      // sua esperança
+                                                                                                      // de vida este
+                                                                                                      // pode procriar
+
+                switch (zoo.getAnimaisErrantes().get(i).getClass().getSimpleName()) {// verifica a classe do pai/mãe do
+                                                                                     // animal
                     case "Boi":
                         a = new Boi(0);
                         break;
@@ -1304,22 +1341,27 @@ public class Jumanji {
                     case "UrsoPreto":
                         a = new UrsoPreto(0);
                         break;
-                    default:
-                        System.out.println("Erro especie animal");
                 }
-                Animal.incrementaIdAnimalAtualizado();
-                a.setIdAnimal(Animal.getIdAnimalAtualizado());
-                nascimentosNestePeriodo.add(a);
-                zoo.setAnimaisErrantes(a);
+                Animal.incrementaIdAnimalAtualizado();// atualiza o id global dos animais
+                a.setIdAnimal(Animal.getIdAnimalAtualizado());// define o id deste respetivo animal como o mais atual
+                nascimentosNestePeriodo.add(a);// adiciona o animal à lista de animais deste período contabilistico
+                zoo.setAnimaisErrantes(a);// adiciona o animal à lista de animais errantes do zoo
             }
         }
 
+        // para animais em recintos
         for (Animal[] animais : zoo.getRecintos().values()) {
             for (Animal animal : animais) {
-                int num = rand.nextInt(101);
+                int num = rand.nextInt(101);// gera um número aleatório de 0 a 100;
                 Animal a = null;
-                if (animal != null && animal.retornaApetiteReprodutivo() >= num
-                        && animal.getIdade() >= Math.round((0.25) * animal.retornaEsperancaVida())) {
+                if (animal != null // animal diferente de null
+                        && animal.retornaApetiteReprodutivo() >= num //
+                        && animal.getIdade() >= Math.round((0.25) * animal.retornaEsperancaVida())) {// caso o número
+                                                                                                     // gerado for menor
+                                                                                                     // ou
+                                                                                                     // igual que
+                                                                                                     // o apetite
+                                                                                                     // reprodutivo(probabilidade)
                     switch (animal.getClass().getSimpleName()) {
                         case "Boi":
                             a = new Boi(0);
@@ -1387,64 +1429,62 @@ public class Jumanji {
                         default:
                             System.out.println("Erro especie animal");
                     }
-                    Animal.incrementaIdAnimalAtualizado();
-                    a.setIdAnimal(Animal.getIdAnimalAtualizado());
-                    nascimentosNestePeriodo.add(a);
+                    Animal.incrementaIdAnimalAtualizado();// atualiza o id global dos animais
+                    a.setIdAnimal(Animal.getIdAnimalAtualizado());// define o id deste animal para o mais atualizado
+                    nascimentosNestePeriodo.add(a);// adiciona o animal à lista de animais nascidos neste período
+                                                   // contabilístico
+                    zoo.setAnimaisErrantes(a);// mete o animal na lista de animais errantes
                 }
             }
         }
 
         if (nascimentosNestePeriodo.isEmpty()) {
-            System.out.println("Nenhum animal nasceu neste período contabilístico");
-            // texto += "\n\nNenhum animal nasceu neste período contabilístico";
+            System.out.println("\nNenhum animal nasceu neste período contabilístico");
         } else {
-            System.out.println("Os seguintes animais nasceram");
-            // texto += "\n\n0s seguintes animais nasceram neste período contabilístico: ";
-            // for (Animal animal : nascimentosNestePeriodo) {
-            // System.out.println(animal);
-            // texto += "\n" + animal;
-            // }
+            System.out.println("\nOs seguintes animais nasceram");
         }
 
         Nascimento aniNasc = new Nascimento(nascimentosNestePeriodo);
         ocor.setHistorico(aniNasc.toString());
-
-        // hist.add(texto);
     }
 
     // 14. Jumanji
     public static void jumanji(Zoo zoo, Ocorrencia ocor) {
         Random rand = new Random();
-        // String texto = new String();
 
         ocor.setHistorico("\n------Jumanji------\n");
         List<Animal> animaisPerdidos = new ArrayList<Animal>();
 
+        // para os animais em recintos
         for (Animal[] animais : zoo.getRecintos().values()) {
             for (int i = 0; i < animais.length; i++) {
-                if (animais[i] != null) {
-                    int num = rand.nextInt(101);
-                    if (num <= 30) {
-                        animaisPerdidos.add(animais[i]);
-                        zoo.setAnimaisPerdidos(animais[i]);
-                        animais[i] = null;
+                if (animais[i] != null) {// verifica se o animal não é null
+                    int num = rand.nextInt(101);// gera um número aleatório de 0 a 100
+                    if (num <= 30) {// Probabilidade de 30% do animal se perder
+                        animaisPerdidos.add(animais[i]);// adiciona o animal aos animais perdidos ao chamar o metodo
+                                                        // jumanji
+                        zoo.setAnimaisPerdidos(animais[i]);// adiciona o animal à lista de animais perdidos do zoo
+                        animais[i] = null;// retira o animal da hashmap do zoo
                     }
                 }
             }
         }
 
+        // para os animais errantes
         for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
             if (zoo.getAnimaisErrantes().get(i) != null) {
-                int num = rand.nextInt(101);
-                if (num <= 30) {
-                    animaisPerdidos.add(zoo.getAnimaisErrantes().get(i));
-                    zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));
-                    zoo.getAnimaisErrantes().remove(i);
+                int num = rand.nextInt(101);// gera um número aleatório de 0 a 100
+                if (num <= 30) {// Probabilidade de 30% do animal se perder
+                    animaisPerdidos.add(zoo.getAnimaisErrantes().get(i));// adiciona o animal aos animais perdidos ao
+                                                                         // chamar o metodo jumanji
+                    zoo.setAnimaisPerdidos(zoo.getAnimaisErrantes().get(i));// adiciona o animal à lista de animais
+                                                                            // perdidos do zoo
+                    zoo.getAnimaisErrantes().remove(i);// remove o animal da lista de animais errantes
                 }
             }
         }
 
-        Fugir aniFug = new Fugir(animaisPerdidos);
+        Fugiu aniFug = new Fugiu(animaisPerdidos);// cria a classe fuga
         ocor.setHistorico(aniFug.toString());
 
         if (zoo.getRecintos().size() > 0) {
@@ -1460,10 +1500,10 @@ public class Jumanji {
                         zoo.getAnimaisErrantes().remove(i);
                         if (a != null) {
                             zoo.setAnimaisErrantes(a);
-                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idDoRecintoAle, a);
+                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle, a);
                             ocor.setHistorico(insRec.toString());
                         } else {
-                            InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(animais[num], idDoRecintoAle);
+                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle);
                             ocor.setHistorico(insRec.toString());
                         }
                     }
@@ -1502,7 +1542,7 @@ public class Jumanji {
                         linha = lerDados.readLine();
                         numDaLinha = 1;
 
-                        InserirRecinto insRec = new InserirRecinto(rec);
+                        InseriuRecinto insRec = new InseriuRecinto(rec);
                         ocor.setHistorico(insRec.toString());
 
                         break;
@@ -1680,7 +1720,7 @@ public class Jumanji {
                                         ;
                                         animais[i] = a;
 
-                                        InserirAnimalNoRecinto insRec = new InserirAnimalNoRecinto(a, recintoId);
+                                        InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(a, recintoId);
                                         ocor.setHistorico(insRec.toString());
 
                                         break;
@@ -1852,11 +1892,10 @@ public class Jumanji {
                     case 11:
                         zoo.setAnimaisErrantes(a);
                         Animal.setIdAnimalAtualizado(idAnimal);
-                        ;
                         linha = lerDados.readLine();
                         numDaLinha = 1;
 
-                        Adicionar adAni = new Adicionar(a);
+                        Adiciona adAni = new Adiciona(a);
                         ocor.setHistorico(adAni.toString());
 
                         break;
@@ -2190,7 +2229,7 @@ public class Jumanji {
                         Animal.setIdAnimalAtualizado(idAnimal);
                         linha = lerDados.readLine();
                         numDaLinha = 1;
-                        Fugir aniFugiu = new Fugir(a);
+                        Fugiu aniFugiu = new Fugiu(a);
                         ocor.setHistorico(aniFugiu.toString());
                         break;
                 }

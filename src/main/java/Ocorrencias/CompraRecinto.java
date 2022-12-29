@@ -2,11 +2,11 @@ package Ocorrencias;
 
 import com.mycompany.jumanji_poo.Recinto;
 
-public class ComprarRecinto {
+public class CompraRecinto {
     private Recinto rec;
     private int numCandidato;
 
-    public ComprarRecinto(Recinto rec, int numCandidato) {
+    public CompraRecinto(Recinto rec, int numCandidato) {
         this.rec = rec;
         this.numCandidato = numCandidato;
     }

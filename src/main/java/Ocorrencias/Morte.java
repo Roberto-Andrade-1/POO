@@ -33,7 +33,7 @@ public class Morte {
                 texto += "\nOs seguintes animais morreram";
                 for (Animal animal : animaisMortos) {
                     System.out.println(animal);
-                    texto += "\n" + animal + "\n";
+                    texto += "\n" + animal;
                 }
             }
         }

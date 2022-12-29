@@ -2,18 +2,18 @@ package Ocorrencias;
 
 import Animais.Animal;
 
-public class Adicionar {
+public class Adiciona {
     private Animal ani;
     private boolean carGent;
     private String escolha;
 
-    public Adicionar(Animal ani) {
+    public Adiciona(Animal ani) {
         this.ani = ani;
         carGent = false;
         escolha = "";
     }
 
-    public Adicionar(Animal ani, String escolha) {
+    public Adiciona(Animal ani, String escolha) {
         this.ani = ani;
         carGent = true;
         this.escolha = escolha;
