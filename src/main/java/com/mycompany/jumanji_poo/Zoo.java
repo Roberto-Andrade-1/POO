@@ -81,20 +81,31 @@ public class Zoo {
         this.staff = staff;
     }
 
-    public int calculaDespesas() {
-        int total = 0;
+    /*
+     * Este método irá retornar as despesas do zoo. Este método irá retornar um
+     * double que é o total de despesas do zoo, pagamento de ração para todos os
+     * animais, manutenção dos recintos e pagamento da staff.
+     */
+    public double calculaDespesas() {
+        double total = 0;
         int animaisRecinto = 0;
+
         total += getStaff() * PAGAMENTO_STAFF; // pagamento da staff
         for (Recinto rec : getRecintos().keySet()) {
             animaisRecinto += rec.getOcupacao();
         }
         total += animaisRecinto * PAGAMENTO_RACAO;
-        total += getRecintos().size() * MANUTENCAO;
         total += animaisErrantes.size() * PAGAMENTO_RACAO;
-        setSaldo(getSaldo() - total);
+        total += getRecintos().size() * MANUTENCAO;
         return total;
     }
 
+    /*
+     * Este método serve para verificar a ocupação de cada recinto, basicamente
+     * percorre o array e se alguma posição não for null incrementa o número total.
+     * Depois de percorrer o array, este metodo, define a ocupação do recinto face à
+     * variável total
+     */
     public void verificaOcupacaoRec() {
         for (Map.Entry<Recinto, Animal[]> recintos : recintos.entrySet()) {
             int total = 0;
@@ -143,6 +154,10 @@ public class Zoo {
 
     }
 
+    /*
+     * Como para inserirmos animais nos recintos só podemos escolher animais que são
+     * errantes optamos por fazer este metodo para depois lançar a exeção no jumanji
+     */
     public boolean verificaIdAnimal(int id) {
         boolean verr = false;
         for (Animal animal : getAnimaisErrantes()) {
@@ -152,6 +167,10 @@ public class Zoo {
         return verr;
     }
 
+    /*
+     * Para inserirmos os animais nos recintos precisamos de um método que verifique
+     * se existe algum recinto com o id fornecido
+     */
     public boolean verificaIdRecinto(int id) {
         boolean verr = false;
         for (Recinto rec : getRecintos().keySet()) {

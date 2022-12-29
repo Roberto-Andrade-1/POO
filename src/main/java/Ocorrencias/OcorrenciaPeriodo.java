@@ -1,9 +1,9 @@
 package Ocorrencias;
 
 public class OcorrenciaPeriodo {
-    private int despesas, proveitos;
+    private double despesas, proveitos;
 
-    public OcorrenciaPeriodo(int despesas, int proveitos) {
+    public OcorrenciaPeriodo(double despesas, double proveitos) {
         this.despesas = despesas;
         this.proveitos = proveitos;
     }

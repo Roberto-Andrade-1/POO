@@ -1069,6 +1069,7 @@ public class Jumanji {
 
         // despesas
         System.out.println("Despesas: " + zoo.calculaDespesas());
+        zoo.setSaldo(zoo.getSaldo() - zoo.calculaDespesas());
 
         // calcula os proveitos totais do zoo
         int proveitos = 0;
