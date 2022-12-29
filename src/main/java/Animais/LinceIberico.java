@@ -7,13 +7,6 @@ public class LinceIberico extends Animal {
     private static final int ESPERANCA_VIDA = 13;
     private static final int APETITE_REPRODUTIVO = 46;
 
-    public LinceIberico(String nome) {
-        super(nome);
-        setAtratividadeBase(5500);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(true);
-    }
-
     public LinceIberico() {
         setAtratividadeBase(5500);
         setIdade(numAleatorioArray(getEsperancaVida()));

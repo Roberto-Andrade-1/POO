@@ -9,13 +9,6 @@ public class Carneiro extends Animal implements Ovis {
     private static final int ESPERANCA_VIDA = 10;
     private static final int APETITE_REPRODUTIVO = 43;
 
-    public Carneiro(String nome) {
-        super(nome);
-        setAtratividadeBase(3100);
-        setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-    }
-
     public Carneiro(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
             boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);

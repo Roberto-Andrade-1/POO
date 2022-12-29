@@ -17,13 +17,6 @@ public class UrsoPolar extends Animal implements Ursus {
         viasExtincao = true;
     }
 
-    public UrsoPolar(String nome) {
-        super(nome);
-        setAtratividadeBase(4000);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = true;
-    }
-
     public UrsoPolar() {
         setAtratividadeBase(4000);
         setIdade(numAleatorioArray(getEsperancaVida()));

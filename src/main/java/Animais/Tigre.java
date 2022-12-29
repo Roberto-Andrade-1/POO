@@ -17,13 +17,6 @@ public class Tigre extends Animal implements Panthera {
         viasExtincao = true;
     }
 
-    public Tigre(String nome) {
-        super(nome);
-        setAtratividadeBase(5000);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = true;
-    }
-
     public Tigre() {
         setAtratividadeBase(5000);
         setIdade(numAleatorioArray(getEsperancaVida()));

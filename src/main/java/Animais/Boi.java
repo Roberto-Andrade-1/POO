@@ -16,14 +16,6 @@ public class Boi extends Animal {
         setViasExtincao(false);
     }
 
-    public Boi(String nome) {
-        super(nome);
-        setAtratividadeBase(1000);
-        // num aleatorio de 0 a 17
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
-    }
-
     public Boi() {
         setAtratividadeBase(1000);
         // num aleatorio de 0 a 17

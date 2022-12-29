@@ -15,13 +15,6 @@ public class Porco extends Animal {
         setViasExtincao(false);
     }
 
-    public Porco(String nome) {
-        super(nome);
-        setAtratividadeBase(200);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
-    }
-
     public Porco() {
         setAtratividadeBase(200);
         setIdade(numAleatorioArray(getEsperancaVida()));

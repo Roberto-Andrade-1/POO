@@ -17,13 +17,6 @@ public class UrsoPreto extends Animal implements Ursus {
         viasExtincao = false;
     }
 
-    public UrsoPreto(String nome) {
-        super(nome);
-        setAtratividadeBase(3500);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = false;
-    }
-
     public UrsoPreto() {
         setAtratividadeBase(3500);
         setIdade(numAleatorioArray(getEsperancaVida()));

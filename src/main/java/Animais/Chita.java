@@ -7,13 +7,6 @@ public class Chita extends Animal {
     private static final int ESPERANCA_VIDA = 12;
     private static final int APETITE_REPRODUTIVO = 50;
 
-    public Chita(String nome) {
-        super(nome);
-        setAtratividadeBase(5000);
-        setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-    }
-
     public Chita(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
             boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);

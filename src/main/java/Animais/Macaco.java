@@ -7,13 +7,6 @@ public class Macaco extends Animal {
     private static final int ESPERANCA_VIDA = 17;
     private static final int APETITE_REPRODUTIVO = 58;
 
-    public Macaco(String nome) {
-        super(nome);
-        setAtratividadeBase(3500);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
-    }
-
     public Macaco(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
             boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);

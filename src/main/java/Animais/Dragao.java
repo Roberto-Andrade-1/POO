@@ -15,13 +15,6 @@ public class Dragao extends Animal {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
-    public Dragao(String nome) {
-        super(nome);
-        setAtratividadeBase(3500);
-        setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-    }
-
     public Dragao() {
         setAtratividadeBase(3500);
         setViasExtincao(true);

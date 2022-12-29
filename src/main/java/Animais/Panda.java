@@ -17,13 +17,6 @@ public class Panda extends Animal implements Ursus {
         setViasExtincao(true);
     }
 
-    public Panda(String nome) {
-        super(nome);
-        setAtratividadeBase(10000);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(true);
-    }
-
     public Panda() {
         setAtratividadeBase(10000);
         setIdade(numAleatorioArray(getEsperancaVida()));

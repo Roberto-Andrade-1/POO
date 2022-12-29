@@ -15,13 +15,6 @@ public class Cavalo extends Animal implements Equus {
         setIdade(numAleatorioArray(getEsperancaVida()));
     }
 
-    public Cavalo(String nome) {
-        super(nome);
-        setAtratividadeBase(3000);
-        setViasExtincao(false);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-    }
-
     public Cavalo(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
             boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);

@@ -15,13 +15,6 @@ public class Coelho extends Animal {
         setViasExtincao(false);
     }
 
-    public Coelho(String nome) {
-        super(nome);
-        setAtratividadeBase(500);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
-    }
-
     public Coelho() {
         setAtratividadeBase(500);
         setIdade(numAleatorioArray(getEsperancaVida()));

@@ -15,13 +15,6 @@ public class Galo extends Animal {
         setViasExtincao(false);
     }
 
-    public Galo(String nome) {
-        super(nome);
-        setAtratividadeBase(900);
-        setIdade(numAleatorioArray(getEsperancaVida()));
-        setViasExtincao(false);
-    }
-
     public Galo() {
         setAtratividadeBase(900);
         setIdade(numAleatorioArray(getEsperancaVida()));
