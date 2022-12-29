@@ -28,7 +28,9 @@ import Animais.Panda;
 import Animais.UrsoPreto;
 import Excecoes.ExcecaoCalendarioChines;
 import Excecoes.ExcecaoComprarAnimal;
+import Excecoes.ExcecaoGenoma;
 import Excecoes.ExcecaoIdIncorreto;
+import Excecoes.ExcecaoMutacao;
 import Excecoes.ExcecaoNumMenuInvalido;
 import Excecoes.ExecaoNumIncorretoRecinto;
 import Genoma.Canis;
@@ -58,7 +60,7 @@ public class Jumanji {
 
     public static void main(String[] args)
             throws IOException, ExcecaoIdIncorreto, ExcecaoNumMenuInvalido, ExecaoNumIncorretoRecinto,
-            ExcecaoComprarAnimal, ExcecaoCalendarioChines {
+            ExcecaoComprarAnimal, ExcecaoCalendarioChines, ExcecaoGenoma, ExcecaoMutacao {
 
         // Variaveis locais
         scan = new Scanner(System.in);
@@ -591,7 +593,7 @@ public class Jumanji {
     }
 
     // 7.Listar Animais com caracteristica Generica especificada
-    public static void listarAnimaisCarGenetica(Zoo zoo) {
+    public static void listarAnimaisCarGenetica(Zoo zoo) throws ExcecaoGenoma {
         System.out.println("""
 
                 Qual a característica genetica que pretende?(Insira o número ou o seu nome)
@@ -601,13 +603,161 @@ public class Jumanji {
                 4.Ovis
                 5.Panthera
                 6.Ursus
-
                 """);
         String escolha = scan.next();
         escolha = escolha.trim(); // retira os espaços no final e no começo do input
         escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
+
+        // isAssignableFrom verifica se a classe implementa a interface
         switch (escolha) {
             case "1":
+            case "canis":
+                for (Animal animal : zoo.getAnimaisErrantes()) {// corre a lista de animais errantes
+                    if (Canis.class.isAssignableFrom(animal.getClass())) {// verifica se o animal implementa a
+                                                                          // interface,ou seja, se este animal tem o
+                                                                          // respetivo genoma
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {// percorre cada array de animais da hashmap
+                    for (Animal animal : ani) {// percorre cada animal do respetivo array
+                        if (animal != null && Canis.class.isAssignableFrom(animal.getClass())) {// verifica se o animal
+                                                                                                // é diferente de null e
+                                                                                                // depoois verifca se
+                                                                                                // implementa a
+                                                                                                // interface, ou seja,
+                                                                                                // se tem o respetivo
+                                                                                                // genoma
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "2":
+            case "equus":
+                for (Animal animal : zoo.getAnimaisErrantes()) {// corre a lista de animais errantes
+                    if (Equus.class.isAssignableFrom(animal.getClass())) {// verifica se o animal implementa a
+                                                                          // interface,ou seja, se este animal tem o
+                                                                          // respetivo genoma
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {// percorre cada array de animais da hashmap
+                    for (Animal animal : ani) {// percorre cada animal do respetivo array
+                        if (animal != null && Equus.class.isAssignableFrom(animal.getClass())) {// verifica se o animal
+                                                                                                // é diferente de null e
+                                                                                                // depoois verifca se
+                                                                                                // implementa a
+                                                                                                // interface, ou seja,
+                                                                                                // se tem o respetivo
+                                                                                                // genoma
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "3":
+            case "naja":
+                for (Animal animal : zoo.getAnimaisErrantes()) {// corre a lista de animais errantes
+                    if (Naja.class.isAssignableFrom(animal.getClass())) {// verifica se o animal implementa a interface,
+                                                                         // ou seja, se este animal tem o respetivo
+                                                                         // genoma
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {// percorre cada array de animais da hashmap
+                    for (Animal animal : ani) {// percorre cada animal do respetivo array
+                        if (animal != null && Naja.class.isAssignableFrom(animal.getClass())) {// verifica se o animal é
+                                                                                               // diferente de null e
+                                                                                               // depoois verifca se
+                                                                                               // implementa a
+                                                                                               // interface, ou seja, se
+                                                                                               // tem o respetivo genoma
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "4":
+            case "ovis":
+                for (Animal animal : zoo.getAnimaisErrantes()) {// corre a lista de animais errantes
+                    if (Ovis.class.isAssignableFrom(animal.getClass())) {// verifica se o animal implementa a interface,
+                                                                         // ou seja, se este animal tem o respetivo
+                                                                         // genoma
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {// percorre cada array de animais da hashmap
+                    for (Animal animal : ani) {// percorre cada animal do respetivo array
+                        if (animal != null && Ovis.class.isAssignableFrom(animal.getClass())) {// verifica se o animal é
+                                                                                               // diferente de null e
+                                                                                               // depoois verifca se
+                                                                                               // implementa a
+                                                                                               // interface, ou seja, se
+                                                                                               // tem o respetivo genoma
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "5":
+            case "panthera":
+                for (Animal animal : zoo.getAnimaisErrantes()) {// corre a lista de animais errantes
+                    if (Panthera.class.isAssignableFrom(animal.getClass())) {// verifica se o animal implementa a
+                                                                             // interface,ou seja, se este animal tem o
+                                                                             // respetivo genoma
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {// percorre cada array de animais da hashmap
+                    for (Animal animal : ani) {// percorre cada animal do respetivo array
+                        if (animal != null && Panthera.class.isAssignableFrom(animal.getClass())) {// verifica se o
+                                                                                                   // animal é diferente
+                                                                                                   // de null e depoois
+                                                                                                   // verifca se
+                                                                                                   // implementa a
+                                                                                                   // interface, ou
+                                                                                                   // seja, se tem o
+                                                                                                   // respetivo genoma
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            case "6":
+            case "ursus":
+                for (Animal animal : zoo.getAnimaisErrantes()) {// corre a lista de animais errantes
+                    if (Ursus.class.isAssignableFrom(animal.getClass())) {// verifica se o animal implementa a
+                                                                          // interface,ou seja, se este animal tem o
+                                                                          // respetivo genoma este animal tem o
+
+                        System.out.println(animal);
+                    }
+                }
+                for (Animal[] ani : zoo.getRecintos().values()) {// percorre cada array de animais da hashmap
+                    for (Animal animal : ani) {// percorre cada animal do respetivo array
+                        if (animal != null && Ursus.class.isAssignableFrom(animal.getClass())) {// verifica se o animal
+                                                                                                // é diferente de null e
+                                                                                                // depoois verifca se
+                                                                                                // implementa a
+                                                                                                // interface, ou seja,
+                                                                                                // se tem o respetivo
+                                                                                                // genoma
+                            System.out.println(animal);
+                        }
+                    }
+                }
+                break;
+            default:
+                throw new ExcecaoGenoma();
+        }
+    }
+
+    // 7.Overload feito para o retrato familiar
+    public static void listarAnimaisCarGenetica(Zoo zoo, String escolha) throws ExcecaoGenoma {
+        escolha = escolha.trim(); // retira os espaços no final e no começo do input
+        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
+        switch (escolha) {
             case "canis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Canis.class.isAssignableFrom(animal.getClass())) {
@@ -622,7 +772,6 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "2":
             case "equus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Equus.class.isAssignableFrom(animal.getClass())) {
@@ -637,7 +786,6 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "3":
             case "naja":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Naja.class.isAssignableFrom(animal.getClass())) {
@@ -652,7 +800,6 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "4":
             case "ovis":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ovis.class.isAssignableFrom(animal.getClass())) {
@@ -667,7 +814,6 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "5":
             case "panthera":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Panthera.class.isAssignableFrom(animal.getClass())) {
@@ -682,7 +828,6 @@ public class Jumanji {
                     }
                 }
                 break;
-            case "6":
             case "ursus":
                 for (Animal animal : zoo.getAnimaisErrantes()) {
                     if (Ursus.class.isAssignableFrom(animal.getClass())) {
@@ -698,105 +843,12 @@ public class Jumanji {
                 }
                 break;
             default:
-                System.out.println("Insira um número do respetivo genoma ou o seu nome!");
-                break;
-        }
-    }
-
-    // 7.Overload
-    public static void listarAnimaisCarGenetica(Zoo zoo, String escolha) {
-        escolha = escolha.trim(); // retira os espaços no final e no começo do input
-        escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
-        switch (escolha) {
-            case "canis":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (Canis.class.isAssignableFrom(animal.getClass())) {
-                        System.out.println(animal);
-                    }
-                }
-                for (Animal[] ani : zoo.getRecintos().values()) {
-                    for (Animal animal : ani) {
-                        if (animal != null && Canis.class.isAssignableFrom(animal.getClass())) {
-                            System.out.println(animal);
-                        }
-                    }
-                }
-                break;
-            case "equus":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (Equus.class.isAssignableFrom(animal.getClass())) {
-                        System.out.println(animal);
-                    }
-                }
-                for (Animal[] ani : zoo.getRecintos().values()) {
-                    for (Animal animal : ani) {
-                        if (animal != null && Equus.class.isAssignableFrom(animal.getClass())) {
-                            System.out.println(animal);
-                        }
-                    }
-                }
-                break;
-            case "naja":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (Naja.class.isAssignableFrom(animal.getClass())) {
-                        System.out.println(animal);
-                    }
-                }
-                for (Animal[] ani : zoo.getRecintos().values()) {
-                    for (Animal animal : ani) {
-                        if (animal != null && Naja.class.isAssignableFrom(animal.getClass())) {
-                            System.out.println(animal);
-                        }
-                    }
-                }
-                break;
-            case "ovis":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (Ovis.class.isAssignableFrom(animal.getClass())) {
-                        System.out.println(animal);
-                    }
-                }
-                for (Animal[] ani : zoo.getRecintos().values()) {
-                    for (Animal animal : ani) {
-                        if (animal != null && Ovis.class.isAssignableFrom(animal.getClass())) {
-                            System.out.println(animal);
-                        }
-                    }
-                }
-                break;
-            case "panthera":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (Panthera.class.isAssignableFrom(animal.getClass())) {
-                        System.out.println(animal);
-                    }
-                }
-                for (Animal[] ani : zoo.getRecintos().values()) {
-                    for (Animal animal : ani) {
-                        if (animal != null && Panthera.class.isAssignableFrom(animal.getClass())) {
-                            System.out.println(animal);
-                        }
-                    }
-                }
-                break;
-            case "ursus":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (Ursus.class.isAssignableFrom(animal.getClass())) {
-                        System.out.println(animal);
-                    }
-                }
-                for (Animal[] ani : zoo.getRecintos().values()) {
-                    for (Animal animal : ani) {
-                        if (animal != null && Ursus.class.isAssignableFrom(animal.getClass())) {
-                            System.out.println(animal);
-                        }
-                    }
-                }
-                break;
+                throw new ExcecaoGenoma();
         }
     }
 
     // 8.Listar animal com uma dada mutação
-    public static void listarDadaMutacao(Zoo zoo) {
+    public static void listarDadaMutacao(Zoo zoo) throws ExcecaoMutacao {
         scan = new Scanner(System.in);
         System.out.println("""
 
@@ -806,7 +858,6 @@ public class Jumanji {
                 3.Melanismo
                 4.Siames
                 5.Vitiligo
-
                 """);
         String escolha = scan.next();
         escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
@@ -814,77 +865,81 @@ public class Jumanji {
         switch (escolha) {
             case "1":
             case "albino":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (animal.isAlbinismo())
+                for (Animal animal : zoo.getAnimaisErrantes()) {// percorre a lista de animais errantes
+                    if (animal.isAlbinismo())// verifica se o animal tem a respetiva mutação
                         System.out.println(animal);
                 }
-                for (Animal[] animal : zoo.getRecintos().values()) {
-                    for (Animal ani : animal) {
-                        if (ani != null && ani.isAlbinismo())
+                for (Animal[] animal : zoo.getRecintos().values()) {// percorre os values da hashmap
+                    for (Animal ani : animal) {// percorre o array de animais
+                        if (ani != null && ani.isAlbinismo())// verifica se o animal é diferente de null e se tem a
+                                                             // respetiva mutação pretendida
                             System.out.println(ani);
                     }
                 }
                 break;
             case "2":
             case "heterocromia":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (animal.isHeterocromia())
+                for (Animal animal : zoo.getAnimaisErrantes()) {// percorre a lista de animais errantes
+                    if (animal.isHeterocromia())// verifica se o animal tem a respetiva mutação
                         System.out.println(animal);
                 }
-                for (Animal[] animal : zoo.getRecintos().values()) {
-                    for (Animal ani : animal) {
-                        if (ani != null && ani.isHeterocromia())
+                for (Animal[] animal : zoo.getRecintos().values()) {// percorre os values da hashmap
+                    for (Animal ani : animal) {// percorre o array de animais
+                        if (ani != null && ani.isHeterocromia())// verifica se o animal é diferente de null e se tem a
+                                                                // respetiva mutação pretendida
                             System.out.println(ani);
                     }
                 }
                 break;
             case "3":
             case "melanismo":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (animal.isMelanismo())
+                for (Animal animal : zoo.getAnimaisErrantes()) {// percorre a lista de animais errantes
+                    if (animal.isMelanismo())// verifica se o animal tem a respetiva mutação
                         System.out.println(animal);
                 }
-                for (Animal[] animal : zoo.getRecintos().values()) {
-                    for (Animal ani : animal) {
-                        if (ani != null && ani.isMelanismo())
+                for (Animal[] animal : zoo.getRecintos().values()) {// percorre os values da hashmap
+                    for (Animal ani : animal) {// percorre o array de animais
+                        if (ani != null && ani.isMelanismo())// verifica se o animal é diferente de null e se tem a
+                                                             // respetiva mutação pretendida
                             System.out.println(ani);
                     }
                 }
                 break;
             case "4":
             case "siames":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (animal.isSiames())
+                for (Animal animal : zoo.getAnimaisErrantes()) {// percorre a lista de animais errantes
+                    if (animal.isSiames())// verifica se o animal tem a respetiva mutação
                         System.out.println(animal);
                 }
-                for (Animal[] animal : zoo.getRecintos().values()) {
-                    for (Animal ani : animal) {
-                        if (ani != null && ani.isSiames())
+                for (Animal[] animal : zoo.getRecintos().values()) {// percorre os values da hashmap
+                    for (Animal ani : animal) {// percorre o array de animais
+                        if (ani != null && ani.isSiames())// verifica se o animal é diferente de null e se tem a
+                                                          // respetiva mutação pretendida
                             System.out.println(ani);
                     }
                 }
                 break;
             case "5":
             case "vitiligo":
-                for (Animal animal : zoo.getAnimaisErrantes()) {
-                    if (animal.isVitiligo())
+                for (Animal animal : zoo.getAnimaisErrantes()) {// percorre a lista de animais errantes
+                    if (animal.isVitiligo())// verifica se o animal tem a respetiva mutação
                         System.out.println(animal);
                 }
-                for (Animal[] animal : zoo.getRecintos().values()) {
-                    for (Animal ani : animal) {
-                        if (ani != null && ani.isVitiligo())
+                for (Animal[] animal : zoo.getRecintos().values()) {// percorre os values da hashmap
+                    for (Animal ani : animal) {// percorre o array de animais
+                        if (ani != null && ani.isVitiligo())// verifica se o animal é diferente de null e se tem a
+                                                            // respetiva mutação pretendida
                             System.out.println(ani);
                     }
                 }
                 break;
             default:
-                System.out.println("Insera o respetivo número da característica genética ou o seu nome!");
-                break;
+                throw new ExcecaoMutacao();
         }
     }
 
-    // 8.Overload
-    public static void listarDadaMutacao(Zoo zoo, String escolha) {
+    // 8.Overload feito para o retrato familiar
+    public static void listarDadaMutacao(Zoo zoo, String escolha) throws ExcecaoMutacao {
         escolha = escolha.toLowerCase(); // todos os caracteres passam para minúsculas
         escolha = escolha.trim(); // retira os espaços no final e no começo do input
         switch (escolha) {
@@ -949,13 +1004,12 @@ public class Jumanji {
                 }
                 break;
             default:
-                System.out.println("Valor inválido");
-                break;
+                throw new ExcecaoMutacao();
         }
     }
 
     // 10. Retrato Familiar
-    public static void retratoFamiliar(Zoo zoo, Ocorrencia ocor) {
+    public static void retratoFamiliar(Zoo zoo, Ocorrencia ocor) throws ExcecaoGenoma, ExcecaoMutacao {
 
         System.out.println("\n-------Histórico-------\n");
         System.out.println(ocor);
