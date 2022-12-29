@@ -1802,66 +1802,78 @@ public class Jumanji {
         }
     }
 
+    /*
+     * Este método insere dados no zoo referente aos animais errantes , este método
+     * baseia-se em ler o ficheiro AnimaisErrantes.txt.
+     * Implementamos, outra vez, a variavel local numDalinha que se refere ao número
+     * da linha do ficheiro. Para termos o animal precisamos de 11 linhas, sendo as
+     * 9 primeiras parametros para o construtor, a decima a sua class(espécie) e a
+     * decima primeira serve no ficheiro para dividir os animais e neste metodo para
+     * inserir o animal na lista de animais errantes
+     */
     public static void uploadAnimaisErrantes(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
+
+        // variaveis que servirão para os parametros do construtor do animal
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
                 siamesAnimal = false;
-        Animal a = null;
         int idAnimal = 0, idadeAnimal = 0;
+
+        Animal a = null;
         FileReader inStream = new FileReader("AnimaisErrantes.txt");
         BufferedReader lerDados = new BufferedReader(inStream);
         try {
             int numDaLinha = 1;
             linha = lerDados.readLine();
-            while (linha != null) {
+            while (linha != null) {// ler o ficheiro até o final
                 switch (numDaLinha) {
-                    case 1:
+                    case 1:// id do animal
                         idAnimal = Integer.parseInt(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 2:
+                    case 2:// idade do animal
                         idadeAnimal = Integer.parseInt(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 3:
+                    case 3:// nome do animal
                         nomeAnimal = linha;
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 4:
+                    case 4:// sexo do animal
                         sexoAnimal = linha;
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 5:
+                    case 5:// albino
                         albinismoAnimal = Boolean.parseBoolean(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 6:
+                    case 6:// heterocromia
                         heterocromiaAnimal = Boolean.parseBoolean(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 7:
+                    case 7:// melanismo
                         melanismoAnimal = Boolean.parseBoolean(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 8:
+                    case 8:// vitiligo
                         vitiligoAnimal = Boolean.parseBoolean(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 9:
+                    case 9:// siames
                         siamesAnimal = Boolean.parseBoolean(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 10:
+                    case 10:// constutor, define o animal
                         switch (linha) {
                             case "Boi":
                                 a = new Boi(idAnimal, idadeAnimal, nomeAnimal, sexoAnimal, albinismoAnimal,
@@ -1951,11 +1963,11 @@ public class Jumanji {
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 11:
+                    case 11:// inserção na lista de animais errantes
                         zoo.setAnimaisErrantes(a);
                         Animal.setIdAnimalAtualizado(idAnimal);
                         linha = lerDados.readLine();
-                        numDaLinha = 1;
+                        numDaLinha = 1;// linha volta a 1 pois a proxima linha pode ser ou não um novo animal
 
                         Adiciona adAni = new Adiciona(a);
                         ocor.setHistorico(adAni.toString());
@@ -1970,6 +1982,12 @@ public class Jumanji {
         }
     }
 
+    /*
+     * Este método insere dados no zoo referente aos animais mortos, este método
+     * baseia-se em ler o ficheiro AnimaisMortos.txt . Este método tem o mesmo
+     * obejtivo que o de cima, só que a lista e o tipo de ocorrencia para o
+     * histórico é diferente.
+     */
     public static void uploadAnimaisMortos(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
@@ -2137,6 +2155,12 @@ public class Jumanji {
         }
     }
 
+    /*
+     * Este método insere dados no zoo referente aos animais perdidos, este método
+     * baseia-se em ler o ficheiro AnimaisPerdidos.txt . Este método tem o mesmo
+     * obejtivo que o de cima, só que a lista e o tipo de ocorrencia para o
+     * histórico é diferente.
+     */
     public static void uploadAnimaisPerdidos(Zoo zoo, Ocorrencia ocor) throws IOException {
         String linha;
         String nomeAnimal = new String(), sexoAnimal = new String();
