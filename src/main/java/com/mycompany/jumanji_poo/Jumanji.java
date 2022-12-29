@@ -476,8 +476,8 @@ public class Jumanji {
                                                                         // recinto
 
                     CompraRecinto comRec = new CompraRecinto(escolhido, escolhaRecinto);// classe dinamica para o
-                                                                                          // histórico(ocorrencias) do
-                                                                                          // zoo ao comprar o recinto
+                                                                                        // histórico(ocorrencias) do
+                                                                                        // zoo ao comprar o recinto
                     ocor.setHistorico(comRec.toString());// adiciona a ocorrencia oa histórico
                 } else {
                     System.out.println("Não tem dinheiro para comprar o recinto");
@@ -1444,8 +1444,9 @@ public class Jumanji {
             System.out.println("\nOs seguintes animais nasceram");
         }
 
-        Nascimento aniNasc = new Nascimento(nascimentosNestePeriodo);
-        ocor.setHistorico(aniNasc.toString());
+        Nascimento aniNasc = new Nascimento(nascimentosNestePeriodo); // como ocorreu um nascimento criamos uma nova
+                                                                      // classe da package Ocorrrencias
+        ocor.setHistorico(aniNasc.toString());// é adicionado ao histórico
     }
 
     // 14. Jumanji
@@ -1453,6 +1454,8 @@ public class Jumanji {
         Random rand = new Random();
 
         ocor.setHistorico("\n------Jumanji------\n");
+
+        // variável local para guardar
         List<Animal> animaisPerdidos = new ArrayList<Animal>();
 
         // para os animais em recintos
@@ -1484,27 +1487,56 @@ public class Jumanji {
             }
         }
 
-        Fugiu aniFug = new Fugiu(animaisPerdidos);// cria a classe fuga
-        ocor.setHistorico(aniFug.toString());
+        Fugiu aniFug = new Fugiu(animaisPerdidos);// cria a classe fuga para depois adicionar no histórico
+        ocor.setHistorico(aniFug.toString());// // adiciona um texto na lista do historico evocando o metodo toString//
+                                             // da classe gerada anteriormente
 
-        if (zoo.getRecintos().size() > 0) {
-            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {
-                int idDoRecintoAle = rand.nextInt(zoo.getRecintos().size()) + 1;
-                for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {
+        if (zoo.getRecintos().size() > 0) {//
+            for (int i = 0; i < zoo.getAnimaisErrantes().size(); i++) {// percorre a lista de animais errantes
+                int idDoRecintoAle = rand.nextInt(zoo.getRecintos().size()) + 1;// gera um número aleatorio entre 1 até
+                                                                                // o numero de recintos que temos no zoo
+
+                for (Map.Entry<Recinto, Animal[]> recintos : zoo.getRecintos().entrySet()) {// percorre todos os
+                                                                                            // recintos
+
                     Recinto rec = recintos.getKey();
                     Animal[] animais = recintos.getValue();
-                    if (rec.getIdRecinto() == idDoRecintoAle) {
-                        int num = rand.nextInt(rec.getCapacidade());
-                        Animal a = animais[num];
-                        animais[num] = zoo.getAnimaisErrantes().get(i);
-                        zoo.getAnimaisErrantes().remove(i);
-                        if (a != null) {
-                            zoo.setAnimaisErrantes(a);
-                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle, a);
-                            ocor.setHistorico(insRec.toString());
+                    if (rec.getIdRecinto() == idDoRecintoAle) {// se o id corresponder ao id gerado aleatoriamnete
+
+                        int num = rand.nextInt(rec.getCapacidade());// criado um número aleatorio para ver a posição do
+                                                                    // array
+
+                        Animal a = animais[num];// guarda o possível animal numa variável local
+                        animais[num] = zoo.getAnimaisErrantes().get(i);// define o animal na posiçaõ aleatória no array
+                                                                       // do recinto
+                        zoo.getAnimaisErrantes().remove(i);// remove o animla da lista de animais errantes
+                        if (a != null) {// caso o animal nao for null
+                            zoo.setAnimaisErrantes(a);// o animal que antes estava no array do recinto passa a ser um
+                                                      // animal errante
+                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle, a);// ocorrencia
+                                                                                                                        // onde
+                                                                                                                        // o
+                                                                                                                        // animal
+                                                                                                                        // foi
+                                                                                                                        // inserido
+                                                                                                                        // no
+                                                                                                                        // recinto
+                                                                                                                        // mas
+                                                                                                                        // teve
+                                                                                                                        // que
+                                                                                                                        // retirar
+                                                                                                                        // outro
+                            ocor.setHistorico(insRec.toString());// adiciona ao histórico a ocorrencia
                         } else {
-                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle);
-                            ocor.setHistorico(insRec.toString());
+                            InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle);// ocorrencia
+                                                                                                                     // onde
+                                                                                                                     // o
+                                                                                                                     // animal
+                                                                                                                     // é
+                                                                                                                     // adicionado
+                                                                                                                     // ao
+                                                                                                                     // recinto
+                            ocor.setHistorico(insRec.toString());// adiciona ao historico a ocorrencia
                         }
                     }
                 }
@@ -1514,16 +1546,27 @@ public class Jumanji {
 
     // -------leitura de ficheiros---------//
 
+    /*
+     * Este método insere dados no zoo referente aos recintos onde lê o ficheiro
+     * Recintos.txt e insere os novos recintos na hashmap do zoo. Criamos uma
+     * variavel numDaLinha, se o numDalinha for igual a 1 esta refere-se ao id do
+     * recinto, a segunda linha refere-se à capacidade do recinto e a terceira serve
+     * para dividir os recintos no ficheiro e no método serve para inserir o recinto
+     * na hashmap
+     */
     public static void uploadRecintos(Zoo zoo, Ocorrencia ocor) throws IOException {
+
+        // variaveis locais
         String linha;
         int idRecinto = 0, capacidade = 0;
         Recinto rec = null;
         FileReader inStrem = new FileReader("Recintos.txt");
         BufferedReader lerDados = new BufferedReader(inStrem);
+
         try {
-            int numDaLinha = 1;
+            int numDaLinha = 1;//
             linha = lerDados.readLine();
-            while (linha != null) {
+            while (linha != null) {// lê até a acabar as linhas do ficheiro
                 switch (numDaLinha) {
                     case 1:
                         idRecinto = Integer.parseInt(linha);
@@ -1555,8 +1598,22 @@ public class Jumanji {
         }
     }
 
+    /*
+     * Este método insere dados no zoo referente aos animais que estão em recintos
+     * onde lê o ficheiro AnimaisEmRecintos.txt, insere os novos animais no array
+     * de animais da hashmap do zoo. Criamos uma variavel numDaLinha, a primeira
+     * linha refere-se ao id do recinto onde o animal está, da segunda até a decima
+     * primeira linhas referem-se à informação do animal e na decima primeira onde
+     * está a sua especie este evoca o construtor dependendo da mesma, a decima
+     * segunda linha serve no ficheiro de texto para dividir cada animal e neste
+     * método para inserir o animal no array de animais do respetivo recinto na
+     * hashmap
+     */
     public static void uploadAnimaisEmRecintos(Zoo zoo, Ocorrencia ocor) throws IOException {
+
+        // variaveis locais
         String linha;
+        // variaveis que serão precisas para inserir e criar o animal
         String nomeAnimal = new String(), sexoAnimal = new String();
         boolean vitiligoAnimal = false, heterocromiaAnimal = false, albinismoAnimal = false, melanismoAnimal = false,
                 siamesAnimal = false;
@@ -1717,11 +1774,16 @@ public class Jumanji {
                                 for (int i = 0; i < animais.length; i++) {
                                     if (animais[i] == null) {
                                         Animal.setIdAnimalAtualizado(idAnimal);
-                                        ;
                                         animais[i] = a;
 
-                                        InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(a, recintoId);
-                                        ocor.setHistorico(insRec.toString());
+                                        InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(a, recintoId);// ocorrencia
+                                                                                                                 // do
+                                                                                                                 // animal
+                                                                                                                 // ao
+                                                                                                                 // entrar
+                                                                                                                 // no
+                                                                                                                 // zoo
+                                        ocor.setHistorico(insRec.toString());// insere no histórico a informação
 
                                         break;
                                     }

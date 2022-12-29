@@ -47,6 +47,11 @@ public class Dragao extends Animal {
         Dragao.atratividadeBase = atratividadeBase;
     }
 
+    /*
+     * É rescrito o método retornaAtratividadeBase em que é alterada a atratividade
+     * do animal caso tenha
+     * as condiões para tal como a sua idade e se tem mutações
+     */
     @Override
     public double retornaAtratividade() {
         double total = getAtratividadeBase();
@@ -85,6 +90,10 @@ public class Dragao extends Animal {
         return total;
     }
 
+    /*
+     * Override do método que retorna o custo do animal aquando da sua compra
+     * que varia de preço conforme as mutações, idade e vias de extinção
+     */
     @Override
     public double retornaCusto() {
         // Random rand=new Random();
@@ -108,11 +117,17 @@ public class Dragao extends Animal {
         return Math.round(total * 100) / 100;
     }
 
+    /*
+     * Override do método que retorna a esperança de vida do animal
+     */
     @Override
     public int retornaEsperancaVida() {
         return ESPERANCA_VIDA;
     }
 
+    /*
+     * Override do método que retorna o apetite reprodutivo do animal
+     */
     @Override
     public int retornaApetiteReprodutivo() {
         return APETITE_REPRODUTIVO;

@@ -129,37 +129,53 @@ public abstract class Animal implements Mutacoes {
         return SIAMES;
     }
 
+    /* Método usado para gerar um número aleatório usando Hash */
     public int numAleatorioObjHash() {
         int num = Objects.hash(idAnimal, nome, idade, NOMES_ALEATORIOS, idAnimalAtualizado);
         if (num < 0) {
-            num = num * (-1);
+            num = num * (-1); /*
+                               * caso dê um número negativo é feita a
+                               * multiplicação para dar apenas números positivos
+                               */
         }
         return num;
     }
 
+    /*
+     * Override do metodo detetAlbinismo que no construtor irá ser definido
+     * se o animal ao ser gerado tem albinismo ou não
+     */
     @Override
     public boolean detetAlbinismo() {
         int num = numAleatorioObjHash();
-        if ((num % 100) <= 15) {
+        if ((num % 100) <= 15) { // dá-se aqui a probabilidade
             return true;
         } else
             return false;
     }
 
+    /*
+     * Override do metodo detetaHeterocromia que no construtor irá ser definido
+     * se o animal ao ser gerado tem heterocromia ou não
+     */
     @Override
     public boolean detetaHeterocromia() {
         int num = numAleatorioObjHash();
-        if ((num % 100) <= 25) {
+        if ((num % 100) <= 25) { // dá-se aqui a probabilidade
             return true;
         } else
             return false;
     }
 
+    /*
+     * Override do metodo detetaMelanismo que no construtor irá ser definido
+     * se o animal ao ser gerado tem melanismo ou não
+     */
     @Override
     public boolean detetaMelanismo() {
         if (!isAlbinismo()) {
             int num = numAleatorioObjHash();
-            if ((num % 100) <= 35) {
+            if ((num % 100) <= 35) { // dá-se aqui a probabilidade
                 return true;
             } else
                 return false;
@@ -167,24 +183,35 @@ public abstract class Animal implements Mutacoes {
         return false;
     }
 
+    /*
+     * Override do metodo detetaSiames que no construtor irá ser definido
+     * se o animal ao ser gerado é siamês ou não
+     */
     @Override
     public boolean detetaSiames() {
         int num = numAleatorioObjHash();
-        if ((num % 100) >= 95) {
+        if ((num % 100) >= 95) { // dá-se aqui a probabilidade
             return true;
         } else
             return false;
     }
 
+    /*
+     * Override do metodo detetaVitiligo que no construtor irá ser definido
+     * se o animal ao ser gerado tem vitiligo ou não
+     */
     @Override
     public boolean detetaVitiligo() {
         int num = numAleatorioObjHash();
-        if ((num % 100) >= 80 && (num % 100) <= 98) {
+        if ((num % 100) >= 80 && (num % 100) <= 98) { // dá-se aqui a probabilidade
             return true;
         } else
             return false;
     }
 
+    /*
+     * Métodos abstratos que as subclasses irão herdar e reescreve-los
+     */
     public abstract double retornaAtratividade();
 
     public abstract double retornaCusto();
@@ -193,6 +220,9 @@ public abstract class Animal implements Mutacoes {
 
     public abstract int retornaEsperancaVida();
 
+    /*
+     * Override do metodo toString que ira mostrar todas as informações do animal
+     */
     @Override
     public String toString() {
         String texto = new String();
@@ -219,15 +249,21 @@ public abstract class Animal implements Mutacoes {
         return texto;
     }
 
+    /*
+     * Método que no construtor irá definir se o animal é macho ou fêmea
+     */
     public String sexoAleatorio() {
         Random rand = new Random();
         int num = rand.nextInt(10);
-        if ((num % 2) == 0)
+        if ((num % 2) == 0) // dá-se aqui a probabilidade
             return "Fêmea";
         else
             return "Macho";
     }
 
+    /*
+     * Override do método equals que verifica através do id se o animal é o mesmo
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
