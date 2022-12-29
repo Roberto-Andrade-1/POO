@@ -544,43 +544,44 @@ public class Jumanji {
     // 5.Calendario Chines
     public static void calendarioChines() throws ExcecaoCalendarioChines {
 
-        System.out.println("Escolha um ano: ");
-        if (scan.hasNextInt()) {
-            int year = scan.nextInt();
-            if (year % 12 == 8) {
+        System.out.println("\nEscolha um ano: ");
+        if (scan.hasNextInt()) {// verifica se o ano é do tipo inteiro
+            int ano = scan.nextInt();
+            System.out.println("\n");
+            if (ano % 12 == 8) {
                 Dragao.setAtratividadeBase(Dragao.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Dragão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if (year % 12 == 9) {
+            } else if (ano % 12 == 9) {
                 Serpente.setAtratividadeBase(Serpente.getAtratividadeBase() * 1.50);
                 System.out.println("Ano da Serpente, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if (year % 12 == 10) {
+            } else if (ano % 12 == 10) {
                 Cavalo.setAtratividadeBase(Cavalo.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Cavalo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if (year % 12 == 11) {
+            } else if (ano % 12 == 11) {
                 Carneiro.setAtratividadeBase(Carneiro.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Carneiro, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if (year % 12 == 0) {
+            } else if (ano % 12 == 0) {
                 Macaco.setAtratividadeBase(Macaco.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Macaco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n");
-            } else if (year % 12 == 1) {
+            } else if (ano % 12 == 1) {
                 Galo.setAtratividadeBase(Galo.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Galo, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if (year % 12 == 2) {
+            } else if (ano % 12 == 2) {
                 Cao.setAtratividadeBase(Cao.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Cão, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if (year % 12 == 3) {
+            } else if (ano % 12 == 3) {
                 Porco.setAtratividadeBase(Porco.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Porco, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if (year % 12 == 4) {
+            } else if (ano % 12 == 4) {
                 Rato.setAtratividadeBase(Rato.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Rato, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if (year % 12 == 5) {
+            } else if (ano % 12 == 5) {
                 Boi.setAtratividadeBase(Boi.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Boi, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if (year % 12 == 6) {
+            } else if (ano % 12 == 6) {
                 Tigre.setAtratividadeBase(Tigre.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Tigre, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
-            } else if (year % 12 == 7) {
+            } else if (ano % 12 == 7) {
                 Coelho.setAtratividadeBase(Coelho.getAtratividadeBase() * 1.50);
                 System.out.println("Ano do Coelho, o animal tem a sua atratividade base multiplicada em 1,5 vezes\n ");
             } else
