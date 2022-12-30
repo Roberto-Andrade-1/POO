@@ -32,10 +32,10 @@ public abstract class Animal implements Mutacoes {
         this.SIAMES = SIAMES;
     }
 
-    public Animal() {
+    public Animal(int idade) {
         idAnimal = 0;
         this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
-        this.idade = 0;
+        this.idade = idade;
         this.ALBINISMO = detetAlbinismo();
         this.VITILIGO = detetaVitiligo();
         this.MELANISMO = detetaMelanismo();
@@ -44,10 +44,10 @@ public abstract class Animal implements Mutacoes {
         this.SEXO = sexoAleatorio();
     }
 
-    public Animal(int idade) {
+    public Animal() {
         idAnimal = 0;
         this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
-        this.idade = idade;
+        this.idade = 0;
         this.ALBINISMO = detetAlbinismo();
         this.VITILIGO = detetaVitiligo();
         this.MELANISMO = detetaMelanismo();
