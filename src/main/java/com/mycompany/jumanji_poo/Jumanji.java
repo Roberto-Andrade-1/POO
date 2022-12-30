@@ -1129,6 +1129,17 @@ public class Jumanji {
                     }
                 }
             }
+
+            System.out.println("\nPerdas:");
+            if (animaisPerdidosAgora.isEmpty()) {
+                System.out.println("Nenhum animal foi perdido neste período contabilístico");
+            } else {
+                System.out.println("Os seguintes animais fugiram do zoo:");
+                for (Animal animal : animaisPerdidosAgora) {
+                    System.out.println(animal);
+                }
+            }
+
             Fugiu aniFug = new Fugiu(animaisPerdidosAgora);// cria um nova classe
             ocor.setHistorico(aniFug.toString());// adiciona um texto na lista do historico evocando o metodo toString
                                                  // da classe gerada anteriormente
@@ -1245,9 +1256,12 @@ public class Jumanji {
         }
 
         if (animaisMortosNumPeriodo.isEmpty()) {
-            System.out.println("\nNenhum animal morreu neste período contabilístico");
+            System.out.println("Nenhum animal morreu neste período contabilístico");
         } else {
-            System.out.println("\nOs seguintes animais morreram neste período contabilístico:");
+            System.out.println("Os seguintes animais morreram neste período contabilístico:");
+            for (Animal animal : animaisMortosNumPeriodo) {
+                System.out.println(animal);
+            }
         }
         Morte morteAni = new Morte(animaisMortosNumPeriodo);
         ocor.setHistorico(morteAni.toString());
@@ -1440,9 +1454,12 @@ public class Jumanji {
         }
 
         if (nascimentosNestePeriodo.isEmpty()) {
-            System.out.println("\nNenhum animal nasceu neste período contabilístico");
+            System.out.println("Nenhum animal nasceu neste período contabilístico");
         } else {
-            System.out.println("\nOs seguintes animais nasceram");
+            System.out.println("Os seguintes animais nasceram");
+            for (Animal animal : nascimentosNestePeriodo) {
+                System.out.println(animal);
+            }
         }
 
         Nascimento aniNasc = new Nascimento(nascimentosNestePeriodo); // como ocorreu um nascimento criamos uma nova

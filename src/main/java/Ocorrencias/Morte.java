@@ -32,7 +32,6 @@ public class Morte {
             else {
                 texto += "\nOs seguintes animais morreram";
                 for (Animal animal : animaisMortos) {
-                    System.out.println(animal);
                     texto += "\n" + animal;
                 }
             }
