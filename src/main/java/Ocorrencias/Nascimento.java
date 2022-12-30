@@ -30,9 +30,8 @@ public class Nascimento {
             if (animaisNascidos.isEmpty())
                 texto += "\n->Nenhum animal nasceu";
             else {
-                texto += "\n0s seguintes animais nasceram : ";
+                texto += "\nOs seguintes animais nasceram : ";
                 for (Animal animal : animaisNascidos) {
-                    System.out.println(animal);
                     texto += "\n" + animal;
                 }
             }
