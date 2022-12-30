@@ -14,13 +14,13 @@ public class Carneiro extends Animal implements Ovis {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
         setAtratividadeBase(3100);
         setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
     }
 
     public Carneiro() {
         setAtratividadeBase(3100);
         setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
     }
 
     public Carneiro(int idade) {
@@ -51,8 +51,8 @@ public class Carneiro extends Animal implements Ovis {
     }
 
     /*
-     * É rescrito o método retornaAtratividadeBase em que é alterada a atratividade
-     * do animal caso tenha
+     * É rescrito o método retornaAtratividade da superclasse e este retorna um
+     * valor double sendo maior ou menor dependendo
      * as condiões para tal como a sua idade e se tem mutações
      */
     @Override

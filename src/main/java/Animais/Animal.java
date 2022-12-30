@@ -34,7 +34,7 @@ public abstract class Animal implements Mutacoes {
 
     public Animal(int idade) {
         idAnimal = 0;
-        this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
+        this.nome = NOMES_ALEATORIOS[numAleatorio(NOMES_ALEATORIOS.length)];
         this.idade = idade;
         this.ALBINISMO = detetAlbinismo();
         this.VITILIGO = detetaVitiligo();
@@ -46,7 +46,7 @@ public abstract class Animal implements Mutacoes {
 
     public Animal() {
         idAnimal = 0;
-        this.nome = NOMES_ALEATORIOS[numAleatorioArray(NOMES_ALEATORIOS.length)];
+        this.nome = NOMES_ALEATORIOS[numAleatorio(NOMES_ALEATORIOS.length)];
         this.idade = 0;
         this.ALBINISMO = detetAlbinismo();
         this.VITILIGO = detetaVitiligo();
@@ -60,7 +60,7 @@ public abstract class Animal implements Mutacoes {
         return SEXO;
     }
 
-    public int numAleatorioArray(int length) {
+    public int numAleatorio(int length) {
         Random rand = new Random();
         int num = rand.nextInt(length);
         return num;

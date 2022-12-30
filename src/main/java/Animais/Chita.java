@@ -12,13 +12,13 @@ public class Chita extends Animal {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
         setAtratividadeBase(5000);
         setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
     }
 
     public Chita() {
         setAtratividadeBase(5000);
         setViasExtincao(true);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
     }
 
     public Chita(int idade) {
@@ -40,8 +40,8 @@ public class Chita extends Animal {
     }
 
     /*
-     * É rescrito o método retornaAtratividadeBase em que é alterada a atratividade
-     * do animal caso tenha
+     * É rescrito o método retornaAtratividade da superclasse e este retorna um
+     * valor double sendo maior ou menor dependendo
      * as condiões para tal como a sua idade e se tem mutações
      */
     @Override

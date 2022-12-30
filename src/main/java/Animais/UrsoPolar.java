@@ -13,14 +13,14 @@ public class UrsoPolar extends Animal implements Ursus {
             boolean MELANISMO, boolean HETEROCROMIA, boolean SIAMES) {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
         setAtratividadeBase(4000);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
         setViasExtincao(true);
         ;
     }
 
     public UrsoPolar() {
         setAtratividadeBase(4000);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
         setViasExtincao(true);
         ;
     }
@@ -54,8 +54,8 @@ public class UrsoPolar extends Animal implements Ursus {
     }
 
     /*
-     * É rescrito o método retornaAtratividadeBase em que é alterada a atratividade
-     * do animal caso tenha
+     * É rescrito o método retornaAtratividade da superclasse e este retorna um
+     * valor double sendo maior ou menor dependendo
      * as condiões para tal como a sua idade e se tem mutações
      */
     @Override

@@ -12,7 +12,7 @@ public class Cavalo extends Animal implements Equus {
     public Cavalo() {
         setAtratividadeBase(3000);
         setViasExtincao(false);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
     }
 
     public Cavalo(int idAnimal, int idade, String nome, String SEXO, boolean ALBINISMO, boolean VITILIGO,
@@ -20,7 +20,7 @@ public class Cavalo extends Animal implements Equus {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
         setAtratividadeBase(3000);
         setViasExtincao(false);
-        setIdade(numAleatorioArray(getEsperancaVida()));
+        setIdade(numAleatorio(getEsperancaVida()));
     }
 
     public Cavalo(int idade) {
@@ -61,8 +61,8 @@ public class Cavalo extends Animal implements Equus {
     }
 
     /*
-     * É rescrito o método retornaAtratividadeBase em que é alterada a atratividade
-     * do animal caso tenha
+     * É rescrito o método retornaAtratividade da superclasse e este retorna um
+     * valor double sendo maior ou menor dependendo
      * as condiões para tal como a sua idade e se tem mutações
      */
     @Override
