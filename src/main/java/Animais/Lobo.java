@@ -24,9 +24,8 @@ public class Lobo extends Animal implements Canis {
     }
 
     public Lobo(int idade) {
+        super(idade);
         setAtratividadeBase(3000);
-        // num aleatorio de 0 a 15
-        setIdade(idade);
         setViasExtincao(false);
     }
 

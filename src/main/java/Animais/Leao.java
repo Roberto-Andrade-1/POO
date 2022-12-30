@@ -24,9 +24,8 @@ public class Leao extends Animal implements Panthera {
     }
 
     public Leao(int idade) {
+        super(idade);
         setAtratividadeBase(5000);
-        // num aleatorio de 0 a 10
-        setIdade(idade);
         setViasExtincao(true);
     }
 

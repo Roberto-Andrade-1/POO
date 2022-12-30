@@ -22,9 +22,8 @@ public class Macaco extends Animal {
     }
 
     public Macaco(int idade) {
+        super(idade);
         setAtratividadeBase(3500);
-        // num aleatorio de 0 a 17
-        setIdade(idade);
         setViasExtincao(false);
     }
 

@@ -22,9 +22,8 @@ public class Rato extends Animal {
     }
 
     public Rato(int idade) {
+        super(idade);
         setAtratividadeBase(2000);
-        // num aleatorio de 0 a 2
-        setIdade(idade);
         setViasExtincao(false);
     }
 

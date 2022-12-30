@@ -14,20 +14,22 @@ public class UrsoCastanho extends Animal implements Ursus {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
         setAtratividadeBase(3500);
         setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = false;
+        setViasExtincao(false);
+        ;
     }
 
     public UrsoCastanho() {
         setAtratividadeBase(3500);
         setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = false;
+        setViasExtincao(false);
+        ;
     }
 
     public UrsoCastanho(int idade) {
+        super(idade);
         setAtratividadeBase(3500);
-        // num aleatorio de 0 a 25
-        setIdade(idade);
-        viasExtincao = false;
+        setViasExtincao(false);
+        ;
     }
 
     public int getEsperancaVida() {

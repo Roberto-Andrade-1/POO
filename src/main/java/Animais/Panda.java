@@ -24,9 +24,8 @@ public class Panda extends Animal implements Ursus {
     }
 
     public Panda(int idade) {
+        super(idade);
         setAtratividadeBase(10000);
-        // num aleatorio de 0 a 20
-        setIdade(idade);
         setViasExtincao(true);
     }
 

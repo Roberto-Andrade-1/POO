@@ -24,9 +24,8 @@ public class Serpente extends Animal implements Naja {
     }
 
     public Serpente(int idade) {
+        super(idade);
         setAtratividadeBase(4000);
-        // num aleatorio de 0 a 23
-        setIdade(idade);
         setViasExtincao(true);
     }
 

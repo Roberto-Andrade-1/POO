@@ -22,9 +22,8 @@ public class LinceIberico extends Animal {
     }
 
     public LinceIberico(int idade) {
+        super(idade);
         setAtratividadeBase(5500);
-        // num aleatorio de 0 a 13
-        setIdade(idade);
         setViasExtincao(true);
     }
 

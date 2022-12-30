@@ -24,9 +24,8 @@ public class Boi extends Animal {
     }
 
     public Boi(int idade) {
+        super(idade);
         setAtratividadeBase(1000);
-        // num aleatorio de 0 a 17
-        setIdade(idade);
         setViasExtincao(false);
     }
 

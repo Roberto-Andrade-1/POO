@@ -22,9 +22,8 @@ public class Chita extends Animal {
     }
 
     public Chita(int idade) {
+        super(idade);
         setAtratividadeBase(5000);
-        // num aleatorio de 0 a 12
-        setIdade(idade);
         setViasExtincao(true);
     }
 

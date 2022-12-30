@@ -22,9 +22,8 @@ public class Dragao extends Animal {
     }
 
     public Dragao(int idade) {
+        super(idade);
         setAtratividadeBase(3500);
-        // num aleatorio de 0 a 30
-        setIdade(idade);
         setViasExtincao(true);
     }
 

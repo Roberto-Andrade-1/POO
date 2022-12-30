@@ -24,9 +24,9 @@ public class Cavalo extends Animal implements Equus {
     }
 
     public Cavalo(int idade) {
+        super(idade);
         setAtratividadeBase(3000);
         // num aleatorio de 0 a 28
-        setIdade(idade);
         setViasExtincao(false);
     }
 

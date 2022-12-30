@@ -14,20 +14,22 @@ public class UrsoPolar extends Animal implements Ursus {
         super(idAnimal, idade, nome, SEXO, ALBINISMO, VITILIGO, MELANISMO, HETEROCROMIA, SIAMES);
         setAtratividadeBase(4000);
         setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = true;
+        setViasExtincao(true);
+        ;
     }
 
     public UrsoPolar() {
         setAtratividadeBase(4000);
         setIdade(numAleatorioArray(getEsperancaVida()));
-        viasExtincao = true;
+        setViasExtincao(true);
+        ;
     }
 
     public UrsoPolar(int idade) {
+        super(idade);
         setAtratividadeBase(4000);
-        // num aleatorio de 0 a 30
-        setIdade(idade);
-        viasExtincao = true;
+        setViasExtincao(true);
+        ;
     }
 
     public int getEsperancaVida() {

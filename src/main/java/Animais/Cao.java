@@ -24,9 +24,8 @@ public class Cao extends Animal implements Canis {
     }
 
     public Cao(int idade) {
+        super(idade);
         setAtratividadeBase(1500);
-        // num aleatorio de 0 a 15
-        setIdade(idade);
         setViasExtincao(false);
     }
 
