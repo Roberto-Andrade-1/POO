@@ -1505,8 +1505,18 @@ public class Jumanji {
             }
         }
 
+        System.out.println("\nPerdas:");
+        if (animaisPerdidos.isEmpty()) {
+            System.out.println("Nenhum animal foi perdido neste período contabilístico");
+        } else {
+            System.out.println("Os seguintes animais fugiram do zoo:");
+            for (Animal animal : animaisPerdidos) {
+                System.out.println(animal);
+            }
+        }
+
         Fugiu aniFug = new Fugiu(animaisPerdidos);// cria a classe fuga para depois adicionar no histórico
-        ocor.setHistorico(aniFug.toString());// // adiciona um texto na lista do historico evocando o metodo toString//
+        ocor.setHistorico(aniFug.toString());// adiciona um texto na lista do historico evocando o metodo toString//
                                              // da classe gerada anteriormente
 
         if (zoo.getRecintos().size() > 0) {//
