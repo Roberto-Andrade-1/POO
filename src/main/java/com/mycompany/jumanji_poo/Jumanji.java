@@ -1554,6 +1554,7 @@ public class Jumanji {
                                                                                                                         // que
                                                                                                                         // retirar
                                                                                                                         // outro
+                            System.out.println(insRec);
                             ocor.setHistorico(insRec.toString());// adiciona ao histórico a ocorrencia
                         } else {
                             InseriuAnimalNoRecinto insRec = new InseriuAnimalNoRecinto(animais[num], idDoRecintoAle);// ocorrencia
@@ -1564,6 +1565,7 @@ public class Jumanji {
                                                                                                                      // adicionado
                                                                                                                      // ao
                                                                                                                      // recinto
+                            System.out.println(insRec);
                             ocor.setHistorico(insRec.toString());// adiciona ao historico a ocorrencia
                         }
                     }
