@@ -1565,21 +1565,21 @@ public class Jumanji {
         BufferedReader lerDados = new BufferedReader(inStrem);
 
         try {
-            int numDaLinha = 1;//
+            int numDaLinha = 1;
             linha = lerDados.readLine();
             while (linha != null) {// lê até a acabar as linhas do ficheiro
                 switch (numDaLinha) {
-                    case 1:
+                    case 1:// id do recinto
                         idRecinto = Integer.parseInt(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 2:
+                    case 2:// capacidade do recinto
                         capacidade = Integer.parseInt(linha);
                         linha = lerDados.readLine();
                         numDaLinha++;
                         break;
-                    case 3:
+                    case 3:// inserção do recinto na hashmap
                         rec = new Recinto(idRecinto, capacidade);
                         Recinto.setIdRecintoAtualizado();
                         zoo.setRecintos(rec);
